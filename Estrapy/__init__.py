@@ -1,4 +1,3 @@
-from .help import Help
 from .sfw import *
 
 
