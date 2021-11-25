@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
-a = open("README.md", encoding='utf-8')
-READMEFILE = a.read()
+with open("README.md", encoding='utf-8') as readme: 
+    READMEFILE = readme.read()
 
 setup(
     name="Estrapy-API",
