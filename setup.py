@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
-with open("README.md", encoding='utf-8') as readme: 
-    READMEFILE = readme.read()
+with open('README.md', encoding='utf-8') as readme_file:
+    readme = readme_file.read()
 
 setup(
     name="Estrapy-API",
@@ -11,7 +11,7 @@ setup(
     license="MIT",
     url="https://github.com/StawaDev/Estrapy-API",
     description="A Basic Anime Image API Created By Stawa",
-    long_description=READMEFILE,
+    long_description=readme,
     long_description_content_type="text/markdown",
     keywords=[
         "python api",
