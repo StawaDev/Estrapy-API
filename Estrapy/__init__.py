@@ -1,5 +1,3 @@
-from .sfw import *
-from .nsfw import *
 from .EstraHelp import *
 
 __title__ = "Estrapy-API"
