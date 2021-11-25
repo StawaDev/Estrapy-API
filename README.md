@@ -34,7 +34,7 @@ function()
 import Estrapy
 
 print(Estrapy.sfw.run())
-print(f"Run: {Estrapy.sfw.run()})
+print(f"Run: {Estrapy.sfw.run()}")
 ```
 
 ### AutoUpdate Estrapy-API
