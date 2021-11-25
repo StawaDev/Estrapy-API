@@ -37,6 +37,17 @@ print(Estrapy.sfw.run())
 print(f"Run: {Estrapy.sfw.run()})
 ```
 
+### AutoUpdate Estrapy-API
+
+This is only optional, the function will be called if version of Estrapy-API is not same with the newewst one.
+
+```py
+import Estrapy
+from Estrapy import autoupdate
+
+print(Estrapy.__version__) # Print version of Estrapy-API
+```
+
 ### Print All Function Endpoints
 
 ```py

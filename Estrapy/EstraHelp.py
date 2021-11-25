@@ -8,3 +8,5 @@ def all():
     sfw_list = ["SFW Endpoints:", "hug", "run", "smile", "headpat"]
     nsfw_list = ["NSFW Endpoints:", "Coming Soon!"]
     return sfw_list, nsfw_list
+
+version = "0.1.5"

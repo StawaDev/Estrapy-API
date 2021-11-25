@@ -24,5 +24,5 @@ class sfw:
         return smile_link
 
     def headpat():
-        headpat_link = json.loads(main_api("headpat")["link"])
+        headpat_link = json.loads(main_api("headpat"))["link"]
         return headpat_link
