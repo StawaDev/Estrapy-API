@@ -10,21 +10,19 @@ def main_api(user_requests):
     return api_dumps
 
 
-def run():
-    run_link = json.loads(main_api("run"))["link"]
-    return run_link
+class sfw:
+    def run():
+        run_link = json.loads(main_api("run"))["link"]
+        return run_link
 
+    def hug():
+        hug_link = json.loads(main_api("hug"))["link"]
+        return hug_link
 
-def hug():
-    hug_link = json.loads(main_api("hug"))["link"]
-    return hug_link
+    def smile():
+        smile_link = json.loads(main_api("smile"))["link"]
+        return smile_link
 
-
-def smile():
-    smile_link = json.loads(main_api("smile"))["link"]
-    return smile_link
-
-
-def headpat():
-    headpat_link = json.loads(main_api("headpat")["link"])
-    return headpat_link
+    def headpat():
+        headpat_link = json.loads(main_api("headpat")["link"])
+        return headpat_link
