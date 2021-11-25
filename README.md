@@ -1,6 +1,10 @@
-<h1 align="center">Estrapy-API</h1>
+<h1 align="center">
+    Estrapy-API
+</h1>
 
-<h2 align="center">A Basic Anime Image API Created By Stawa</h2>
+<h2 align="center">
+    A Basic Anime Image API Created By Stawa
+</h2>
 
 ### Installing Estrapy-API
 
