@@ -2,10 +2,10 @@ import requests
 
 
 def main_api(user_requests):
-    main_api = requests.get(
+    get_api = requests.get(
         f"https://estra-api.herokuapp.com/api/sfw/{user_requests}"
     ).json()
-    return main_api
+    return get_api
 
 
 def run():
