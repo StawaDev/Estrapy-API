@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 def main_api(user_requests):
@@ -9,20 +10,20 @@ def main_api(user_requests):
 
 
 def run():
-    run_link = main_api("run")
+    run_link = json.loads(main_api("run"))
     return run_link
 
 
 def hug():
-    hug_link = main_api("hug")
+    hug_link = json.loads(main_api("hug"))
     return hug_link
 
 
 def smile():
-    smile_link = main_api("smile")
+    smile_link = json.loads(main_api("smile"))
     return smile_link
 
 
 def headpat():
-    headpat_link = main_api("headpat")
+    headpat_link = json.loads(main_api("headpat"))
     return headpat_link
