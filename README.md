@@ -37,6 +37,18 @@ print(Estrapy.sfw.run())
 print(f"Run: {Estrapy.sfw.run()})
 ```
 
+### Print All Function Endpoints
+
+```py
+import Estrapy
+
+
+print(Estrapy.EstraHelp.sfw()) # Print all sfw endpoints
+print(Estrapy.EstraHelp.nsfw()) # Print all nsfw endpoints
+print(Estrapy.EstraHelp.all()) # Print all sfw, nsfw endpoints in once
+```
+
+
 ### SFW Function Endpoints
 
 SFW Function|Examples|Description
