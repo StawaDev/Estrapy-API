@@ -6,8 +6,12 @@ def main_api(user_requests):
     get_api = requests.get(
         f"https://estra-api.herokuapp.com/api/sfw/{user_requests}"
     ).json()
-    api_dumps = json.dumps(get_api)
-    return api_dumps
+    if get_api != "<Response [503]>":
+        api_dumps = json.dumps(get_api)
+        return api_dumps
+    else:
+        api_down = "We might have a problem with the API, Please wait for it to be available"
+        return api_down
 
 
 class sfw:
