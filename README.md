@@ -72,4 +72,4 @@ Headpat |   Estrapy.sfw.headpat()   | Return SFW Headpat GIF
 ### NSFW Function Endpoints
 NSFW Function|Examples|Description
 --------------|--------------|--------------
-Coming Soon!     |    Coming Soon!  | Coming Soon!
+Kill     |    Estrapy.nsfw.kill()  | Return NSFW Kill GIF
