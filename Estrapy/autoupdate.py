@@ -5,7 +5,7 @@ version = requests.get("https://estra-api.herokuapp.com/").json()["Version"]
 
 
 def autoupdate():
-    if version != "0.1.5":
+    if version != "0.1.6":
         print(
             f"Estrapy-API - new version is up! AutoUpdate will be upgrading version to {version}"
         )
