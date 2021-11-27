@@ -3,7 +3,7 @@
 </h1>
 
 <h2 align="center">
-    A Basic Anime Image API Created By Stawa
+    A Basic Wrapper Anime Image API Created By Stawa
 </h2>
 
 ### Installing Estrapy-API

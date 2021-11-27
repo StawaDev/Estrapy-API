@@ -17,17 +17,33 @@ def main_api(user_requests):
 
 class sfw:
     def run():
-        run_link = json.loads(main_api("run"))["link"]
-        return run_link
+        try:
+            run_link = json.loads(main_api("run"))["link"]
+            return run_link
+        except:
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
 
     def hug():
-        hug_link = json.loads(main_api("hug"))["link"]
-        return hug_link
+        try:
+            hug_link = json.loads(main_api("hug"))["link"]
+            return hug_link
+        except:
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
 
     def smile():
-        smile_link = json.loads(main_api("smile"))["link"]
-        return smile_link
+        try:
+            smile_link = json.loads(main_api("smile"))["link"]
+            return smile_link
+        except:
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
 
     def headpat():
-        headpat_link = json.loads(main_api("headpat"))["link"]
-        return headpat_link
+        try:
+            headpat_link = json.loads(main_api("headpat"))["link"]
+            return headpat_link
+        except:
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
