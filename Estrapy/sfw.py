@@ -1,6 +1,5 @@
 import requests
 import json
-from .errors import *
 
 def main_api(user_requests):
     try:
@@ -11,6 +10,7 @@ def main_api(user_requests):
             api_dumps = json.dumps(get_api)
             return api_dumps
     except:
+        api_down = "We might have a problem with the API, Please wait for it to be available"
         return api_down
 
 
@@ -21,6 +21,7 @@ class sfw:
             run_link = json.loads(main_api("run"))["link"]
             return run_link
         except:
+            api_down = "We might have a problem with the API, Please wait for it to be available"
             return api_down
 
     def hug():
@@ -29,7 +30,8 @@ class sfw:
             hug_link = json.loads(main_api("hug"))["link"]
             return hug_link
         except:
-            return errors.api_down
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
 
     def smile():
         "A Function That Will Return a SFW Smile GIF"
@@ -37,7 +39,8 @@ class sfw:
             smile_link = json.loads(main_api("smile"))["link"]
             return smile_link
         except:
-            return errors.api_down
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
 
     def headpat():
         "A Function That Will Return a SFW Headpat GIF"
@@ -45,21 +48,24 @@ class sfw:
             headpat_link = json.loads(main_api("headpat"))["link"]
             return headpat_link
         except:
-            return errors.api_down
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
 
     def poke():  # Not Implemented Yet!
         try:
             poke_link = json.loads(main_api("poke"))["link"]
             return poke_link
         except:
-            return errors.api_down
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
 
     def bite():  # Not Implemented Yet!
         try:
             bite_link = json.loads(main_api("bite"))["link"]
             return bite_link
         except:
-            return errors.api_down
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
 
     def neko():  # Not Implemented Yet!
         try:
