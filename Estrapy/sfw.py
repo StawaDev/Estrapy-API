@@ -1,6 +1,6 @@
 import requests
 import json
-import errors
+from errors import *
 
 def main_api(user_requests):
     try:
@@ -11,7 +11,7 @@ def main_api(user_requests):
             api_dumps = json.dumps(get_api)
             return api_dumps
     except:
-        return errors.api_down
+        return api_down
 
 
 class sfw:
@@ -21,7 +21,7 @@ class sfw:
             run_link = json.loads(main_api("run"))["link"]
             return run_link
         except:
-            return errors.api_down
+            return api_down
 
     def hug():
         "A Function That Will Return a SFW Hug GIF"
