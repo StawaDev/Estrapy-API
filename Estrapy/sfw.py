@@ -48,7 +48,7 @@ class sfw:
             api_down = "We might have a problem with the API, Please wait for it to be available"
             return api_down
 
-    def poke(): # Not Available Yet!
+    def poke(): # Not Implemented Yet!
         try:
             poke_link = json.loads(main_api("poke"))["link"]
             return poke_link
@@ -56,10 +56,18 @@ class sfw:
             api_down = "We might have a problem with the API, Please wait for it to be available"
             return api_down
         
-    def bite(): # Not Available Yet!
+    def bite(): # Not Implemented Yet!
         try:
             bite_link = json.loads(main_api("bite"))["link"]
             return bite_link
+        except:
+            api_down = "We might have a problem with the API, Please wait for it to be available"
+            return api_down
+    
+    def neko(): # Not Implemented Yet!
+        try:
+            neko_link = json.loads(main_api("neko"))["link"]
+            return neko_link
         except:
             api_down = "We might have a problem with the API, Please wait for it to be available"
             return api_down
