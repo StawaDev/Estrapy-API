@@ -1,7 +1,6 @@
 import requests
 import json
-from errors import *
-
+from .errors import *
 
 def main_api(user_requests):
     try:
