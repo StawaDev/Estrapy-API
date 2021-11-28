@@ -79,6 +79,6 @@ Headpat |   Estrapy.Sfw.headpat()   |   Return SFW Headpat GIF
 ### NSFW Function Endpoints
 NSFW Function|Examples|Description
 --------------|--------------|--------------
-Kill    |   Estrapy.Nsfw.kill() |   Return NSFW Kill GIF
-Yuri    |   Estrapy.Nsfw.yuri() |   Return NSFW Yuri GIF
-Yaoi    |   Estrapy.Nsfw.yaoi() |   Return NSFW Yaoi GIF
+Kill    |   Estrapy.Nsfw.kill() |   Return NSFW Kill GIF/PNG
+Yuri    |   Estrapy.Nsfw.yuri() |   Return NSFW Yuri GIF/PNG
+Yaoi    |   Estrapy.Nsfw.yaoi() |   Return NSFW Yaoi GIF/PNG
