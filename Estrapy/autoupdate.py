@@ -11,7 +11,7 @@ def autoupdate():
         )
         os.system(f"pip install Estrapy-API=={version}")
     else:
-        return print("No need to update")
+        print("No need to update")
 
 
 autoupdate()

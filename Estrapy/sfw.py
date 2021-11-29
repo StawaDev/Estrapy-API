@@ -1,76 +1,59 @@
-import requests
-import json
+from .http import get_api
 
-def main_api(user_requests):
-    try:
-        get_api = requests.get(
-            f"https://estra-api.herokuapp.com/api/sfw/{user_requests}"
-        ).json()
-        if get_api != "<Response [503]>":
-            api_dumps = json.dumps(get_api)
-            return api_dumps
-    except:
-        api_down = "We might have a problem with the API, Please wait for it to be available"
-        return api_down
+__all__ = ("Sfw",)
 
 
-class sfw:
+class Sfw:
+    @staticmethod
     def run():
-        "A Function That Will Return a SFW Run GIF"
-        try:
-            run_link = json.loads(main_api("run"))["link"]
-            return run_link
-        except:
-            api_down = "We might have a problem with the API, Please wait for it to be available"
-            return api_down
+        """
+        A Function That Will Return a SFW Run GIF
+        """
 
+        return get_api("sfw/run")["link"]
+
+    @staticmethod
     def hug():
-        "A Function That Will Return a SFW Hug GIF"
-        try:
-            hug_link = json.loads(main_api("hug"))["link"]
-            return hug_link
-        except:
-            api_down = "We might have a problem with the API, Please wait for it to be available"
-            return api_down
+        """
+        A Function That Will Return a SFW Hug GIF
+        """
 
+        return get_api("sfw/hug")["link"]
+
+    @staticmethod
     def smile():
-        "A Function That Will Return a SFW Smile GIF"
-        try:
-            smile_link = json.loads(main_api("smile"))["link"]
-            return smile_link
-        except:
-            api_down = "We might have a problem with the API, Please wait for it to be available"
-            return api_down
+        """
+        A Function That Will Return a SFW Smile GIF
+        """
 
+        return get_api("sfw/smile")["link"]
+
+    @staticmethod
     def headpat():
-        "A Function That Will Return a SFW Headpat GIF"
-        try:
-            headpat_link = json.loads(main_api("headpat"))["link"]
-            return headpat_link
-        except:
-            api_down = "We might have a problem with the API, Please wait for it to be available"
-            return api_down
+        """A Function That Will Return a SFW Headpat GIF"""
 
-    def poke():  # Not Implemented Yet!
-        try:
-            poke_link = json.loads(main_api("poke"))["link"]
-            return poke_link
-        except:
-            api_down = "We might have a problem with the API, Please wait for it to be available"
-            return api_down
+        return get_api("sfw/headpat")["link"]
 
-    def bite():  # Not Implemented Yet!
-        try:
-            bite_link = json.loads(main_api("bite"))["link"]
-            return bite_link
-        except:
-            api_down = "We might have a problem with the API, Please wait for it to be available"
-            return api_down
+    @staticmethod
+    def poke():
+        """
+        A Function That Will Return a SFW Poke GIF
+        """
 
-    def neko():  # Not Implemented Yet!
-        try:
-            neko_link = json.loads(main_api("neko"))["link"]
-            return neko_link
-        except:
-            api_down = "We might have a problem with the API, Please wait for it to be available"
-            return api_down
+        return get_api("sfw/poke")["link"]
+
+    @staticmethod
+    def bite():
+        """
+        A Function That Will Return a SFW Bite GIF
+        """
+
+        return get_api("sfw/bite")["link"]
+
+    @staticmethod
+    def neko():
+        """
+        A Function That Will Return a SFW Neko GIF
+        """
+
+        return get_api("sfw/neko")["link"]

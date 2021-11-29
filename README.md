@@ -29,16 +29,16 @@ pip install git+https://github.com/StawaDev/Estrapy-API
 import Estrapy
 
 def function():
-    print(f"A Running GIF: {Estrapy.sfw.run()}")
-    print(f"A Hug GIF: {Estrapy.sfw.hug()}")
+    print(f"A Running GIF: {Estrapy.Sfw.run()}")
+    print(f"A Hug GIF: {Estrapy.Sfw.hug()}")
 
 function()
 
 # Second Examples
 import Estrapy
 
-print(Estrapy.sfw.run())
-print(f"Run: {Estrapy.sfw.run()}")
+print(Estrapy.Sfw.run())
+print(f"Run: {Estrapy.Sfw.run()}")
 ```
 
 ### AutoUpdate Estrapy-API
@@ -58,9 +58,9 @@ print(Estrapy.__version__) # Print version of Estrapy-API
 import Estrapy
 
 
-print(Estrapy.EstraHelp.sfw()) # Print all sfw endpoints
-print(Estrapy.EstraHelp.nsfw()) # Print all nsfw endpoints
-print(Estrapy.EstraHelp.all()) # Print all sfw, nsfw endpoints in once
+print(Estrapy.Help.sfw()) # Print all sfw endpoints
+print(Estrapy.Help.nsfw()) # Print all nsfw endpoints
+print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 ```
 
 
@@ -68,17 +68,17 @@ print(Estrapy.EstraHelp.all()) # Print all sfw, nsfw endpoints in once
 
 SFW Function|Examples|Description
 --------------|--------------|--------------
-Run     |   Estrapy.sfw.run()   |   Return SFW Run GIF
-Hug     |   Estrapy.sfw.hug()   |   Return SFW Hug GIF
-Smile   |   Estrapy.sfw.smile() |   Return SFW Smile GIF
-Neko    |   Estrapy.sfw.neko()  |   Return SFW Neko GIF
-Poke    |   Estrapy.sfw.poke()  |   Return SFW Poke GIF
-Bite    |   Estrapy.sfw.bite()  |   Return SFW Bite GIF
-Headpat |   Estrapy.sfw.headpat()   |   Return SFW Headpat GIF
+Run     |   Estrapy.Sfw.run()   |   Return SFW Run GIF
+Hug     |   Estrapy.Sfw.hug()   |   Return SFW Hug GIF
+Smile   |   Estrapy.Sfw.smile() |   Return SFW Smile GIF
+Neko    |   Estrapy.Sfw.neko()  |   Return SFW Neko GIF
+Poke    |   Estrapy.Sfw.poke()  |   Return SFW Poke GIF
+Bite    |   Estrapy.Sfw.bite()  |   Return SFW Bite GIF
+Headpat |   Estrapy.Sfw.headpat()   |   Return SFW Headpat GIF
 
 ### NSFW Function Endpoints
 NSFW Function|Examples|Description
 --------------|--------------|--------------
-Kill    |   Estrapy.nsfw.kill() |   Return NSFW Kill GIF
-Yuri    |   Estrapy.nsfw.yuri() |   Return NSFW Yuri GIF
-Yaoi    |   Estrapy.nsfw.yaoi() |   Return NSFW Yaoi GIF
+Kill    |   Estrapy.Nsfw.kill() |   Return NSFW Kill GIF/PNG
+Yuri    |   Estrapy.Nsfw.yuri() |   Return NSFW Yuri GIF/PNG
+Yaoi    |   Estrapy.Nsfw.yaoi() |   Return NSFW Yaoi GIF/PNG
