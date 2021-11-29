@@ -71,7 +71,7 @@ SFW Function|Examples|Description
 Run     |   Estrapy.Sfw.run()   |   Return SFW Run GIF
 Hug     |   Estrapy.Sfw.hug()   |   Return SFW Hug GIF
 Smile   |   Estrapy.Sfw.smile() |   Return SFW Smile GIF
-Neko    |   Estrapy.Sfw.neko()  |   Return SFW Neko GIF
+Neko    |   Estrapy.Sfw.neko()  |   Return SFW Neko GIF/PNG
 Poke    |   Estrapy.Sfw.poke()  |   Return SFW Poke GIF
 Bite    |   Estrapy.Sfw.bite()  |   Return SFW Bite GIF
 Headpat |   Estrapy.Sfw.headpat()   |   Return SFW Headpat GIF

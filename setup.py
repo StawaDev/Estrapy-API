@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+
 f = open("README.md", "r")
 README = f.read()
 
@@ -23,6 +24,6 @@ setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License"
-    ]
+        "License :: OSI Approved :: MIT License",
+    ],
 )

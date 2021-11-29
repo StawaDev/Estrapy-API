@@ -57,3 +57,11 @@ class Sfw:
         """
 
         return get_api("sfw/neko")["link"]
+
+    @staticmethod
+    def highfive():
+        """
+        A Function That Will Return a SFW Highfive GIF
+        """
+        
+        return get_api("sfw/highfive")["link"]

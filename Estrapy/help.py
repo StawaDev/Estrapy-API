@@ -1,8 +1,8 @@
 __all__ = ("SFW_LIST", "NSFW_LIST", "Help")
 
 
-SFW_LIST = ["hug", "run", "smile", "headpat"]
-NSFW_LIST = ["Coming Soon!"]
+SFW_LIST = ["hug", "run", "smile", "headpat", "neko", "bite", "highfive", "poke"]
+NSFW_LIST = ["yaoi", "yuri", "kill"]
 
 
 class Help:
