@@ -65,3 +65,11 @@ class Sfw:
         """
         
         return get_api("sfw/highfive")["link"]
+    
+    @staticmethod
+    def slap():
+        """
+        A Function That Will Return a SFW Slap GIF
+        """
+        
+        return get_api("sfw/slap")["link"]

@@ -74,6 +74,8 @@ Smile   |   Estrapy.Sfw.smile() |   Return SFW Smile GIF
 Neko    |   Estrapy.Sfw.neko()  |   Return SFW Neko GIF/PNG
 Poke    |   Estrapy.Sfw.poke()  |   Return SFW Poke GIF
 Bite    |   Estrapy.Sfw.bite()  |   Return SFW Bite GIF
+Slap    |   Estrapy.SFw.slap()  |   Return SFW Slap GIF
+Highfive|   Estrapy.Sfw.highfive()  |    Return SFW Highfive GIF
 Headpat |   Estrapy.Sfw.headpat()   |   Return SFW Headpat GIF
 
 ### NSFW Function Endpoints
