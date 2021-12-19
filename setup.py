@@ -25,5 +25,6 @@ setup(
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
     ],
 )
