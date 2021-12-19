@@ -39,6 +39,19 @@ import Estrapy
 
 print(Estrapy.Sfw.run())
 print(f"Run: {Estrapy.Sfw.run()}")
+
+# Discord Examples
+import Estrapy
+
+@bot.command()
+async def run(ctx): # Without Embed
+    await ctx.send(Estrapy.Sfw.run())
+
+@bot.command()
+async def run(ctx): # With Embed
+    embed = discord.Embed(title="Running GIF")
+    embed.set_image(url=Estrapy.Sfw.run())
+    await ctx.send(embed=embed)
 ```
 
 ### AutoUpdate Estrapy-API
