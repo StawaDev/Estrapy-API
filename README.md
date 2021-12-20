@@ -81,19 +81,25 @@ print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 
 SFW Function|Examples|Description
 --------------|--------------|--------------
-Run     |   Estrapy.Sfw.run()   |   Return SFW Run GIF
-Hug     |   Estrapy.Sfw.hug()   |   Return SFW Hug GIF
-Smile   |   Estrapy.Sfw.smile() |   Return SFW Smile GIF
-Neko    |   Estrapy.Sfw.neko()  |   Return SFW Neko GIF/PNG
-Poke    |   Estrapy.Sfw.poke()  |   Return SFW Poke GIF
-Bite    |   Estrapy.Sfw.bite()  |   Return SFW Bite GIF
-Slap    |   Estrapy.SFw.slap()  |   Return SFW Slap GIF
-Highfive|   Estrapy.Sfw.highfive()  |    Return SFW Highfive GIF
-Headpat |   Estrapy.Sfw.headpat()   |   Return SFW Headpat GIF
+Run     |   Estrapy.Sfw.run()   |   Return SFW Run GIFs
+Hug     |   Estrapy.Sfw.hug()   |   Return SFW Hug GIFs
+Smile   |   Estrapy.Sfw.smile() |   Return SFW Smile GIFs
+Neko    |   Estrapy.Sfw.neko()  |   Return SFW Neko GIFs/PNG
+Poke    |   Estrapy.Sfw.poke()  |   Return SFW Poke GIFs
+Bite    |   Estrapy.Sfw.bite()  |   Return SFW Bite GIFs
+Slap    |   Estrapy.SFw.slap()  |   Return SFW Slap GIFs
+Highfive|   Estrapy.Sfw.highfive()  |    Return SFW Highfive GIFs
+Headpat |   Estrapy.Sfw.headpat()   |   Return SFW Headpat GIFs
 
 ### NSFW Function Endpoints
 NSFW Function|Examples|Description
 --------------|--------------|--------------
-Kill    |   Estrapy.Nsfw.kill() |   Return NSFW Kill GIF/PNG
-Yuri    |   Estrapy.Nsfw.yuri() |   Return NSFW Yuri GIF/PNG
-Yaoi    |   Estrapy.Nsfw.yaoi() |   Return NSFW Yaoi GIF/PNG
+Kill    |   Estrapy.Nsfw.kill() |   Return NSFW Kill GIFs/PNG
+Yuri    |   Estrapy.Nsfw.yuri() |   Return NSFW Yuri GIFs/PNG
+Yaoi    |   Estrapy.Nsfw.yaoi() |   Return NSFW Yaoi GIFs/PNG
+
+### GAMES Function Endpoints
+GAMES Function|Examples|Description
+--------------|--------------|--------------
+Truth   |   Estrapy.Games.truth()   |   Return GAMES Truth TEXT
+Dare    |   Estrapy.Games.dare()    |   Return GAMES Dare TEXT
