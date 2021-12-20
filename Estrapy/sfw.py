@@ -7,7 +7,15 @@ class Sfw:
     @staticmethod
     def run():
         """
-        A Function That Will Return a SFW Run GIFs
+        Description
+        --------------
+        A Function That Will Return a SFW Run as GIFs
+        
+        How to use run function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.run() # Keep it as function or it will return function type
+        ```
         """
 
         return get_api("sfw/run")["link"]
@@ -15,7 +23,15 @@ class Sfw:
     @staticmethod
     def hug():
         """
-        A Function That Will Return a SFW Hug GIFs
+        Description
+        --------------
+        A Function That Will Return a SFW Hug as GIFs
+        
+        How to use hug function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.hug() # Keep it as function or it will return function type
+        ```
         """
 
         return get_api("sfw/hug")["link"]
@@ -23,21 +39,46 @@ class Sfw:
     @staticmethod
     def smile():
         """
-        A Function That Will Return a SFW Smile GIFs
+        Description
+        --------------
+        A Function That Will Return a SFW Smile as GIFs
+        
+        How to use smile function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.smile() # Keep it as function or it will return function type
+        ```
         """
 
         return get_api("sfw/smile")["link"]
 
     @staticmethod
     def headpat():
-        """A Function That Will Return a SFW Headpat GIFs"""
+        """
+        Description
+        --------------
+        A Function That Will Return a SFW Headpat as GIFs
+        
+        How to use headpat function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.headpat() # Keep it as function or it will return function type
+        ```
+        """
 
         return get_api("sfw/headpat")["link"]
 
     @staticmethod
     def poke():
         """
-        A Function That Will Return a SFW Poke GIFs
+        Description
+        --------------
+        A Function That Will Return a SFW Poke as GIFs
+        
+        How to use poke function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.poke() # Keep it as function or it will return function type
         """
 
         return get_api("sfw/poke")["link"]
@@ -45,7 +86,15 @@ class Sfw:
     @staticmethod
     def bite():
         """
-        A Function That Will Return a SFW Bite GIFs
+        Description
+        --------------
+        A Function That Will Return a SFW Bite as GIFs
+        
+        How to use bite function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.bite() # Keep it as function or it will return function type
+        ```
         """
 
         return get_api("sfw/bite")["link"]
@@ -53,7 +102,15 @@ class Sfw:
     @staticmethod
     def neko():
         """
-        A Function That Will Return a SFW Neko GIFs/PNG
+        Description
+        --------------
+        A Function That Will Return a SFW Neko as GIFs/PNG
+        
+        How to use neko function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.neko() # Keep it as function or it will return function type
+        ```
         """
 
         return get_api("sfw/neko")["link"]
@@ -61,7 +118,15 @@ class Sfw:
     @staticmethod
     def highfive():
         """
-        A Function That Will Return a SFW Highfive GIFs
+        Description
+        --------------
+        A Function That Will Return a SFW Highfive as GIFs
+        
+        How to use highfive function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.highfive() # Keep it as function or it will return function type
+        ```
         """
         
         return get_api("sfw/highfive")["link"]
@@ -69,7 +134,15 @@ class Sfw:
     @staticmethod
     def slap():
         """
-        A Function That Will Return a SFW Slap GIFs
+        Description
+        --------------
+        A Function That Will Return a SFW Slap as GIFs
+        
+        How to use slap function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Sfw.slap() # Keep it as function or it will return function type
+        ```
         """
         
         return get_api("sfw/slap")["link"]

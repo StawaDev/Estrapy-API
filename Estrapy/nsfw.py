@@ -7,21 +7,45 @@ class Nsfw:
     @staticmethod
     def kill():
         """
-        A Function That Will Return a NSFW Kill GIFs/PNG
+        Description
+        --------------
+        A Function That Will Return a NSFW Kill as GIFs/PNG
+        
+        How to use kill function (Examples)
+        ----------------------------
+        
+        ```
+        Estrapy.Nsfw.kill() # Keep it as function or it will return function type
+        ```
         """
         return get_api("nsfw/kill")["link"]
 
     @staticmethod
     def yuri():
         """
-        A Function That Will Return a NSFW Yuri GIFs/PNG
+        Description
+        --------------
+        A Function That Will Return a NSFW Yuri as GIFs/PNG
+        
+        How to use yuri function (Examples)
+        ----------------------------
+        Estrapy.Nsfw.yuri() # Keep it as function or it will return function type
+        ```
         """
         return get_api("nsfw/yuri")["link"]
 
     @staticmethod
     def yaoi():
         """
-        A Function That Will Return a NSFW Yaoi GIFs/PNG
+        Description
+        --------------
+        A Function That Will Return a NSFW Yaoi as GIFs/PNG
+        
+        How to use yaoi function (Examples)
+        ----------------------------
+        ```
+        Estrapy.Nsfw.yaoi() # Keep it as function or it will return function type
+        ```
         """
         
         return get_api("nsfw/yaoi")["link"]
