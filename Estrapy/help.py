@@ -1,4 +1,5 @@
 import json
+from pygments import highlight, lexers, formatters
 
 __all__ = ("SFW_LIST", "NSFW_LIST", "GAMES_LIST", "ANIGAMES_LIST", "ALL_DICT", "Help")
 
@@ -95,5 +96,5 @@ class Help:
         ```
         """
         ALL_LIST = json.dumps(ALL_DICT, indent=6, sort_keys=True)
-        return ALL_LIST
-
+        ALL_LIST_COLOR = highlight(ALL_LIST, lexers.JsonLexer(), formatters.TerminalFormatter())
+        return ALL_LIST_COLOR
