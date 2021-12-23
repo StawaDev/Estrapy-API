@@ -100,12 +100,12 @@ print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 
 ### AniGames Function Endpoints
 
-| ANIGAMES Function | Examples                    | Description                                  |
+| AniGames Function | Examples                    | Description                                  |
 | ----------------- | --------------------------- | -------------------------------------------- |
-| Truth             | Estrapy.AniGames.truth()    | Return ANIGAMES Truth About Anime as TEXT    |
-| Dare              | Estrapy.AniGames.dare()     | Return ANIGAMES Dare About Anime as TEXT     |
-| Waifu             | Estrapy.AniGames.waifu()    | Return ANIGAMES Waifu About Anime as PNG     |
-| Husbando          | Estrapy.AniGames.husbando() | Return ANIGAMES Husbando About Anime as TEXT |
+| Truth             | Estrapy.AniGames.truth()    | Return AniGames Truth About Anime as TEXT    |
+| Dare              | Estrapy.AniGames.dare()     | Return AniGames Dare About Anime as TEXT     |
+| Waifu             | Estrapy.AniGames.waifu()    | Return AniGames Waifu About Anime as PNG     |
+| Husbando          | Estrapy.AniGames.husbando() | Return AniGames Husbando About Anime as TEXT |
 
 ### GAMES Function Endpoints
 
