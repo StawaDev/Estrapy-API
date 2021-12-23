@@ -84,6 +84,7 @@ class AniGames:
         Estrapy.AniGames.waifu() # Keep it as function or it will return function type
         ```
         """
+        return get_api("anigames/waifu")["link"]
         
     @staticmethod
     def husbando():
@@ -98,3 +99,4 @@ class AniGames:
         Estrapy.AniGames.husbando() # Keep it as function or it will return function type
         ```
         """
+        return get_api("anigames/waifu")["link"]
