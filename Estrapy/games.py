@@ -70,3 +70,31 @@ class AniGames:
         """
 
         return get_api("anigames/dare")["text"]
+    
+    @staticmethod
+    def waifu():
+        """
+        Description
+        --------------
+        A Function That Will Return a Random Waifu Picture As PNG
+
+        How to use waifu [about anime] function (Examples)
+        ----------------------------
+        ```
+        Estrapy.AniGames.waifu() # Keep it as function or it will return function type
+        ```
+        """
+        
+    @staticmethod
+    def husbando():
+        """
+        Description
+        --------------
+        A Function That Will Return a Random Husbando Picture As PNG
+
+        How to use husbando [about anime] function (Examples)
+        ----------------------------
+        ```
+        Estrapy.AniGames.husbando() # Keep it as function or it will return function type
+        ```
+        """
