@@ -9,10 +9,10 @@ NSFW_LIST = ["yaoi", "yuri", "kill"]
 GAMES_LIST = ["truth", "dare"]
 ANIGAMES_LIST = ["truth", "dare"]
 ALL_DICT = {
-    "SFW": f"{SFW_LIST}",
-    "NSFW": f"{NSFW_LIST}",
-    "GAMES_LIST": f"{GAMES_LIST}",
-    "ANIGAMES_LIST": f"{ANIGAMES_LIST}",
+    "SFW": f", ".join(SFW_LIST),
+    "NSFW": f", ".join(NSFW_LIST),
+    "GAMES_LIST": f", ".join(GAMES_LIST),
+    "ANIGAMES_LIST": f", ".join(ANIGAMES_LIST),
 }
 
 
