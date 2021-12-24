@@ -109,7 +109,7 @@ print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 
 ### GAMES Function Endpoints
 
-| GAMES Function | Examples              | Description                |
+| Games Function | Examples              | Description                |
 | -------------- | --------------------- | -------------------------- |
-| Truth          | Estrapy.Games.truth() | Return GAMES Truth as TEXT |
-| Dare           | Estrapy.Games.dare()  | Return GAMES Dare as TEXT  |
+| Truth          | Estrapy.Games.truth() | Return Games Truth as TEXT |
+| Dare           | Estrapy.Games.dare()  | Return Games Dare as TEXT  |

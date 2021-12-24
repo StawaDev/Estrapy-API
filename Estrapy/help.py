@@ -7,7 +7,7 @@ __all__ = ("SFW_LIST", "NSFW_LIST", "GAMES_LIST", "ANIGAMES_LIST", "ALL_DICT", "
 SFW_LIST = ["hug", "run", "smile", "headpat", "neko", "bite", "highfive", "poke", "slap",]
 NSFW_LIST = ["yaoi", "yuri", "kill"]
 GAMES_LIST = ["truth", "dare"]
-ANIGAMES_LIST = ["truth", "dare"]
+ANIGAMES_LIST = ["truth", "dare", "waifu", "husbando"]
 ALL_DICT = {
     "SFW": f", ".join(SFW_LIST),
     "NSFW": f", ".join(NSFW_LIST),
