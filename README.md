@@ -108,7 +108,7 @@ print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 | Waifu             | Estrapy.AniGames.waifu()    | Return AniGames Waifu About Anime as PNG     |
 | Husbando          | Estrapy.AniGames.husbando() | Return AniGames Husbando About Anime as TEXT |
 
-### GAMES Function Endpoints
+### Games Function Endpoints
 
 | Games Function | Examples              | Description                |
 | -------------- | --------------------- | -------------------------- |
