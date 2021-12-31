@@ -12,7 +12,9 @@ def function():
     print(f"Truth: {Estrapy.AniGames.truth()}")
     print(f"Dare: {Estrapy.AniGames.dare()}")
     print(f"Waifu: {Estrapy.AniGames.waifu()}")
+    print(f"Waifu Name: {Estrapy.AniGames.waifu_name()}")
     print(f"Husbando: {Estrapy.AniGames.husbando()}")
+    print(f"Husbando Name: {Estrapy.AniGames.husbando_name()}")
 
 
 function()
