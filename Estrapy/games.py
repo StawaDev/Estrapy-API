@@ -84,7 +84,9 @@ class AniGames:
         Estrapy.AniGames.waifu() # Keep it as function or it will return function type
         ```
         """
-        return get_api("anigames/waifu")["link"]
+        global waifu
+        waifu =  get_api("anigames/waifu")
+        return waifu["link"]
         
     @staticmethod
     def husbando():
@@ -114,4 +116,5 @@ class AniGames:
         Estrapy.AniGames.waifu() # Keep it as function or it will return function type
         ```
         """
-        return get_api("anigames/waifu")["character_name"]
+        character_name = waifu
+        return character_name[["character_name"]]
