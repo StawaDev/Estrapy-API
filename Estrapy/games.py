@@ -117,4 +117,4 @@ class AniGames:
         ```
         """
         character_name = waifu
-        return character_name[["character_name"]]
+        return character_name["character_name"]
