@@ -101,7 +101,9 @@ class AniGames:
         Estrapy.AniGames.husbando() # Keep it as function or it will return function type
         ```
         """
-        return get_api("anigames/waifu")["link"]
+        global husbando
+        husbando = get_api("anigames/waifu")
+        return husbando["link"]
     
     @staticmethod
     def waifu_name():
@@ -117,4 +119,20 @@ class AniGames:
         ```
         """
         character_name = waifu
+        return character_name["character_name"]
+    
+    @staticmethod
+    def husbado_name():
+        """
+        Description
+        --------------
+        A Function That Will Return a Name Character of the Waifu Picture As Text
+
+        How to use waifu_name [about anime] function (Examples)
+        ----------------------------
+        ```
+        Estrapy.AniGames.waifu() # Keep it as function or it will return function type
+        ```
+        """
+        character_name = husbando
         return character_name["character_name"]
