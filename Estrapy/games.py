@@ -100,3 +100,18 @@ class AniGames:
         ```
         """
         return get_api("anigames/waifu")["link"]
+    
+    @staticmethod
+    def waifu_name():
+        """
+        Description
+        --------------
+        A Function That Will Return a Name Character of the Waifu Picture As Text
+
+        How to use waifu_name [about anime] function (Examples)
+        ----------------------------
+        ```
+        Estrapy.AniGames.waifu() # Keep it as function or it will return function type
+        ```
+        """
+        return get_api("anigames/waifu")["character_name"]
