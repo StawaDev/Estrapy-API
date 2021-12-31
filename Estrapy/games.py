@@ -102,7 +102,7 @@ class AniGames:
         ```
         """
         global husbando
-        husbando = get_api("anigames/waifu")
+        husbando = get_api("anigames/husbando")
         return husbando["link"]
     
     @staticmethod
@@ -122,7 +122,7 @@ class AniGames:
         return character_name["character_name"]
     
     @staticmethod
-    def husbado_name():
+    def husbando_name():
         """
         Description
         --------------
