@@ -77,9 +77,9 @@ print(Estrapy.Help.nsfw()) # Print all nsfw endpoints
 print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 ```
 
-### SFW Function Endpoints
+### Sfw Function Endpoints
 
-| SFW Function | Examples               | Description                 |
+| Sfw Function | Examples               | Description                 |
 | ------------ | ---------------------- | --------------------------- |
 | Run          | Estrapy.Sfw.run()      | Return SFW Run as GIFs      |
 | Hug          | Estrapy.Sfw.hug()      | Return SFW Hug as GIFs      |
@@ -91,7 +91,7 @@ print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 | Highfive     | Estrapy.Sfw.highfive() | Return SFW Highfive as GIFs |
 | Headpat      | Estrapy.Sfw.headpat()  | Return SFW Headpat as GIFs  |
 
-### NSFW Function Endpoints
+### Nsfw Function Endpoints
 
 | NSFW Function | Examples            | Description                  |
 | ------------- | ------------------- | ---------------------------- |
@@ -103,14 +103,19 @@ print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 
 | AniGames Function | Examples                    | Description                                  |
 | ----------------- | --------------------------- | -------------------------------------------- |
-| Truth             | Estrapy.AniGames.truth()    | Return AniGames Truth About Anime as TEXT    |
-| Dare              | Estrapy.AniGames.dare()     | Return AniGames Dare About Anime as TEXT     |
+| Truth             | Estrapy.AniGames.truth()    | Return AniGames Truth About Anime as Text    |
+| Dare              | Estrapy.AniGames.dare()     | Return AniGames Dare About Anime as Text     |
 | Waifu             | Estrapy.AniGames.waifu()    | Return AniGames Waifu About Anime as PNG     |
-| Husbando          | Estrapy.AniGames.husbando() | Return AniGames Husbando About Anime as TEXT |
+| Husbando          | Estrapy.AniGames.husbando() | Return AniGames Husbando About Anime as Text |
 
 ### Games Function Endpoints
 
 | Games Function | Examples              | Description                |
 | -------------- | --------------------- | -------------------------- |
-| Truth          | Estrapy.Games.truth() | Return Games Truth as TEXT |
-| Dare           | Estrapy.Games.dare()  | Return Games Dare as TEXT  |
+| Truth          | Estrapy.Games.truth() | Return Games Truth as Text |
+| Dare           | Estrapy.Games.dare()  | Return Games Dare as Text  |
+
+## Links
+- [Documentation](https://stawa.gitbook.io/estraapi-documentation)
+- [Homepage](https://github.com/StawaDev/EstraDart)
+- [Application Programming Interface](https://estra-api.herokuapp.com)
