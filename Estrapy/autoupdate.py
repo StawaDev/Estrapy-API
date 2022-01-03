@@ -1,7 +1,7 @@
 import requests
 import os
 
-version = requests.get("https://estra-api.herokuapp.com/").json()["Version"]
+version = requests.get("https://estra-api.herokuapp.com/version").json()["Estrapy-API"]["Estrapy Version"]
 
 
 def autoupdate():
@@ -11,7 +11,7 @@ def autoupdate():
         )
         os.system(f"pip install Estrapy-API=={version}")
     else:
-        print("No need to update")
+        print("Estrapy-API - No need to update")
 
 
 autoupdate()
