@@ -2,6 +2,7 @@ from .sfw import *
 from .nsfw import *
 from .games import *
 from .data import *
+from .osu import *
 from .errors import *
 from .help import Help
 
