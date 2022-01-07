@@ -5,7 +5,7 @@ README = f.read()
 
 setup(
     name="Estrapy-API",
-    version="0.1.9",
+    version="0.2.0",
     packages=find_packages(),
     install_requires=["requests"],
     license="MIT",
