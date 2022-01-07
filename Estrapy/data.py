@@ -6,7 +6,7 @@ TypeText = ["truth", "dare"]
 
 class Data:
     @staticmethod
-    def totalSfw(EndPoint):
+    async def totalSfw(EndPoint):
         """
         Description
         --------------
@@ -22,7 +22,7 @@ class Data:
         return get_api(f"sfw/{EndPoint}")["total_image"]
 
     @staticmethod
-    def totalNsfw(EndPoint):
+    async def totalNsfw(EndPoint):
         """
         Description
         --------------
@@ -38,7 +38,7 @@ class Data:
         return get_api(f"nsfw/{EndPoint}")["total_image"]
 
     @staticmethod
-    def totalGames(EndPoint):
+    async def totalGames(EndPoint):
         """
         Description
         --------------
@@ -54,7 +54,7 @@ class Data:
         return get_api(f"games/{EndPoint}")["total_text"]
 
     @staticmethod
-    def totalAniGames(EndPoint):
+    async def totalAniGames(EndPoint):
         """
         Description
         --------------

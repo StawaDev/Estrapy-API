@@ -5,7 +5,7 @@ __all__ = ("Nsfw",)
 
 class Nsfw:
     @staticmethod
-    def kill():
+    async def kill():
         """
         Description
         --------------
@@ -21,7 +21,7 @@ class Nsfw:
         return get_api("nsfw/kill")["link"]
 
     @staticmethod
-    def yuri():
+    async def yuri():
         """
         Description
         --------------
@@ -35,7 +35,7 @@ class Nsfw:
         return get_api("nsfw/yuri")["link"]
 
     @staticmethod
-    def yaoi():
+    async def yaoi():
         """
         Description
         --------------

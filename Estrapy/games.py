@@ -5,7 +5,7 @@ __all__ = ("Games", "AniGames",)
 
 class Games:
     @staticmethod
-    def truth():
+    async def truth():
         """
         Description
         --------------
@@ -21,7 +21,7 @@ class Games:
         return get_api("games/truth")["text"]
 
     @staticmethod
-    def dare():
+    async def dare():
         """
         Description
         --------------
@@ -39,7 +39,7 @@ class Games:
 
 class AniGames:
     @staticmethod
-    def truth():
+    async def truth():
         """
         Description
         --------------
@@ -56,7 +56,7 @@ class AniGames:
         return get_api("anigames/truth")["text"]
 
     @staticmethod
-    def dare():
+    async def dare():
         """
         Description
         --------------
@@ -72,7 +72,7 @@ class AniGames:
         return get_api("anigames/dare")["text"]
     
     @staticmethod
-    def waifu():
+    async def waifu():
         """
         Description
         --------------
@@ -89,7 +89,7 @@ class AniGames:
         return waifu["link"]
         
     @staticmethod
-    def husbando():
+    async def husbando():
         """
         Description
         --------------
@@ -106,7 +106,7 @@ class AniGames:
         return husbando["link"]
     
     @staticmethod
-    def waifu_name():
+    async def waifu_name():
         """
         Description
         --------------
@@ -122,7 +122,7 @@ class AniGames:
         return character_name["character_name"]
     
     @staticmethod
-    def husbando_name():
+    async def husbando_name():
         """
         Description
         --------------

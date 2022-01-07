@@ -18,7 +18,7 @@ ALL_DICT = {
 
 class Help:
     @staticmethod
-    def sfw():
+    async def sfw():
         """
         Description
         --------------
@@ -34,7 +34,7 @@ class Help:
         return SFW_LIST
 
     @staticmethod
-    def nsfw():
+    async def nsfw():
         """
         Description
         --------------
@@ -50,7 +50,7 @@ class Help:
         return NSFW_LIST
 
     @staticmethod
-    def games():
+    async def games():
         """
         Description
         --------------
@@ -66,7 +66,7 @@ class Help:
         return GAMES_LIST
 
     @staticmethod
-    def games():
+    async def games():
         """
         Description
         --------------
@@ -82,7 +82,7 @@ class Help:
         return GAMES_LIST
 
     @staticmethod
-    def all():
+    async def all():
         """
         Description
         --------------

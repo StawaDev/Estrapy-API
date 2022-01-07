@@ -5,7 +5,7 @@ __all__ = ("Sfw",)
 
 class Sfw:
     @staticmethod
-    def run():
+    async def run():
         """
         Description
         --------------
@@ -21,7 +21,7 @@ class Sfw:
         return get_api("sfw/run")["link"]
 
     @staticmethod
-    def hug():
+    async def hug():
         """
         Description
         --------------
@@ -37,7 +37,7 @@ class Sfw:
         return get_api("sfw/hug")["link"]
 
     @staticmethod
-    def smile():
+    async def smile():
         """
         Description
         --------------
@@ -53,7 +53,7 @@ class Sfw:
         return get_api("sfw/smile")["link"]
 
     @staticmethod
-    def headpat():
+    async def headpat():
         """
         Description
         --------------
@@ -69,7 +69,7 @@ class Sfw:
         return get_api("sfw/headpat")["link"]
 
     @staticmethod
-    def poke():
+    async def poke():
         """
         Description
         --------------
@@ -84,7 +84,7 @@ class Sfw:
         return get_api("sfw/poke")["link"]
 
     @staticmethod
-    def bite():
+    async def bite():
         """
         Description
         --------------
@@ -100,7 +100,7 @@ class Sfw:
         return get_api("sfw/bite")["link"]
 
     @staticmethod
-    def neko():
+    async def neko():
         """
         Description
         --------------
@@ -116,7 +116,7 @@ class Sfw:
         return get_api("sfw/neko")["link"]
 
     @staticmethod
-    def highfive():
+    async def highfive():
         """
         Description
         --------------
@@ -132,7 +132,7 @@ class Sfw:
         return get_api("sfw/highfive")["link"]
     
     @staticmethod
-    def slap():
+    async def slap():
         """
         Description
         --------------
