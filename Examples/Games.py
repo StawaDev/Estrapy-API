@@ -1,19 +1,21 @@
 import Estrapy
+import asyncio
+
 
 # Print All Games Endpoints
-print(Estrapy.Help.games())
+async def Help():
+    print(Estrapy.Help.games())
 
-# Print Only Examples
-print(Estrapy.Games.dare())
-print(Estrapy.Games.truth())
+asyncio.run(Help())
+
 
 # Function Examples
-def function():
-    print(f"Truth: {Estrapy.Games.truth()}")
-    print(f"Dare: {Estrapy.Games.dare()}")
+async def function():
+    print(f"Truth: {await Estrapy.Games.truth()}")
+    print(f"Dare: {await Estrapy.Games.dare()}")
 
 
-function()
+asyncio.run(function())
 
 
 # Discord Examples
@@ -26,12 +28,12 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.command()
 async def truth(ctx):
-    await ctx.send(Estrapy.Games.truth())
+    await ctx.send(await Estrapy.Games.truth())
 
 
 @bot.command()
 async def dare(ctx):
-    await ctx.send(Estrapy.Games.dare())
+    await ctx.send(await Estrapy.Games.dare())
 
 
 bot.run("TOKEN")

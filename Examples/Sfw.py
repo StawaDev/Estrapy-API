@@ -1,21 +1,20 @@
 import Estrapy
+import asyncio
 
 # Print All Sfw Endpoints
-print(Estrapy.Help.sfw())
+async def Help():
+    print(Estrapy.Help.sfw())
 
-# Print Only Examples
-
-print(Estrapy.Sfw.neko())
-print(Estrapy.Sfw.hug())
+asyncio.run(Help())
 
 
 # Function Examples
-def function():
-    print(f"Smile: {Estrapy.Nsfw.smile()}")
-    print(f"Poke: {Estrapy.Nsfw.poke()}")
+async def function():
+    print(f"Smile: {await Estrapy.Nsfw.smile()}")
+    print(f"Poke: {await Estrapy.Nsfw.poke()}")
 
 
-function()
+asyncio.run(function())
 
 # Discord Examples
 
@@ -27,19 +26,19 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.command()
 async def highfive(ctx):
-    await ctx.send(Estrapy.Sfw.highfive())
+    await ctx.send(await Estrapy.Sfw.highfive())
 
 
 @bot.command()
 async def headpat(ctx):
-    await ctx.send(Estrapy.Sfw.headpat())
+    await ctx.send(await Estrapy.Sfw.headpat())
 
 
 # Discord Examples With Embed
 @bot.command()
 async def bite(ctx):
     embed = discord.Embed(title="Bite")
-    embed.set_image(Estrapy.Sfw.bite())
+    embed.set_image(await Estrapy.Sfw.bite())
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
 
@@ -47,7 +46,7 @@ async def bite(ctx):
 @bot.command()
 async def slap(ctx):
     embed = discord.Embed(title="Slap")
-    embed.set_image(Estrapy.Sfw.slap())
+    embed.set_image(await Estrapy.Sfw.slap())
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
 

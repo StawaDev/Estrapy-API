@@ -1,21 +1,21 @@
 import Estrapy
+import asyncio
+
 
 # Print All Nsfw Endpoints
-print(Estrapy.Help.nsfw())
+async def Help():
+    print(Estrapy.Help.nsfw())
 
-# Print Only Examples
-
-print(Estrapy.Nsfw.yaoi())
-print(Estrapy.Nsfw.yuri())
+asyncio.run(Help())
 
 
 # Function Examples
-def function():
-    print(f"Yaoi: {Estrapy.Nsfw.yaoi()}")
-    print(f"Yuri: {Estrapy.Nsfw.yuri()}")
+async def function():
+    print(f"Yaoi: {await Estrapy.Nsfw.yaoi()}")
+    print(f"Yuri: {await Estrapy.Nsfw.yuri()}")
 
 
-function()
+asyncio.run(function())
 
 # Discord Examples
 
@@ -27,19 +27,19 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.command()
 async def yaoi(ctx):
-    await ctx.send(Estrapy.Nsfw.yaoi())
+    await ctx.send(await Estrapy.Nsfw.yaoi())
 
 
 @bot.command()
 async def dare(ctx):
-    await ctx.send(Estrapy.Nsfw.yuri())
+    await ctx.send(await Estrapy.Nsfw.yuri())
 
 
 # Discord Examples With Embed
 @bot.command()
 async def yaoi(ctx):
     embed = discord.Embed(title="Yaoi")
-    embed.set_image(Estrapy.Nsfw.yaoi())
+    embed.set_image(await Estrapy.Nsfw.yaoi())
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
 
@@ -47,7 +47,7 @@ async def yaoi(ctx):
 @bot.command()
 async def yuri(ctx):
     embed = discord.Embed(title="Yuri")
-    embed.set_image(Estrapy.Nsfw.yuri())
+    embed.set_image(await Estrapy.Nsfw.yuri())
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
 
