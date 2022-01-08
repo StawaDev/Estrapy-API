@@ -1,6 +1,7 @@
 from .http import get_api
+import json
 
-__all__ = ("Games", "AniGames",)
+__all__ = ("Games", "AniGames", "OsuClients")
 
 
 class Games:
@@ -70,7 +71,7 @@ class AniGames:
         """
 
         return get_api("anigames/dare")["text"]
-    
+
     @staticmethod
     async def waifu():
         """
@@ -85,9 +86,9 @@ class AniGames:
         ```
         """
         global waifu
-        waifu =  get_api("anigames/waifu")
+        waifu = get_api("anigames/waifu")
         return waifu["link"]
-        
+
     @staticmethod
     async def husbando():
         """
@@ -104,7 +105,7 @@ class AniGames:
         global husbando
         husbando = get_api("anigames/husbando")
         return husbando["link"]
-    
+
     @staticmethod
     async def waifu_name():
         """
@@ -120,7 +121,7 @@ class AniGames:
         """
         character_name = waifu
         return character_name["character_name"]
-    
+
     @staticmethod
     async def husbando_name():
         """
@@ -136,3 +137,69 @@ class AniGames:
         """
         character_name = husbando
         return character_name["character_name"]
+
+
+class OsuClients:
+    @staticmethod
+    async def osuprofile(username, data, client_id, client_secret):
+        data = get_api(
+            f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
+        )[f"{data}"]
+        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
+        return ALL_DATA
+
+    @staticmethod
+    async def osuprofile2(username, data, data2, client_id, client_secret):
+        data = get_api(
+            f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
+        )[f"{data}"][f"{data2}"]
+        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
+        return ALL_DATA
+
+    @staticmethod
+    async def osuprofile3(username, data, data2, data3, client_id, client_secret):
+        data = get_api(
+            f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
+        )[f"{data}"][f"{data2}"][f"{data3}"]
+        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
+        return ALL_DATA
+
+    @staticmethod
+    async def osubeatmap(beatmap_id, data, client_id, client_secret):
+        data = get_api(
+            f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
+        )[f"{data}"]
+        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
+        return ALL_DATA
+
+    @staticmethod
+    async def osubeatmap2(beatmap_id, data, data2, client_id, client_secret):
+        data = get_api(
+            f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
+        )[f"{data}"][f"{data2}"]
+        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
+        return ALL_DATA
+
+    @staticmethod
+    async def osubeatmap3(beatmap_id, data, data2, data3, client_id, client_secret):
+        data = get_api(
+            f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
+        )[f"{data}"][f"{data2}"][f"{data3}"]
+        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
+        return ALL_DATA
+
+    @staticmethod
+    async def osuprofiledata(username, client_id, client_secret):
+        data = get_api(
+            f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
+        )
+        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
+        return ALL_DATA
+
+    @staticmethod
+    async def osubeatmapdata(beatmap_id, client_id, client_secret):
+        data = get_api(
+            f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
+        )
+        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
+        return ALL_DATA
