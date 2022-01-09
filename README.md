@@ -11,6 +11,14 @@
 <a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI" src="https://img.shields.io/pypi/v/Estrapy-API?color=a&label=Estrapy-API&style=for-the-badge"></a>
 </p>
 
+## Features
+
+- Truth or Dare
+- Anime GIFs
+- Anime Waifu/Husbando Picture
+- OSU API Wrapper
+- User Friendly Code
+
 ### Installing Estrapy-API
 
 ```
