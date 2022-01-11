@@ -11,12 +11,13 @@
 <a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI" src="https://img.shields.io/pypi/v/Estrapy-API?color=a&label=Estrapy-API&style=for-the-badge"></a>
 </p>
 
-## Features
+### Features
 
 - Truth or Dare
 - Anime GIFs
 - Anime Waifu/Husbando Picture
 - OSU API Wrapper
+- Async Supports
 - User Friendly Code
 
 ### Installing Estrapy-API
@@ -36,30 +37,26 @@ pip install git+https://github.com/StawaDev/Estrapy-API
 ```py
 # First Examples
 import Estrapy
+import asyncio
 
-def function():
-    print(f"A Running GIF: {Estrapy.Sfw.run()}")
-    print(f"A Hug GIF: {Estrapy.Sfw.hug()}")
+async def function():
+    print(f"A Running GIF: {await Estrapy.Sfw.run()}")
+    print(f"A Hug GIF: {await Estrapy.Sfw.hug()}")
 
-function()
+asyncio.run(function())
 
-# Second Examples
-import Estrapy
-
-print(Estrapy.Sfw.run())
-print(f"Run: {Estrapy.Sfw.run()}")
 
 # Discord Examples
 import Estrapy
 
 @bot.command()
 async def run(ctx): # Without Embed
-    await ctx.send(Estrapy.Sfw.run())
+    await ctx.send(await Estrapy.Sfw.run())
 
 @bot.command()
 async def run(ctx): # With Embed
     embed = discord.Embed(title="Running GIF")
-    embed.set_image(url=Estrapy.Sfw.run())
+    embed.set_image(url=await Estrapy.Sfw.run())
     await ctx.send(embed=embed)
 ```
 
@@ -78,11 +75,14 @@ print(Estrapy.__version__) # Print current version of Estrapy-API
 
 ```py
 import Estrapy
+import asyncio
 
+async def Help():
+    print(Estrapy.Help.sfw()) # Print all sfw endpoints
+    print(Estrapy.Help.nsfw()) # Print all nsfw endpoints
+    print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 
-print(Estrapy.Help.sfw()) # Print all sfw endpoints
-print(Estrapy.Help.nsfw()) # Print all nsfw endpoints
-print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
+asyncio.run(Help())
 ```
 
 ### Sfw Function Endpoints
@@ -123,7 +123,16 @@ print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 | Truth          | Estrapy.Games.truth() | Return Games Truth as Text |
 | Dare           | Estrapy.Games.dare()  | Return Games Dare as Text  |
 
-## Links
+### OsuClients Function Endpoints
+
+| OsuClients Function | Examples                                                              | Description                 |
+| ------------------- | --------------------------------------------------------------------- | --------------------------- |
+| OsuProfile          | Estrapy.OsuClients.osuprofile("username", client_id, client_secret)   | Return OsuProfile JSON Data |
+| OsuBeatmap          | Estrapy.OsuClients.osubeatmap("beatmap_id", client_id, client_secret) | Return OsuBeatmap JSON Data |
+| More Examples       | [In Our Github!](https://github.com/StawaDev/Estrapy-API)             | More examples I guess?      |
+
+### Links
+
 - [Documentation](https://stawa.gitbook.io/estraapi-documentation)
 - [Homepage](https://github.com/StawaDev/EstraDart)
 - [Application Programming Interface](https://estra-api.herokuapp.com)
