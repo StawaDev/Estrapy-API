@@ -6,6 +6,7 @@ import asyncio
 async def Help():
     print(Estrapy.Help.anigames())
 
+
 asyncio.run(Help())
 
 # Function Examples
@@ -38,13 +39,16 @@ async def truth(ctx):
 async def dare(ctx):
     await ctx.send(await Estrapy.AniGames.dare())
 
+
 @bot.command()
 async def waifu(ctx):
     await ctx.send(await Estrapy.AniGames.waifu())
-    
+
+
 @bot.command()
 async def husbando(ctx):
     await ctx.send(await Estrapy.AniGames.husbando())
+
 
 # Embed Version
 @bot.command()
@@ -53,12 +57,14 @@ async def waifu(ctx):
     embed.set_image(await Estrapy.Sfw.waifu())
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
-    
+
+
 @bot.command()
 async def husbando(ctx):
     embed = discord.Embed(title="Husbando")
     embed.set_image(await Estrapy.Sfw.husbando())
     embed.set_footer(text="Powered by Estrapy")
-    await ctx.send(embed=embed)   
+    await ctx.send(embed=embed)
+
 
 bot.run("TOKEN")
