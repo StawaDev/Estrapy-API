@@ -78,9 +78,9 @@ import Estrapy
 import asyncio
 
 async def Help():
-    print(Estrapy.Help.sfw()) # Print all sfw endpoints
-    print(Estrapy.Help.nsfw()) # Print all nsfw endpoints
-    print(Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
+    print(await Estrapy.Help.sfw()) # Print all sfw endpoints
+    print(await Estrapy.Help.nsfw()) # Print all nsfw endpoints
+    print(await Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
 
 asyncio.run(Help())
 ```
