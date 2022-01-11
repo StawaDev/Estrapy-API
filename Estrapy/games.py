@@ -1,5 +1,5 @@
 from .http import get_api
-import json
+from .formatter import JSONFormatter
 
 __all__ = ("Games", "AniGames", "OsuClients")
 
@@ -138,68 +138,101 @@ class AniGames:
         character_name = husbando
         return character_name["character_name"]
 
+    @staticmethod
+    async def shipper_waifu(player: str, formatter: bool = False):
+        """
+        Shipper_Waifu
+        --------------
+        Return Shipper Waifu JSON Data from EstraAPI
+
+        :param player
+        :type player: str
+        :param formatter
+        :type formatter: bool, default `False`
+        """
+        if formatter:
+            data = JSONFormatter(get_api(f"anigames/shipper/waifu/?player={player}"))
+        else:
+            data = get_api(f"anigames/shipper/waifu/?player={player}")
+        return data
+
+    @staticmethod
+    async def shipper_husbando(player: str, formatter: bool = False):
+        """
+        Shipper_Husbando
+        --------------
+        Return Shipper Husbando JSON Data from EstraAPI
+
+        :param player
+        :type player: str
+        :param formatter
+        :type formatter: bool, default `False`
+        """
+        url = get_api(f"anigames/shipper/husbando/?player={player}")
+        if formatter:
+            data = JSONFormatter(url)
+        else:
+            data = url
+        return data
+
 
 class OsuClients:
     @staticmethod
-    async def osuprofile(username, data, client_id, client_secret):
-        data = get_api(
-            f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
-        )[f"{data}"]
-        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
-        return ALL_DATA
+    async def osuprofile(
+        username: int or str,
+        client_id: int,
+        client_secret: str,
+        formatter: bool = False,
+    ):
+        """
+        Osuprofile
+        --------------
+        Return Osuprofile JSON Data
 
-    @staticmethod
-    async def osuprofile2(username, data, data2, client_id, client_secret):
-        data = get_api(
-            f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
-        )[f"{data}"][f"{data2}"]
-        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
-        return ALL_DATA
-
-    @staticmethod
-    async def osuprofile3(username, data, data2, data3, client_id, client_secret):
-        data = get_api(
-            f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
-        )[f"{data}"][f"{data2}"][f"{data3}"]
-        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
-        return ALL_DATA
-
-    @staticmethod
-    async def osubeatmap(beatmap_id, data, client_id, client_secret):
-        data = get_api(
-            f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
-        )[f"{data}"]
-        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
-        return ALL_DATA
-
-    @staticmethod
-    async def osubeatmap2(beatmap_id, data, data2, client_id, client_secret):
-        data = get_api(
-            f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
-        )[f"{data}"][f"{data2}"]
-        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
-        return ALL_DATA
-
-    @staticmethod
-    async def osubeatmap3(beatmap_id, data, data2, data3, client_id, client_secret):
-        data = get_api(
-            f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
-        )[f"{data}"][f"{data2}"][f"{data3}"]
-        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
-        return ALL_DATA
-
-    @staticmethod
-    async def osuprofiledata(username, client_id, client_secret):
-        data = get_api(
+        :param username
+        :type username: int or str
+        :param client_id
+        :type client_id: int
+        :param client_secret
+        :type client_secret: str
+        :param formatter: It will formatting JSON Data with EstraFormatter
+        :type formatter: bool, default `False`
+        """
+        url = get_api(
             f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
         )
-        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
-        return ALL_DATA
+        if formatter:
+            data = JSONFormatter(url)
+        else:
+            data = url
+        return data
 
     @staticmethod
-    async def osubeatmapdata(beatmap_id, client_id, client_secret):
-        data = get_api(
+    async def osubeatmap(
+        beatmap_id: int or str,
+        client_id: int,
+        client_secret: str,
+        formatter: bool = False,
+    ):
+        """
+        Osubeatmap
+        --------------
+        Return Osubeatmap JSON Data
+
+        :param beatmap_id
+        :type beatmap_id: int or str
+        :param client_id
+        :type client_id: int
+        :param client_secret
+        :type client_secret: str
+        :param formatter: It will formatting JSON Data with EstraFormatter
+        :type formatter: bool, default `False`
+        """
+        url = get_api(
             f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
         )
-        ALL_DATA = json.dumps(data, indent=6, sort_keys=True)
-        return ALL_DATA
+        if formatter:
+            data = JSONFormatter(url)
+        else:
+            data = url
+        return data
