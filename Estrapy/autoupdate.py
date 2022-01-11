@@ -1,6 +1,6 @@
 import requests
 import os
-from __init__ import __version__ as current_version
+from .__init__ import __version__ as current_version
 
 version = requests.get("https://estra-api.herokuapp.com/version").json()["Estrapy-API"]["Estrapy Version"]
 
