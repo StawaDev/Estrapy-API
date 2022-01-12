@@ -1,3 +1,4 @@
+from typing import Union
 from .http import get_api
 from .formatter import JSONFormatter
 
@@ -179,8 +180,8 @@ class AniGames:
 class OsuClients:
     @staticmethod
     async def osuprofile(
-        username: int or str,
-        client_id: int,
+        username: Union[int, str],
+        client_id: Union[int, str],
         client_secret: str,
         formatter: bool = False,
     ):
@@ -209,8 +210,8 @@ class OsuClients:
 
     @staticmethod
     async def osubeatmap(
-        beatmap_id: int or str,
-        client_id: int,
+        beatmap_id: int,
+        client_id: Union[int, str],
         client_secret: str,
         formatter: bool = False,
     ):
