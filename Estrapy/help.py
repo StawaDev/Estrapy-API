@@ -1,5 +1,4 @@
-import json
-from pygments import highlight, lexers, formatters
+from .formatter import JSONFormatter
 
 __all__ = ("SFW_LIST", "NSFW_LIST", "GAMES_LIST", "ANIGAMES_LIST", "ALL_DICT", "Help")
 
@@ -105,8 +104,4 @@ class Help:
         Estrapy.Help.all() # Keep it as function or it will return function type
         ```
         """
-        ALL_LIST = json.dumps(ALL_DICT, indent=6, sort_keys=True)
-        ALL_LIST_COLOR = highlight(
-            ALL_LIST, lexers.JsonLexer(), formatters.TerminalFormatter()
-        )
-        return ALL_LIST_COLOR
+        return JSONFormatter(ALL_DICT)
