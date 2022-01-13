@@ -1,18 +1,17 @@
 import Estrapy
+from Estrapy import OsuClients
 import asyncio
 
 client_id = ""  # Put your own osu client_id
 client_secret = ""  # Put your own osu client_secret
+Osu = OsuClients(client_id=client_id, client_secret=client_secret)
+Osu.client_data()
 
 
 async def beatmap():
-    data = await Estrapy.OsuClients.osubeatmap(
-        beatmap_id="2405223", client_id=client_id, client_secret=client_secret
-    )
+    data = await Estrapy.OsuClients.osubeatmap(beatmap_id="2405223")
     data_formatter = await Estrapy.OsuClients.osubeatmap(
         beatmap_id="2405223",
-        client_id=client_id,
-        client_secret=client_secret,
         formatter=True,  # Keep it on mind, this will only making the output with better formatting JSON format
     )
     print(data["beatmapset"]["artist"])
@@ -23,13 +22,9 @@ asyncio.run(beatmap())
 
 
 async def profile():
-    data = await Estrapy.OsuClients.osuprofile(
-        username="Stawa", client_id=client_id, client_secret=client_secret
-    )
+    data = await Estrapy.OsuClients.osuprofile(username="Stawa")
     data_formatter = await Estrapy.OsuClients.osuprofile(
         username="Stawa",
-        client_id=client_id,
-        client_secret=client_secret,
         formatter=True,  # Keep it on mind, this will only making the output with better formatting JSON format
     )
     print(data["country"]["name"])
