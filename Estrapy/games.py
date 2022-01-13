@@ -178,11 +178,25 @@ class AniGames:
 
 
 class OsuClients:
+    def __init__(self, client_id: Union[int, str], client_secret: str) -> None:
+        self.client_id = client_id
+        self.client_secret = client_secret
+
+    def client_data(self):
+        """
+        Client_Data
+        --------------
+
+        Keep as function of OsuClients, you can print this function to return your client_id and client_secret
+        """
+        global clientid, clientsecret
+        clientid = self.client_id
+        clientsecret = self.client_secret
+        return f"Estrapy OsuClients Data: \nClient_ID: {clientid} \nClient_Secret: {clientsecret}"
+
     @staticmethod
     async def osuprofile(
         username: Union[int, str],
-        client_id: Union[int, str],
-        client_secret: str,
         formatter: bool = False,
     ):
         """
@@ -200,7 +214,7 @@ class OsuClients:
         :type formatter: bool, default `False`
         """
         url = get_api(
-            f"osu/?user={username}&client_id={client_id}&client_secret={client_secret}"
+            f"osu/?user={username}&client_id={clientid}&client_secret={clientsecret}"
         )
         if formatter:
             data = JSONFormatter(url)
@@ -211,8 +225,6 @@ class OsuClients:
     @staticmethod
     async def osubeatmap(
         beatmap_id: int,
-        client_id: Union[int, str],
-        client_secret: str,
         formatter: bool = False,
     ):
         """
@@ -230,7 +242,7 @@ class OsuClients:
         :type formatter: bool, default `False`
         """
         url = get_api(
-            f"osubeatmap/?id={beatmap_id}&client_id={client_id}&client_secret={client_secret}"
+            f"osubeatmap/?id={beatmap_id}&client_id={clientid}&client_secret={clientsecret}"
         )
         if formatter:
             data = JSONFormatter(url)
