@@ -10,6 +10,11 @@ setup(
     install_requires=["requests"],
     license="MIT",
     url="https://github.com/StawaDev/Estrapy-API",
+    project_urls={
+        "Documentation": "https://stawa.gitbook.io/estraapi-documentation/",
+        "Source": "https://github.com/StawaDev/Estrapy-API",        
+        "Tracker": "https://github.com/StawaDev/Estrapy-API/issues"
+    },
     author="StawaDev",
     description="A Basic Anime Image API Created By Stawa",
     long_description=README,
