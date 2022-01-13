@@ -125,11 +125,11 @@ asyncio.run(Help())
 
 ### OsuClients Function Endpoints
 
-| OsuClients Function | Examples                                                              | Description                 |
-| ------------------- | --------------------------------------------------------------------- | --------------------------- |
-| OsuProfile          | Estrapy.OsuClients.osuprofile("username", client_id, client_secret)   | Return OsuProfile JSON Data |
-| OsuBeatmap          | Estrapy.OsuClients.osubeatmap("beatmap_id", client_id, client_secret) | Return OsuBeatmap JSON Data |
-| More Examples       | [In Our Github!](https://github.com/StawaDev/Estrapy-API)             | More examples I guess?      |
+| OsuClients Function | Examples                                                  | Description                 |
+| ------------------- | --------------------------------------------------------- | --------------------------- |
+| OsuProfile          | Estrapy.OsuClients.osuprofile(username="username")        | Return OsuProfile JSON Data |
+| OsuBeatmap          | Estrapy.OsuClients.osubeatmap(beatmap_id="beatmap_id")    | Return OsuBeatmap JSON Data |
+| More Examples       | [In Our Github!](https://github.com/StawaDev/Estrapy-API) | More examples I guess?      |
 
 ### Links
 
