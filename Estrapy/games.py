@@ -1,13 +1,14 @@
-from typing import Union
+from typing import Union, Optional
 from .http import get_api
 from .formatter import JSONFormatter
+from .generate import generate as generator
 
 __all__ = ("Games", "AniGames", "OsuClients")
 
 
 class Games:
     @staticmethod
-    async def truth():
+    async def truth(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -20,10 +21,15 @@ class Games:
         Estrapy.Games.truth() # Keep it as function or it will return function type
         ```
         """
-        return get_api("games/truth")["text"]
+
+        url = "games/truth"
+        if generate:
+            return generator(total=generate, full_url=url, type="text")
+
+        return get_api(url)["text"]
 
     @staticmethod
-    async def dare():
+    async def dare(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -36,12 +42,15 @@ class Games:
         ```
         """
 
-        return get_api("games/dare")["text"]
+        url = "games/dare"
+        if generate:
+            return generator(total=generate, full_url=url, type="text")
+        return get_api(url)["text"]
 
 
 class AniGames:
     @staticmethod
-    async def truth():
+    async def truth(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -55,10 +64,13 @@ class AniGames:
         ```
         """
 
-        return get_api("anigames/truth")["text"]
+        url = "anigames/truth"
+        if generate:
+            return generator(total=generate, full_url=url, type="text")
+        return get_api(url)["text"]
 
     @staticmethod
-    async def dare():
+    async def dare(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -71,10 +83,13 @@ class AniGames:
         ```
         """
 
-        return get_api("anigames/dare")["text"]
+        url = "anigames/dare"
+        if generate:
+            return generator(total=generate, full_url=url, type="text")
+        return get_api(url)["text"]
 
     @staticmethod
-    async def waifu():
+    async def waifu(formatter: bool = False):
         """
         Description
         --------------
@@ -86,12 +101,13 @@ class AniGames:
         Estrapy.AniGames.waifu() # Keep it as function or it will return function type
         ```
         """
-        global waifu
-        waifu = get_api("anigames/waifu")
-        return waifu["link"]
+        url = get_api("anigames/waifu")
+        if formatter:
+            return JSONFormatter(url)
+        return url
 
     @staticmethod
-    async def husbando():
+    async def husbando(formatter: bool = False):
         """
         Description
         --------------
@@ -103,41 +119,11 @@ class AniGames:
         Estrapy.AniGames.husbando() # Keep it as function or it will return function type
         ```
         """
-        global husbando
-        husbando = get_api("anigames/husbando")
-        return husbando["link"]
 
-    @staticmethod
-    async def waifu_name():
-        """
-        Description
-        --------------
-        A Function That Will Return a Name Character of the Waifu Picture As Text
-
-        How to use waifu_name [about anime] function (Examples)
-        ----------------------------
-        ```
-        Estrapy.AniGames.waifu() # Keep it as function or it will return function type
-        ```
-        """
-        character_name = waifu
-        return character_name["character_name"]
-
-    @staticmethod
-    async def husbando_name():
-        """
-        Description
-        --------------
-        A Function That Will Return a Name Character of the Waifu Picture As Text
-
-        How to use waifu_name [about anime] function (Examples)
-        ----------------------------
-        ```
-        Estrapy.AniGames.waifu() # Keep it as function or it will return function type
-        ```
-        """
-        character_name = husbando
-        return character_name["character_name"]
+        url = get_api("anigames/husbando")
+        if formatter:
+            return JSONFormatter(url)
+        return url
 
     @staticmethod
     async def shipper_waifu(player: str, formatter: bool = False):
@@ -151,11 +137,11 @@ class AniGames:
         :param formatter
         :type formatter: bool, default `False`
         """
+
+        url = get_api(f"anigames/shipper/waifu/?player={player}")
         if formatter:
-            data = JSONFormatter(get_api(f"anigames/shipper/waifu/?player={player}"))
-        else:
-            data = get_api(f"anigames/shipper/waifu/?player={player}")
-        return data
+            return JSONFormatter(url)
+        return url
 
     @staticmethod
     async def shipper_husbando(player: str, formatter: bool = False):
@@ -169,12 +155,11 @@ class AniGames:
         :param formatter
         :type formatter: bool, default `False`
         """
+
         url = get_api(f"anigames/shipper/husbando/?player={player}")
         if formatter:
-            data = JSONFormatter(url)
-        else:
-            data = url
-        return data
+            return JSONFormatter(url)
+        return url
 
 
 class OsuClients:
@@ -189,6 +174,7 @@ class OsuClients:
 
         Keep as function of OsuClients, you can print this function to return your client_id and client_secret
         """
+
         global clientid, clientsecret
         clientid = self.client_id
         clientsecret = self.client_secret
@@ -213,14 +199,13 @@ class OsuClients:
         :param formatter: It will formatting JSON Data with EstraFormatter
         :type formatter: bool, default `False`
         """
+
         url = get_api(
             f"osu/?user={username}&client_id={clientid}&client_secret={clientsecret}"
         )
         if formatter:
-            data = JSONFormatter(url)
-        else:
-            data = url
-        return data
+            return JSONFormatter(url)
+        return url
 
     @staticmethod
     async def osubeatmap(
@@ -241,11 +226,10 @@ class OsuClients:
         :param formatter: It will formatting JSON Data with EstraFormatter
         :type formatter: bool, default `False`
         """
+
         url = get_api(
             f"osubeatmap/?id={beatmap_id}&client_id={clientid}&client_secret={clientsecret}"
         )
         if formatter:
-            data = JSONFormatter(url)
-        else:
-            data = url
-        return data
+            return JSONFormatter(url)
+        return url

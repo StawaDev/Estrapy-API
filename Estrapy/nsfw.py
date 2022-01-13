@@ -1,11 +1,13 @@
+from typing import Optional
 from .http import get_api
+from .generate import generate as generator
 
 __all__ = ("Nsfw",)
 
 
 class Nsfw:
     @staticmethod
-    async def kill():
+    async def kill(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -15,13 +17,21 @@ class Nsfw:
         ----------------------------
 
         ```
-        Estrapy.Nsfw.kill() # Keep it as function or it will return function type
+        async def kill():
+            print(await Estrapy.Nsfw.kill()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type int
         """
-        return get_api("nsfw/kill")["link"]
+
+        url = "nsfw/kill"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def yuri():
+    async def yuri(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -29,13 +39,22 @@ class Nsfw:
 
         How to use yuri function (Examples)
         ----------------------------
-        Estrapy.Nsfw.yuri() # Keep it as function or it will return function type
         ```
+        async def yuri():
+            print(await Estrapy.Nsfw.yuri()) # Keep it as function or it will return function type
+        ```
+
+        :param generate
+        :type int
         """
-        return get_api("nsfw/yuri")["link"]
+
+        url = "nsfw/yuri"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def yaoi():
+    async def yaoi(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -44,8 +63,15 @@ class Nsfw:
         How to use yaoi function (Examples)
         ----------------------------
         ```
-        Estrapy.Nsfw.yaoi() # Keep it as function or it will return function type
+        async def yaoi():
+            print(await Estrapy.Nsfw.yaoi()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type int
         """
 
-        return get_api("nsfw/yaoi")["link"]
+        url = "nsfw/yaoi"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]

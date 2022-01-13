@@ -1,11 +1,13 @@
+from typing import Optional
 from .http import get_api
+from .generate import generate as generator
 
 __all__ = ("Sfw",)
 
 
 class Sfw:
     @staticmethod
-    async def run():
+    async def run(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -14,14 +16,21 @@ class Sfw:
         How to use run function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.run() # Keep it as function or it will return function type
+        async def run():
+            print(await Estrapy.Sfw.run()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type int
         """
 
-        return get_api("sfw/run")["link"]
+        url = "sfw/run"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def hug():
+    async def hug(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -30,14 +39,21 @@ class Sfw:
         How to use hug function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.hug() # Keep it as function or it will return function type
+        async def hug():
+            print(await Estrapy.Sfw.hug()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type int
         """
 
-        return get_api("sfw/hug")["link"]
+        url = "sfw/hug"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def smile():
+    async def smile(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -46,14 +62,21 @@ class Sfw:
         How to use smile function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.smile() # Keep it as function or it will return function type
+        async def smile():
+            print(await Estrapy.Sfw.smile()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type int
         """
 
-        return get_api("sfw/smile")["link"]
+        url = "sfw/smile"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def headpat():
+    async def headpat(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -62,14 +85,21 @@ class Sfw:
         How to use headpat function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.headpat() # Keep it as function or it will return function type
+        async def headpat():
+            print(await Estrapy.Sfw.headpat()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type int
         """
 
-        return get_api("sfw/headpat")["link"]
+        url = "sfw/headpat"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def poke():
+    async def poke(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -78,13 +108,21 @@ class Sfw:
         How to use poke function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.poke() # Keep it as function or it will return function type
+        async def poke():
+            print(await Estrapy.Sfw.poke()) # Keep it as function or it will return function type
+        ```
+
+        :param generate
+        :type int
         """
 
-        return get_api("sfw/poke")["link"]
+        url = "sfw/poke"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def bite():
+    async def bite(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -93,14 +131,21 @@ class Sfw:
         How to use bite function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.bite() # Keep it as function or it will return function type
+        async def bite():
+            print(await Estrapy.Sfw.bite()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type int
         """
 
-        return get_api("sfw/bite")["link"]
+        url = "sfw/bite"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def neko():
+    async def neko(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -109,14 +154,21 @@ class Sfw:
         How to use neko function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.neko() # Keep it as function or it will return function type
+        async def neko():
+            print(await Estrapy.Sfw.neko()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type int
         """
 
-        return get_api("sfw/neko")["link"]
+        url = "sfw/neko"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def highfive():
+    async def highfive(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -125,14 +177,18 @@ class Sfw:
         How to use highfive function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.highfive() # Keep it as function or it will return function type
+        async def highfive():
+            print(await Estrapy.Sfw.highfive()) # Keep it as function or it will return function type
         ```
         """
 
-        return get_api("sfw/highfive")["link"]
+        url = "sfw/highfive"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
 
     @staticmethod
-    async def slap():
+    async def slap(generate: Optional[int] = None) -> None:
         """
         Description
         --------------
@@ -141,8 +197,12 @@ class Sfw:
         How to use slap function (Examples)
         ----------------------------
         ```
-        Estrapy.Sfw.slap() # Keep it as function or it will return function type
+        async def slap():
+            print(await Estrapy.Sfw.slap()) # Keep it as function or it will return function type
         ```
         """
 
-        return get_api("sfw/slap")["link"]
+        url = "sfw/slap"
+        if generate:
+            return generator(total=generate, full_url=url, type="link")
+        return get_api(url)["link"]
