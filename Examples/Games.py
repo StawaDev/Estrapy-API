@@ -4,7 +4,7 @@ import asyncio
 
 # Print All Games Endpoints
 async def Help():
-    print(Estrapy.Help.games())
+    print(await Estrapy.Help.games())
 
 
 asyncio.run(Help())

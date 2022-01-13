@@ -37,7 +37,8 @@ class Help:
         ----------------------------
 
         ```
-        Estrapy.Help.sfw() # Keep it as function or it will return function type
+        async def sfw():
+            print(await Estrapy.Help.sfw()) # Keep it as function or it will return function type
         ```
         """
         return SFW_LIST
@@ -53,7 +54,8 @@ class Help:
         ----------------------------
 
         ```
-        Estrapy.Help.nsfw() # Keep it as function or it will return function type
+        async def nsfw():
+            print(await Estrapy.Help.nsfw()) # Keep it as function or it will return function type
         ```
         """
         return NSFW_LIST
@@ -69,13 +71,14 @@ class Help:
         ----------------------------
 
         ```
-        Estrapy.Help.games() # Keep it as function or it will return function type
+        async def games():
+            print(await Estrapy.Help.games()) # Keep it as function or it will return function type
         ```
         """
         return GAMES_LIST
 
     @staticmethod
-    async def games():
+    async def anigames():
         """
         Description
         --------------
@@ -85,23 +88,25 @@ class Help:
         ----------------------------
 
         ```
-        Estrapy.Help.anigames() # Keep it as function or it will return function type
+        async def anigames():
+            print(await Estrapy.Help.anigames()) # Keep it as function or it will return function type
         ```
         """
-        return GAMES_LIST
+        return ANIGAMES_LIST
 
     @staticmethod
     async def all():
         """
         Description
         --------------
-        A Function That Will Return a List of Sfw, Nsfw, Games Endpoints
+        A Function That Will Return a List of Sfw, Nsfw, Games, AniGames Endpoints
 
         How to use all help function (Examples)
         ----------------------------
 
         ```
-        Estrapy.Help.all() # Keep it as function or it will return function type
+        async def all():
+            print(await Estrapy.Help.all()) # Keep it as function or it will return function type
         ```
         """
         return JSONFormatter(ALL_DICT)

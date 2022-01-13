@@ -4,7 +4,7 @@ import asyncio
 
 # Print All Nsfw Endpoints
 async def Help():
-    print(Estrapy.Help.nsfw())
+    print(await Estrapy.Help.nsfw())
 
 
 asyncio.run(Help())
@@ -12,8 +12,8 @@ asyncio.run(Help())
 
 # Function Examples
 async def function():
-    print(f"Yaoi: {await Estrapy.Nsfw.yaoi()}")
-    print(f"Yuri: {await Estrapy.Nsfw.yuri()}")
+    print(f"Yaoi: {await Estrapy.Nsfw.yaoi(generate=2)}")
+    print(f"Yuri: {await Estrapy.Nsfw.yuri(generate=2)}")
 
 
 asyncio.run(function())

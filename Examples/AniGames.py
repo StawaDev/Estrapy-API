@@ -4,22 +4,41 @@ import asyncio
 
 # Print All AniGames Endpoints
 async def Help():
-    print(Estrapy.Help.anigames())
+    print(await Estrapy.Help.anigames())
 
 
 asyncio.run(Help())
 
 # Function Examples
 async def function():
-    print(f"Truth: {Estrapy.AniGames.truth()}")
-    print(f"Dare: {Estrapy.AniGames.dare()}")
-    print(f"Waifu: {Estrapy.AniGames.waifu()}")
-    print(f"Waifu Name: {Estrapy.AniGames.waifu_name()}")
-    print(f"Husbando: {Estrapy.AniGames.husbando()}")
-    print(f"Husbando Name: {Estrapy.AniGames.husbando_name()}")
+    print(f"Truth: {await Estrapy.AniGames.truth()}")
+    print(f"Dare: {await Estrapy.AniGames.dare()}")
 
 
 asyncio.run(function())
+
+
+# Second Examples
+async def function2():
+    data = await Estrapy.AniGames.waifu()
+    print(f"Image Link: {data['link']}, Character Name: {data['character_name']}")
+
+    data2 = await Estrapy.AniGames.husbando()
+    print(f"Image Link: {data2['link']}, Character Name: {data2['character_name']}")
+
+
+asyncio.run(function2())
+
+
+# Third Examples
+async def function3():
+    data = await Estrapy.AniGames.shipper_waifu(player="Stawa")
+    print(
+        f"Player: {data['player']}, Character: {data['character']}, Percentage: {data['percentage']}"
+    )
+
+
+asyncio.run(function3())
 
 
 # Discord Examples

@@ -3,7 +3,7 @@ import asyncio
 
 # Print All Sfw Endpoints
 async def Help():
-    print(Estrapy.Help.sfw())
+    print(await Estrapy.Help.sfw())
 
 
 asyncio.run(Help())
@@ -11,8 +11,8 @@ asyncio.run(Help())
 
 # Function Examples
 async def function():
-    print(f"Smile: {await Estrapy.Nsfw.smile()}")
-    print(f"Poke: {await Estrapy.Nsfw.poke()}")
+    print(f"Smile: {await Estrapy.Nsfw.smile(generate=2)}")
+    print(f"Poke: {await Estrapy.Nsfw.poke(generate=2)}")
 
 
 asyncio.run(function())
