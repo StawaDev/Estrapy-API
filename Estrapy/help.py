@@ -1,4 +1,4 @@
-from .formatter import JSONFormatter
+from .base import Base
 
 __all__ = ("SFW_LIST", "NSFW_LIST", "GAMES_LIST", "ANIGAMES_LIST", "ALL_DICT", "Help")
 
@@ -109,4 +109,4 @@ class Help:
             print(await Estrapy.Help.all()) # Keep it as function or it will return function type
         ```
         """
-        return JSONFormatter(ALL_DICT)
+        return Base.JSONFormatter(ALL_DICT)

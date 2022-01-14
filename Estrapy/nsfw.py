@@ -1,6 +1,6 @@
 from typing import Optional
 from .http import get_api
-from .generate import generate as generator
+from .base import Base
 
 __all__ = ("Nsfw",)
 
@@ -27,7 +27,7 @@ class Nsfw:
 
         url = "nsfw/kill"
         if generate:
-            return generator(total=generate, full_url=url, type="link")
+            return Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -50,7 +50,7 @@ class Nsfw:
 
         url = "nsfw/yuri"
         if generate:
-            return generator(total=generate, full_url=url, type="link")
+            return Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -73,5 +73,5 @@ class Nsfw:
 
         url = "nsfw/yaoi"
         if generate:
-            return generator(total=generate, full_url=url, type="link")
+            return Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
