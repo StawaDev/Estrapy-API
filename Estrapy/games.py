@@ -18,8 +18,12 @@ class Games:
         ----------------------------
 
         ```
-        Estrapy.Games.truth() # Keep it as function or it will return function type
+        async def truth():
+            print(await Estrapy.Games.truth()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type formatter: Optional[int]
         """
 
         url = "games/truth"
@@ -38,8 +42,12 @@ class Games:
         How to use dare function (Examples)
         ----------------------------
         ```
-        Estrapy.Games.dare() # Keep it as function or it will return function type
+        async def truth():
+            print(await Estrapy.Games.truth()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type formatter: Optional[int]
         """
 
         url = "games/dare"
@@ -60,8 +68,12 @@ class AniGames:
         ----------------------------
 
         ```
-        Estrapy.AniGames.truth() # Keep it as function or it will return function type
+        async def truth():
+            print(await Estrapy.AniGames.truth()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type formatter: Optional[int]
         """
 
         url = "anigames/truth"
@@ -79,8 +91,12 @@ class AniGames:
         How to use dare [about anime] function (Examples)
         ----------------------------
         ```
-        Estrapy.AniGames.dare() # Keep it as function or it will return function type
+        async def dare():
+            print(await Estrapy.AniGames.dare()) # Keep it as function or it will return function type
         ```
+
+        :param generate
+        :type formatter: Optional[int]
         """
 
         url = "anigames/dare"
@@ -98,8 +114,12 @@ class AniGames:
         How to use waifu [about anime] function (Examples)
         ----------------------------
         ```
-        Estrapy.AniGames.waifu() # Keep it as function or it will return function type
+        async def waifu():
+            print(await Estrapy.AniGames.waifu()) # Keep it as function or it will return function type
         ```
+
+        :param formatter
+        :type formatter: bool, default `False`
         """
         url = get_api("anigames/waifu")
         if formatter:
@@ -116,8 +136,12 @@ class AniGames:
         How to use husbando [about anime] function (Examples)
         ----------------------------
         ```
-        Estrapy.AniGames.husbando() # Keep it as function or it will return function type
+        async def husbando():
+            print(await Estrapy.AniGames.husbando()) # Keep it as function or it will return function type
         ```
+
+        :param formatter
+        :type formatter: bool, default `False`
         """
 
         url = get_api("anigames/husbando")
@@ -131,6 +155,13 @@ class AniGames:
         Shipper_Waifu
         --------------
         Return Shipper Waifu JSON Data from EstraAPI
+
+        Examples
+        --------------
+        ```
+        async def shipper_husbando():
+            print(await Estrapy.AniGames.shipper_husbando(player="Stawa"))
+        ```
 
         :param player
         :type player: str
@@ -149,6 +180,13 @@ class AniGames:
         Shipper_Husbando
         --------------
         Return Shipper Husbando JSON Data from EstraAPI
+
+        Examples
+        --------------
+        ```
+        async def shipper_husbando():
+            print(await Estrapy.AniGames.shipper_husbando(player="Stawa"))
+        ```
 
         :param player
         :type player: str
@@ -190,6 +228,13 @@ class OsuClients:
         --------------
         Return Osuprofile JSON Data
 
+        Examples
+        --------------
+        ```
+        async def osuprofile():
+            print(await Estrapy.OsuClients.osuprofile(username="Stawa"))
+        ```
+
         :param username
         :type username: int or str
         :param client_id
@@ -216,6 +261,13 @@ class OsuClients:
         Osubeatmap
         --------------
         Return Osubeatmap JSON Data
+
+        Examples
+        --------------
+        ```
+        async def osubeatmap():
+            print(await Estrapy.OsuClients.osubeatmap(beatmap_id="2405223"))
+        ```
 
         :param beatmap_id
         :type beatmap_id: int or str
