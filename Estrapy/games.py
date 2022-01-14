@@ -27,7 +27,7 @@ class Games:
 
         url = "games/truth"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="text")
+            return await Base.produce(total=generate, full_url=url, type="text")
 
         return get_api(url)["text"]
 
@@ -51,7 +51,7 @@ class Games:
 
         url = "games/dare"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="text")
+            return await Base.produce(total=generate, full_url=url, type="text")
         return get_api(url)["text"]
 
 
@@ -77,7 +77,7 @@ class AniGames:
 
         url = "anigames/truth"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="text")
+            return await Base.produce(total=generate, full_url=url, type="text")
         return get_api(url)["text"]
 
     @staticmethod
@@ -100,7 +100,7 @@ class AniGames:
 
         url = "anigames/dare"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="text")
+            return await Base.produce(total=generate, full_url=url, type="text")
         return get_api(url)["text"]
 
     @staticmethod
@@ -122,7 +122,7 @@ class AniGames:
         """
         url = get_api("anigames/waifu")
         if formatter:
-            return Base.JSONFormatter(url)
+            return await Base.JSONFormatter(url)
         return url
 
     @staticmethod
@@ -145,7 +145,7 @@ class AniGames:
 
         url = get_api("anigames/husbando")
         if formatter:
-            return Base.JSONFormatter(url)
+            return await Base.JSONFormatter(url)
         return url
 
     @staticmethod
@@ -170,7 +170,7 @@ class AniGames:
 
         url = get_api(f"anigames/shipper/waifu/?player={player}")
         if formatter:
-            return Base.JSONFormatter(url)
+            return await Base.JSONFormatter(url)
         return url
 
     @staticmethod
@@ -195,7 +195,7 @@ class AniGames:
 
         url = get_api(f"anigames/shipper/husbando/?player={player}")
         if formatter:
-            return Base.JSONFormatter(url)
+            return await Base.JSONFormatter(url)
         return url
 
 
@@ -248,7 +248,7 @@ class OsuClients:
             f"osu/?user={username}&client_id={clientid}&client_secret={clientsecret}"
         )
         if formatter:
-            return Base.JSONFormatter(url)
+            return await Base.JSONFormatter(url)
         return url
 
     @staticmethod
@@ -282,5 +282,5 @@ class OsuClients:
             f"osubeatmap/?id={beatmap_id}&client_id={clientid}&client_secret={clientsecret}"
         )
         if formatter:
-            return Base.JSONFormatter(url)
+            return await Base.JSONFormatter(url)
         return url

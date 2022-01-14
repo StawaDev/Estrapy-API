@@ -26,7 +26,7 @@ class Sfw:
 
         url = "sfw/run"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -49,7 +49,7 @@ class Sfw:
 
         url = "sfw/hug"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -72,7 +72,7 @@ class Sfw:
 
         url = "sfw/smile"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -95,7 +95,7 @@ class Sfw:
 
         url = "sfw/headpat"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -118,7 +118,7 @@ class Sfw:
 
         url = "sfw/poke"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -141,7 +141,7 @@ class Sfw:
 
         url = "sfw/bite"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -164,7 +164,7 @@ class Sfw:
 
         url = "sfw/neko"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -184,7 +184,7 @@ class Sfw:
 
         url = "sfw/highfive"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
 
     @staticmethod
@@ -204,5 +204,5 @@ class Sfw:
 
         url = "sfw/slap"
         if generate:
-            return Base.produce(total=generate, full_url=url, type="link")
+            return await Base.produce(total=generate, full_url=url, type="link")
         return get_api(url)["link"]
