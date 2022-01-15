@@ -66,7 +66,10 @@ This is only optional, the function will be called if version of Estrapy-API is 
 
 ```py
 import Estrapy
-from Estrapy import autoupdate
+from Estrapy import AutoUpdate
+
+EstraUpdate = AutoUpdate(output=True, change_log=True)
+EstraUpdate.update()
 
 print(Estrapy.__version__) # Print current version of Estrapy-API
 ```
