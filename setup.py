@@ -12,8 +12,8 @@ setup(
     url="https://github.com/StawaDev/Estrapy-API",
     project_urls={
         "Documentation": "https://stawa.gitbook.io/estraapi-documentation/",
-        "Source": "https://github.com/StawaDev/Estrapy-API",        
-        "Tracker": "https://github.com/StawaDev/Estrapy-API/issues"
+        "Source": "https://github.com/StawaDev/Estrapy-API",
+        "Tracker": "https://github.com/StawaDev/Estrapy-API/issues",
     },
     author="StawaDev",
     description="A Basic Anime Image API Created By Stawa",
@@ -25,6 +25,8 @@ setup(
         "anime gif",
         "roleplay gif",
         "wrapper anime gif",
+        "osu",
+        "osu api",
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",
