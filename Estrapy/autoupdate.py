@@ -24,16 +24,17 @@ class AutoUpdate:
             os.system(f"pip install Estrapy-API=={version}")
         print("Estrapy-API - No need to update")
 
-    def update(self):
-        if self.output and self.change_log:
-            AutoUpdate.updater()
-            print(f"Estrapy Changelog - {change_log}")
-            return
+    def update(self, switch: bool = True) -> None:
+        if switch:
+            if self.output and self.change_log:
+                AutoUpdate.updater()
+                print(f"Estrapy Changelog - {change_log}")
+                return
 
-        if self.output:
-            AutoUpdate.updater()
-            return
+            if self.output:
+                AutoUpdate.updater()
+                return
 
-        if self.change_log:
-            print(f"Estrapy Changelog - {change_log}")
-            return
+            if self.change_log:
+                print(f"Estrapy Changelog - {change_log}")
+                return
