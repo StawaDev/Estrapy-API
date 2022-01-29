@@ -1,5 +1,8 @@
 from typing import Union, Optional
-from .http import get_api
+import requests
+from io import BytesIO
+from PIL import Image
+from .http import get_api, BASE_URL
 from .base import Base
 
 __all__ = ("Games", "AniGames", "OsuClients")
@@ -53,6 +56,43 @@ class Games:
         if generate:
             return await Base.produce(total=generate, full_url=url, type="text")
         return get_api(url)["text"]
+
+    @staticmethod
+    async def shipper(
+        player: Optional[str],
+        player2: Optional[str],
+        player_image: Union[str, bytes],
+        player2_image: Union[str, bytes],
+    ):
+        """
+        Description
+        --------------
+        A Function That Will Return an Edited Image with customized Background and Player Image
+        
+        How to use shipper (image) function (Examples)
+        ----------------------------
+        
+        ```
+        async def shipper():
+            test = await Estrapy.Games.shipper(player="Stawa", player2="Test", player_image="None", player2_image="None")'
+            test.show()
+            # Note: You don't have to write None to every parameters that are optional
+        ```
+        
+        :param player
+        :type player: Optional[str]
+        :param player2
+        :type player2: Optional[str]
+        :param player_image
+        :type player_image: Optional[str, bytes]
+        :param player_image2
+        :type player_image2: Optional[str, bytes]
+        """
+        url = requests.get(
+            f"{BASE_URL}/games/shipper/image/?player={player}&player2={player2}&player_image={player_image}&player2_image={player2_image}"
+        )
+        a = Image.open(BytesIO(url.content))
+        return a
 
 
 class AniGames:
