@@ -4,8 +4,7 @@ import asyncio
 
 client_id = ""  # Put your own osu client_id
 client_secret = ""  # Put your own osu client_secret
-Osu = OsuClients(client_id=client_id, client_secret=client_secret)
-Osu.client_data()
+Osu = OsuClients(client_id=client_id, client_secret=client_secret).client_data()
 
 
 async def beatmap():
