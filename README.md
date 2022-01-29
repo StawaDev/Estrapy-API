@@ -121,10 +121,11 @@ asyncio.run(Help())
 
 ### Games Function Endpoints
 
-| Games Function | Examples              | Description                |
-| -------------- | --------------------- | -------------------------- |
-| Truth          | Estrapy.Games.truth() | Return Games Truth as Text |
-| Dare           | Estrapy.Games.dare()  | Return Games Dare as Text  |
+| Games Function | Examples                | Description                   |
+| -------------- | ----------------------- | ----------------------------- |
+| Truth          | Estrapy.Games.truth()   | Return Games Truth as Text    |
+| Dare           | Estrapy.Games.dare()    | Return Games Dare as Text     |
+| Shipper        | Estrapy.Games.shipper() | Return Games Shipper as Image |
 
 ### OsuClients Function Endpoints
 
@@ -137,5 +138,5 @@ asyncio.run(Help())
 ### Links
 
 - [Documentation](https://stawa.gitbook.io/estraapi-documentation)
-- [Homepage](https://github.com/StawaDev/EstraDart)
+- [Homepage](https://github.com/StawaDev/Estrapy-API)
 - [Application Programming Interface](https://estra-api.herokuapp.com)
