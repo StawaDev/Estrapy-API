@@ -16,7 +16,7 @@ setup(
         "Tracker": "https://github.com/StawaDev/Estrapy-API/issues",
     },
     author="StawaDev",
-    description="A Basic Anime Image API Created By Stawa",
+    description="A Basic Wrapper Anime Image API with Many Features",
     long_description=README,
     long_description_content_type="text/markdown",
     keywords=[
