@@ -61,37 +61,49 @@ class Games:
     async def shipper(
         player: Optional[str],
         player2: Optional[str],
-        player_image: Union[str, bytes],
-        player2_image: Union[str, bytes],
+        player_image: Union[str, bytes] = None,
+        player2_image: Union[str, bytes] = None,
+        background_image: Union[str, bytes] = None,
+        background_size: Optional[tuple] = None,
     ):
         """
         Description
         --------------
-        A Function That Will Return an Edited Image with customized Background and Player Image
-        
+        A Function That Will Return an Edited Image with customized Background and Player Image.
+        Currently, for the customized image like player_image still using a url. And also, for the background image default size is `1920x1080`.
+        There's 2 available size for custom background picture, `1920x1080` and `1280x720`.
+        In case you don't want to add an custom background or a player image, you can add `None` to the parameter value.
+
         How to use shipper (image) function (Examples)
         ----------------------------
-        
+
         ```
         async def shipper():
-            test = await Estrapy.Games.shipper(player="Stawa", player2="Test", player_image="None", player2_image="None")'
+            test = await Estrapy.Games.shipper(player="Player1", player2="Player2", player_image="None", player2_image="None", background="None", background_size="None")
             test.show()
-            # Note: You don't have to write None to every parameters that are optional
         ```
-        
+
         :param player
         :type player: Optional[str]
         :param player2
         :type player2: Optional[str]
         :param player_image
-        :type player_image: Optional[str, bytes]
+        :type player_image: Union[str, bytes]
         :param player_image2
-        :type player_image2: Optional[str, bytes]
+        :type player_image2: Union[str, bytes]
+        :param background_image
+        :type background_image: Union[str, bytes]
+        :param background_size
+        :type background_size: Optional[str]
         """
-        url = requests.get(
-            f"{BASE_URL}/games/shipper/image/?player={player}&player2={player2}&player_image={player_image}&player2_image={player2_image}"
-        )
-        a = Image.open(BytesIO(url.content))
+        url = f"{BASE_URL}/games/shipper/image/?player={player}&player2={player2}&player_image={player_image}&player2_image={player2_image}&background={background_image}"
+        if background_size is None:
+            req = requests.get(url)
+        if background_size is not None:
+            size = f"{background_size[0]}x{background_size[1]}"
+            req = requests.get(f"{url}&background_size={size}")
+
+        a = Image.open(BytesIO(req.content))
         return a
 
 
