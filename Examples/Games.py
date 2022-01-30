@@ -29,7 +29,8 @@ async def shipper():
         background="None",
         background_size="None",
     )
-    test.show()
+    test.show() # Showing the Image
+    test.save("Shipper.png") # Saving the Image
 
 
 asyncio.run(shipper())
