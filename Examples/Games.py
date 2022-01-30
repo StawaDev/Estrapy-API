@@ -21,8 +21,16 @@ asyncio.run(function())
 
 # Shipper Examples
 async def shipper():
-    test = await Estrapy.Games.shipper(player="Stawa", player2="Test", player_image="None", player2_image="None")
+    test = await Estrapy.Games.shipper(
+        player="Player1",
+        player2="Player2",
+        player_image="None",
+        player2_image="None",
+        background="None",
+        background_size="None",
+    )
     test.show()
+
 
 asyncio.run(shipper())
 
