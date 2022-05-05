@@ -15,8 +15,15 @@ SFW_LIST = [
     "slap",
 ]
 NSFW_LIST = ["yaoi", "yuri", "kill"]
-GAMES_LIST = ["truth", "dare"]
-ANIGAMES_LIST = ["truth", "dare", "waifu", "husbando"]
+GAMES_LIST = ["truth", "dare", "shipper"]
+ANIGAMES_LIST = [
+    "truth",
+    "dare",
+    "waifu",
+    "husbando",
+    "shipper_waifu",
+    "shipper_husbando",
+]
 ALL_DICT = {
     "SFW": f", ".join(SFW_LIST),
     "NSFW": f", ".join(NSFW_LIST),
