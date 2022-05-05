@@ -7,6 +7,6 @@ from .errors import *
 from .help import Help
 
 __title__ = "Estrapy-API"
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 __author__ = "Stawa"
 __license__ = "MIT"
