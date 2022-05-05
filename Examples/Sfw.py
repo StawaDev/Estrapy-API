@@ -11,8 +11,8 @@ asyncio.run(Help())
 
 # Function Examples
 async def function():
-    print(f"Smile: {await Estrapy.Nsfw.smile(generate=2)}")
-    print(f"Poke: {await Estrapy.Nsfw.poke(generate=2)}")
+    print(f"Smile: {await Estrapy.Sfw.smile(generate=2)}")
+    print(f"Poke: {await Estrapy.Sfw.poke(generate=2)}")
 
 
 asyncio.run(function())
