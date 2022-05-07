@@ -10,3 +10,15 @@ __title__ = "Estrapy-API"
 __version__ = "0.2.3"
 __author__ = "Stawa"
 __license__ = "MIT"
+
+
+class EstraClient:
+    """
+    Client class for Estrapy-API, which provides access to the Estrapy-API's functions.
+    """
+
+    def __init__(self):
+        self.Sfw = Sfw()
+        self.Nsfw = Nsfw()
+        self.Games = Games()
+        self.Help = Help()
