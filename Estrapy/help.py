@@ -116,4 +116,4 @@ class Help:
             print(await Estrapy.Help.all()) # Keep it as function or it will return function type
         ```
         """
-        return Base.JSONFormatter(ALL_DICT)
+        return await Base.JSONFormatter(ALL_DICT)

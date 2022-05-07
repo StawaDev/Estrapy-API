@@ -29,7 +29,7 @@ class AutoUpdate:
         """
         Automaticly updating the Estrapy-API to the latest version
         """
-        
+
         if self.auto is True:
             return self.console_update()
 
