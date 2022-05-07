@@ -16,22 +16,28 @@ class AutoUpdate:
         self._reminder = reminder
         self.auto = auto
 
+    def run(self):
+        if self._reminder:
+            return self.reminder()
+
+        if self.auto:
+            return self.auto_update()
+
     def reminder(self):
         """
         Reminding if there's a new compatible version
         """
-        if self._reminder is True:
-            print(
-                f"Estrapy-API - New version available {version}, please update your Estrapy-API. | Changelogs - {change_log}"
-            )
+
+        print(
+            f"Estrapy-API - New version available {version}, please update your Estrapy-API. | Changelogs - {change_log}"
+        )
 
     def auto_update(self):
         """
         Automaticly updating the Estrapy-API to the latest version
         """
 
-        if self.auto is True:
-            return self.console_update()
+        return self.console_update()
 
     def console_update():
         if current_version != version:
