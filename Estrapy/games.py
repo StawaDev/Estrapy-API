@@ -210,8 +210,8 @@ class AniGames:
         Examples
         --------------
         ```
-        async def shipper_husbando():
-            print(await Estrapy.AniGames.shipper_husbando(player="Stawa"))
+        async def shipper_waifu():
+            print(await Estrapy.AniGames.shipper_waifu(player="Stawa"))
         ```
 
         :param player
