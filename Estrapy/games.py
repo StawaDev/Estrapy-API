@@ -1,11 +1,13 @@
-from typing import Union, Optional
+import json
+from typing import List, Union, Optional
 import requests
 from io import BytesIO
 from PIL import Image
 from .http import get_api, BASE_URL
 from .base import Base
+import random as rd
 
-__all__ = ("Games", "AniGames", "OsuClients")
+__all__ = ("Games", "AniGames", "OsuClients", "Trivia")
 
 
 class Games:
@@ -336,3 +338,179 @@ class OsuClients:
         if formatter:
             return await Base.JSONFormatter(url)
         return url
+
+
+class Trivia:
+    async def add(self, question: str, answer: str, options: dir = None) -> None:
+        """
+        Trivia Add
+        --------------
+        Adding Trivia Question to JSON File. You can add more than one question.
+        You can add options to your question.
+        If you don't want to add options, just leave it empty.
+
+        :param question
+        :type str
+        :param answer
+        :type str
+        :param option
+        :type dir
+        """
+
+        num = 1
+        i = 0
+        x = []
+
+        with open("trivia.json", "r", encoding="utf-8") as f:
+            try:
+                trivia = json.load(f)
+                for number in trivia["questions"].keys():
+                    x.append(int(number))
+                num = max(map(int, trivia["questions"].keys())) + 1
+            except:
+                trivia = {"questions": {}}
+
+            try:
+                for _ in trivia["questions"].items():
+                    i += 1
+                    if trivia["questions"][str(i)]["question"] == question:
+                        return "Trivia: Question (#{}) is already exist on Question (#{})".format(
+                            num, i
+                        )
+            except:
+                pass
+
+            try:
+                existing = {int(key) for key in trivia["questions"]}
+                missing = [i for i in range(1, max(existing)) if i not in existing]
+                num = missing[0]
+            except:
+                pass
+
+            trivia["questions"].update(
+                ({num: {"question": question, "answer": answer, "options": options}})
+            )
+
+            with open("trivia.json", "w", encoding="utf-8") as f:
+                json.dump(trivia, f, indent=4, ensure_ascii=False)
+                return "Question (#{}) added".format(num)
+
+    async def remove(self, num: int) -> None:
+        """
+        Trivia Remove
+        --------------
+        Removing Trivia Question from JSON File in Specific Number.
+        It will remove at the specific number question from file.
+
+        :param num
+        :type int
+        """
+
+        with open("trivia.json", "r", encoding="utf-8") as f:
+            try:
+                trivia = json.load(f)
+            except:
+                return "Trivia: No Question Found"
+
+        trivia["questions"].pop(str(num))
+        with open("trivia.json", "w", encoding="utf-8") as f:
+            json.dump(trivia, f, indent=4, ensure_ascii=False)
+            return "Trivia: Question (#{}) Removed".format(num)
+
+    async def run(self, num: Optional[int] = None, random_pick: bool = True) -> None:
+        """
+        Trivia Run
+        --------------
+        Running Trivia Question from JSON File. You can choose to random pick question or not.
+        This function requires `Trivia.answer` function to run. Recommended to use `random_pick` parameter to True.
+
+        :param random_pick
+        :type bool, default `True`
+        """
+
+        if num and random_pick is not None:
+            return "Please put None on unnecessary parameter or leave it empty"
+
+        num = 0
+
+        with open("trivia.json", "r") as f:
+            File = json.load(f)
+            Total = len(File["questions"])
+
+        if random_pick:
+            num = rd.randint(1, int(Total))
+
+        while num <= int(Total):
+            num = +1
+            questions = File["questions"][str(num)]["question"]
+            answers = File["questions"][str(num)]["answer"]
+            options = File["questions"][str(num)]["options"]
+            _options = []
+
+            for i in options:
+                _options.append("{}.{}".format(i, options[i]))
+
+            return questions, num, answers, _options
+
+    async def answer(self, run: any, guess: str = None):
+        """
+        Trivia Answer
+        --------------
+        Answer Trivia Question. You can guess answer or not.
+        This function usually used for once. Recommend to use `random_pick` parameter on `Trivia.run` function.
+
+        :param run
+        :type any
+        :param guess
+        :type str
+        """
+        
+        if str(guess).lower() == str(run[2]).lower():
+            return True, run[2]
+        return False, run[2]
+
+    async def run_console(random_pick: bool = False) -> None:
+        """
+        Trivia Run Console
+        --------------
+        Run Trivia Through Console!
+        This function requires Trivia.add to add the questions, answers also options.
+
+        """
+
+        score = 0
+
+        with open("trivia.json", "r") as f:
+            File = json.load(f)
+            Total = len(File["questions"])
+
+        if random_pick:
+            num = rd.randint(1, int(Total))
+
+        for num in range(1, Total + 1):
+            questions = File["questions"][str(num)]["question"]
+            answers = File["questions"][str(num)]["answer"]
+            options = File["questions"][str(num)]["options"]
+            _options = []
+
+            for i in options:
+                _options.append("{}.{}".format(i, options[i]))
+
+            print("Question (#{}) : {}".format(num, questions))
+            print("Options: {}".format(", ".join(_options)))
+            answer = input("Answer: ")
+
+            if answer or str.lower(answer) == answers:
+                score += 1
+
+            print(
+                "That's correct!"
+                if answer or str.lower(answer) == answers
+                else "That's incorrect!"
+            )
+        else:
+            print(
+                "Game over! no more questions! Score: {}%".format(
+                    int(score / Total * 100)
+                )
+            )
