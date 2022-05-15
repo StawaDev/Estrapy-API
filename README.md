@@ -13,12 +13,14 @@
 
 ### Features
 
-- Truth or Dare
+- Async Supports
 - Anime GIFs
 - Anime Waifu/Husbando Picture
-- OSU API Wrapper
-- Async Supports
+- Client Supports
 - User Friendly Code
+- OSU API Wrapper
+- Trivia
+- Truth or Dare
 
 ### Installing Estrapy-API
 
@@ -68,7 +70,7 @@ This is only optional, the function will be called if version of Estrapy-API is 
 import Estrapy
 from Estrapy import AutoUpdate
 
-EstraUpdate = AutoUpdate(output=True, change_log=True).update(switch=True)
+EstraUpdate = AutoUpdate(reminder=True, auto=False).run()
 
 print(Estrapy.__version__) # Print current version of Estrapy-API
 ```
@@ -128,11 +130,21 @@ asyncio.run(Help())
 
 ### OsuClients Function Endpoints
 
-| OsuClients Function | Examples                                                  | Description                 |
-| ------------------- | --------------------------------------------------------- | --------------------------- |
-| OsuProfile          | Estrapy.OsuClients.osuprofile(username="username")        | Return OsuProfile JSON Data |
-| OsuBeatmap          | Estrapy.OsuClients.osubeatmap(beatmap_id="beatmap_id")    | Return OsuBeatmap JSON Data |
-| More Examples       | [In Our Github!](https://github.com/StawaDev/Estrapy-API) | More examples I guess?      |
+| OsuClients Function | Examples                                               | Description                 |
+| ------------------- | ------------------------------------------------------ | --------------------------- |
+| OsuProfile          | Estrapy.OsuClients.osuprofile(username="username")     | Return OsuProfile JSON Data |
+| OsuBeatmap          | Estrapy.OsuClients.osubeatmap(beatmap_id="beatmap_id") | Return OsuBeatmap JSON Data |
+
+### Trivia Function Endpoints
+
+| Trivia Function | Examples                                                  | Description                          |
+| --------------- | --------------------------------------------------------- | ------------------------------------ |
+| Add             | Trivia.add(question="", answer="", options={})            | Add Questions Into A JSON File       |
+| Remove          | Trivia.remove(1)                                          | Removing Question In Specific Number |
+| Run_Console     | Trivia.run_console                                        | Run Trivia Through Console           |
+| Run             | Trivia.run(random_pick=True)                              | Run Trivia With Return Statement     |
+| Answer          | Trivia.answer(run, guess="")                              | Answer Trivia From Run Function      |
+| More Examples   | [In Our Github!](https://github.com/StawaDev/Estrapy-API) | More examples I guess?               |
 
 ### Links
 
