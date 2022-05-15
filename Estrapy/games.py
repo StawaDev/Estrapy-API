@@ -359,13 +359,10 @@ class Trivia:
 
         num = 1
         i = 0
-        x = []
 
         with open("trivia.json", "r", encoding="utf-8") as f:
             try:
                 trivia = json.load(f)
-                for number in trivia["questions"].keys():
-                    x.append(int(number))
                 num = max(map(int, trivia["questions"].keys())) + 1
             except:
                 trivia = {"questions": {}}
@@ -464,7 +461,7 @@ class Trivia:
         :param guess
         :type str
         """
-        
+
         if str(guess).lower() == str(run[2]).lower():
             return True, run[2]
         return False, run[2]
