@@ -4,6 +4,27 @@ from Estrapy import Trivia
 EstraTrivia = Trivia()
 
 
+async def create_question():
+    options = {"A": "Stawa", "B": "RandomPerson", "C": "Phone"}
+
+    question = await EstraTrivia.add(
+        question="Who is the creator of this packages?",
+        answer=list(options)[0],  # Or "A"
+        options=options,
+    )
+    print(question)
+
+
+asyncio.run(create_question())
+
+
+async def remove_question():
+    print(await EstraTrivia.remove(1))  # Remove question number 1
+
+
+asyncio.run(remove_question())
+
+
 async def console():
     await EstraTrivia.run_console()
 
@@ -19,7 +40,7 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 @bot.command()
 async def trivia(ctx):
     question = await EstraTrivia.run(random_pick=True)
-    await ctx.send("Question: {}\n{}".format(question[0], ' '.join(question[3])))
+    await ctx.send("Question: {}\n{}".format(question[0], " ".join(question[3])))
     answer = await bot.wait_for(
         "message", check=lambda message: message.author == ctx.author
     )
@@ -28,5 +49,6 @@ async def trivia(ctx):
     if check[0] is True:
         return await ctx.send("Correct!")
     await ctx.send("Incorrect!")
+
 
 bot.run("TOKEN")
