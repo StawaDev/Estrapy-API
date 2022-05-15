@@ -258,22 +258,9 @@ class OsuClients:
         self.client_id = client_id
         self.client_secret = client_secret
 
-    def client_data(self):
-        """
-        Client_Data
-        --------------
-
-        Keep as function of OsuClients, you can print this function to return your client_id and client_secret
-        """
-
-        global clientid, clientsecret
-        clientid = self.client_id
-        clientsecret = self.client_secret
-        return f"Estrapy OsuClients Data: \nClient_ID: {clientid} \nClient_Secret: {clientsecret}"
-
-    @staticmethod
     async def osuprofile(
-        username: Union[int, str],
+        self,
+        username: Union[int, str] = None,
         formatter: bool = False,
     ):
         """
@@ -299,14 +286,14 @@ class OsuClients:
         """
 
         url = get_api(
-            f"osu/?user={username}&client_id={clientid}&client_secret={clientsecret}"
+            f"osu/?user={username}&client_id={self.client_id}&client_secret={self.client_secret}"
         )
         if formatter:
             return await Base.JSONFormatter(url)
         return url
 
-    @staticmethod
     async def osubeatmap(
+        self,
         beatmap_id: int,
         formatter: bool = False,
     ):
@@ -333,7 +320,7 @@ class OsuClients:
         """
 
         url = get_api(
-            f"osubeatmap/?id={beatmap_id}&client_id={clientid}&client_secret={clientsecret}"
+            f"osubeatmap/?id={beatmap_id}&client_id={self.client_id}&client_secret={self.client_secret}"
         )
         if formatter:
             return await Base.JSONFormatter(url)
@@ -341,6 +328,9 @@ class OsuClients:
 
 
 class Trivia:
+    def __init__(self):
+        self.trivia = {"questions": {}}
+
     async def add(self, question: str, answer: str, options: dir = None) -> None:
         """
         Trivia Add
@@ -348,6 +338,22 @@ class Trivia:
         Adding Trivia Question to JSON File. You can add more than one question.
         You can add options to your question.
         If you don't want to add options, just leave it empty.
+
+        ```
+        from Estrapy import Trivia
+
+        EstraTrivia = Trivia()
+
+        async def create_question():
+            options = {"A": "Stawa", "B": "RandomPerson", "C": "Phone"}
+
+            question = await EstraTrivia.add(
+                question="Who is the creator of this packages?",
+                answer=list(options)[0],  # Or "A"
+                options=options,
+            )
+            print(question)
+        ```
 
         :param question
         :type str
@@ -365,7 +371,7 @@ class Trivia:
                 trivia = json.load(f)
                 num = max(map(int, trivia["questions"].keys())) + 1
             except:
-                trivia = {"questions": {}}
+                trivia = self.trivia
 
             try:
                 for _ in trivia["questions"].items():
@@ -399,6 +405,14 @@ class Trivia:
         Removing Trivia Question from JSON File in Specific Number.
         It will remove at the specific number question from file.
 
+        ```
+        from Estrapy import Trivia
+
+        EstraTrivia = Trivia()
+        async def remove_question():
+            print(await EstraTrivia.remove(1))  # Remove question number 1
+        ```
+
         :param num
         :type int
         """
@@ -420,6 +434,7 @@ class Trivia:
         --------------
         Running Trivia Question from JSON File. You can choose to random pick question or not.
         This function requires `Trivia.answer` function to run. Recommended to use `random_pick` parameter to True.
+        #### Examples available in https://github.com/StawaDev/Estrapy-API/blob/main/Examples/Trivia.py
 
         :param random_pick
         :type bool, default `True`
@@ -455,6 +470,7 @@ class Trivia:
         --------------
         Answer Trivia Question. You can guess answer or not.
         This function usually used for once. Recommend to use `random_pick` parameter on `Trivia.run` function.
+        #### Examples available in https://github.com/StawaDev/Estrapy-API/blob/main/Examples/Trivia.py
 
         :param run
         :type any
@@ -472,7 +488,10 @@ class Trivia:
         --------------
         Run Trivia Through Console!
         This function requires Trivia.add to add the questions, answers also options.
+        #### Examples available in https://github.com/StawaDev/Estrapy-API/blob/main/Examples/Trivia.py
 
+        :param random_pick
+        :type bool, default `False`
         """
 
         score = 0
