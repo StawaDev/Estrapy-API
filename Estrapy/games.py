@@ -4,10 +4,12 @@ import requests
 from io import BytesIO
 from PIL import Image
 from .http import get_api, BASE_URL
-from .base import Base
+from .base import Base, ObjectConverter
 import random as rd
 
 __all__ = ("Games", "AniGames", "OsuClients", "Trivia")
+
+Converter = ObjectConverter()
 
 
 class Games:
@@ -254,9 +256,17 @@ class AniGames:
 
 
 class OsuClients:
-    def __init__(self, client_id: Union[int, str], client_secret: str) -> None:
+    def __init__(
+        self,
+        client_id: Union[int, str] = None,
+        client_secret: str = None,
+        output: str = "json",
+    ) -> None:
+
         self.client_id = client_id
         self.client_secret = client_secret
+        self.output = output
+        self.output_list = ["json", "object"]
 
     async def osuprofile(
         self,
@@ -288,6 +298,9 @@ class OsuClients:
         url = get_api(
             f"osu/?user={username}&client_id={self.client_id}&client_secret={self.client_secret}"
         )
+        if self.output == self.output_list[1]:
+            return Converter.convert_obj(json.dumps(url))
+
         if formatter:
             return await Base.JSONFormatter(url)
         return url
@@ -322,6 +335,9 @@ class OsuClients:
         url = get_api(
             f"osubeatmap/?id={beatmap_id}&client_id={self.client_id}&client_secret={self.client_secret}"
         )
+        if self.output == self.output_list[1]:
+            return Converter.convert_obj(json.dumps(url))
+
         if formatter:
             return await Base.JSONFormatter(url)
         return url
