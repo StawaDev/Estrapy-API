@@ -4,7 +4,7 @@ from pygments import highlight, lexers, formatters
 from .http import get_api, BASE_URL
 import requests
 
-__all__ = "Base"
+__all__ = ("Base", "ObjectConverter")
 
 
 class Base:
@@ -37,15 +37,15 @@ class Base:
         A Function That Will Download an Image from Estra-API.
         Filename is optional, if not provided, it will be saved as target index 1 with number behind it.
 
-        How to use smile function (Examples)
+        How to use save function (Examples)
         ----------------------------
         ```
         from Estrapy.base import Base
 
-        async def smile():
+        async def save():
             await Base.save(target=("sfw", "hug"), filename="Hug") # Will save a hug gif
 
-        async def smile_total():
+        async def save_generated():
             await Base.save(target=("sfw", "smile"), total=3, filename="SmileGif") # Will save 3 smile gifs with number behind its filename
         ```
 
@@ -93,3 +93,18 @@ class Base:
             i += 1
 
         return [fileList, urlList]
+
+
+class ObjectConverter:
+    def __init__(self, **kwargs):
+        self.json = kwargs
+        for i in self.json.keys():
+            setattr(self, i, self.json[i])
+
+    @classmethod
+    def convert_obj(cls, obj):
+        x = json.loads(obj)
+        return cls(**x)
+
+    def __repr__(self):
+        return f"{self.json}"
