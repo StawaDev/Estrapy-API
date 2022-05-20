@@ -137,14 +137,14 @@ asyncio.run(Help())
 
 ### Trivia Function Endpoints
 
-| Trivia Function | Examples                                                  | Description                          |
-| --------------- | --------------------------------------------------------- | ------------------------------------ |
-| Add             | Trivia.add(question="", answer="", options={})            | Add Questions Into A JSON File       |
-| Remove          | Trivia.remove(1)                                          | Removing Question In Specific Number |
-| Run_Console     | Trivia.run_console                                        | Run Trivia Through Console           |
-| Run             | Trivia.run(random_pick=True)                              | Run Trivia With Return Statement     |
-| Answer          | Trivia.answer(run, guess="")                              | Answer Trivia From Run Function      |
-| More Examples   | [In Our Github!](https://github.com/StawaDev/Estrapy-API) | More examples I guess?               |
+| Trivia Function | Examples                                                                       | Description                          |
+| --------------- | ------------------------------------------------------------------------------ | ------------------------------------ |
+| Add             | Trivia.add(question="question", answer="answer", options={"option": "option"}) | Add Questions Into A JSON File       |
+| Remove          | Trivia.remove(1)                                                               | Removing Question In Specific Number |
+| Run_Console     | Trivia.run_console                                                             | Run Trivia Through Console           |
+| Run             | Trivia.run(random_pick=True)                                                   | Run Trivia With Return Statement     |
+| Answer          | Trivia.answer(run, guess="answer")                                             | Answer Trivia From Run Function      |
+| More Examples   | [In Our Github!](https://github.com/StawaDev/Estrapy-API)                      | More examples I guess?               |
 
 ### Links
 
