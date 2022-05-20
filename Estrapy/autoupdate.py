@@ -1,4 +1,3 @@
-from typing import Optional
 import requests
 import os
 from .__init__ import __version__ as current_version
