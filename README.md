@@ -11,7 +11,7 @@
 <a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI" src="https://img.shields.io/pypi/v/Estrapy-API?color=a&label=Estrapy-API&style=for-the-badge"></a>
 </p>
 
-### Features
+### :sparkles: Features
 
 - Async Supports
 - Anime GIFs
@@ -22,19 +22,19 @@
 - Trivia
 - Truth or Dare
 
-### Installing Estrapy-API
+### 📦 Installing The Stable Version of Estrapy-API
 
 ```
 pip install estrapy-api
 ```
 
-or If you want to use latest update of Estrapy-API
+### 🚧 Installing The Latest Version of Estrapy-API
 
 ```py
 pip install git+https://github.com/StawaDev/Estrapy-API
 ```
 
-### Example to use Estrapy-API
+### :open_book: Example to use Estrapy-API
 
 ```py
 # First Examples
@@ -62,7 +62,7 @@ async def run(ctx): # With Embed
     await ctx.send(embed=embed)
 ```
 
-### AutoUpdate Estrapy-API
+### :bookmark: Automatically Updating Estrapy-API
 
 This is only optional, the function will be called if version of Estrapy-API is not same with the newewst one.
 
@@ -75,7 +75,7 @@ EstraUpdate = AutoUpdate(reminder=True, auto=False).run()
 print(Estrapy.__version__) # Print current version of Estrapy-API
 ```
 
-### Print All Function Endpoints
+### :grey_question: Help Functions for Estrapy-API
 
 ```py
 import Estrapy
@@ -89,7 +89,7 @@ async def Help():
 asyncio.run(Help())
 ```
 
-### Sfw Function Endpoints
+### :ok_hand: Sfw Function Endpoints
 
 | Sfw Function | Examples               | Description                 |
 | ------------ | ---------------------- | --------------------------- |
@@ -103,7 +103,7 @@ asyncio.run(Help())
 | Highfive     | Estrapy.Sfw.highfive() | Return Sfw Highfive as GIFs |
 | Headpat      | Estrapy.Sfw.headpat()  | Return Sfw Headpat as GIFs  |
 
-### Nsfw Function Endpoints
+### :interrobang: Nsfw Function Endpoints
 
 | NSFW Function | Examples            | Description                  |
 | ------------- | ------------------- | ---------------------------- |
@@ -111,7 +111,7 @@ asyncio.run(Help())
 | Yuri          | Estrapy.Nsfw.yuri() | Return Nsfw Yuri as GIFs/PNG |
 | Yaoi          | Estrapy.Nsfw.yaoi() | Return Nsfw Yaoi as GIFs/PNG |
 
-### AniGames Function Endpoints
+### :video_game: AniGames Function Endpoints
 
 | AniGames Function | Examples                    | Description                                  |
 | ----------------- | --------------------------- | -------------------------------------------- |
@@ -120,7 +120,7 @@ asyncio.run(Help())
 | Waifu             | Estrapy.AniGames.waifu()    | Return AniGames Waifu About Anime as PNG     |
 | Husbando          | Estrapy.AniGames.husbando() | Return AniGames Husbando About Anime as Text |
 
-### Games Function Endpoints
+### :video_game: Games Function Endpoints
 
 | Games Function | Examples                | Description                   |
 | -------------- | ----------------------- | ----------------------------- |
@@ -128,14 +128,14 @@ asyncio.run(Help())
 | Dare           | Estrapy.Games.dare()    | Return Games Dare as Text     |
 | Shipper        | Estrapy.Games.shipper() | Return Games Shipper as Image |
 
-### OsuClients Function Endpoints
+### <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/1024px-Osu%21_Logo_2016.svg.png width="30" height="30"> OsuClients Function Endpoints
 
 | OsuClients Function | Examples                                               | Description                 |
 | ------------------- | ------------------------------------------------------ | --------------------------- |
 | OsuProfile          | Estrapy.OsuClients.osuprofile(username="username")     | Return OsuProfile JSON Data |
 | OsuBeatmap          | Estrapy.OsuClients.osubeatmap(beatmap_id="beatmap_id") | Return OsuBeatmap JSON Data |
 
-### Trivia Function Endpoints
+### :grey_question: Trivia Function Endpoints
 
 | Trivia Function | Examples                                                                       | Description                          |
 | --------------- | ------------------------------------------------------------------------------ | ------------------------------------ |
@@ -146,7 +146,7 @@ asyncio.run(Help())
 | Answer          | Trivia.answer(run, guess="answer")                                             | Answer Trivia From Run Function      |
 | More Examples   | [In Our Github!](https://github.com/StawaDev/Estrapy-API)                      | More examples I guess?               |
 
-### Links
+### :link: Links
 
 - [Documentation](https://stawa.gitbook.io/estraapi-documentation)
 - [Homepage](https://github.com/StawaDev/Estrapy-API)
