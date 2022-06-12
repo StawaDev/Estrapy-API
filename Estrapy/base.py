@@ -32,12 +32,12 @@ class Base:
         filename: Optional[str] = None,
     ) -> None:
         """
-        Description
+        ### Description
         --------------
         A Function That Will Download an Image from Estra-API.
         Filename is optional, if not provided, it will be saved as target index 1 with number behind it.
 
-        How to use save function (Examples)
+        ### How to use save function (Examples)
         ----------------------------
         ```
         from Estrapy.base import Base
@@ -49,12 +49,10 @@ class Base:
             await Base.save(target=("sfw", "smile"), total=3, filename="SmileGif") # Will save 3 smile gifs with number behind its filename
         ```
 
-        :param target
-        :type tuple
-        :param total
-        :type int
-        :param filename
-        :type str
+        ### Arguments:
+            - target: Optional[Tuple[str, str]] -- Target to download, (type, target)
+            - total: Optional[int] -- Total of images to download, default is 1
+            - filename: Optional[str] -- Filename to save, default is target index 1 with number behind it.
         """
 
         url = requests.get(f"{BASE_URL}{target[0]}/{target[1]}").json()
