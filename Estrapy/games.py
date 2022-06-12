@@ -544,7 +544,6 @@ class Trivia:
             num = rd.randint(1, Total)
 
         for num in range(1, Total + 1):
-            print(num)
             questions = File["questions"][str(num)]["question"]
             answers = File["questions"][str(num)]["answer"]
             options = File["questions"][str(num)]["options"]
