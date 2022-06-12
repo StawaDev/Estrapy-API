@@ -6,6 +6,7 @@ from typing import Union, Optional
 import json
 import requests
 import random as rd
+import time
 
 __all__ = ("Games", "AniGames", "OsuClients", "Trivia")
 
@@ -347,7 +348,14 @@ class Trivia:
     def __init__(self):
         self.trivia = {"questions": {}}
 
-    async def add(self, question: str, answer: str, options: dir = None) -> None:
+    async def add(
+        self,
+        question: str,
+        answer: str,
+        options: dir,
+        category: Optional[str] = None,
+        difficulty: Optional[str] = None,
+    ) -> None:
         """
         Trivia Add
         --------------
@@ -377,6 +385,10 @@ class Trivia:
         :type str
         :param option
         :type dir
+        :param category
+        :type str
+        :param difficulty
+        :type str
         """
 
         num = 1
@@ -407,7 +419,17 @@ class Trivia:
                 pass
 
             trivia["questions"].update(
-                ({num: {"question": question, "answer": answer, "options": options}})
+                (
+                    {
+                        num: {
+                            "question": question,
+                            "answer": answer,
+                            "options": options,
+                            "difficulty": difficulty,
+                            "category": category,
+                        }
+                    }
+                )
             )
 
             with open("trivia.json", "w", encoding="utf-8") as f:
@@ -466,19 +488,20 @@ class Trivia:
             Total = len(File["questions"])
 
         if random_pick:
-            num = rd.randint(1, int(Total))
+            num = rd.randint(1, Total)
 
         while num <= int(Total):
-            num = +1
+            _options = []
             questions = File["questions"][str(num)]["question"]
             answers = File["questions"][str(num)]["answer"]
             options = File["questions"][str(num)]["options"]
-            _options = []
+            difficulty = File["questions"][str(num)]["difficulty"]
+            category = File["questions"][str(num)]["category"]
 
             for i in options:
                 _options.append("{}.{}".format(i, options[i]))
 
-            return questions, num, answers, _options
+            return questions, num, answers, _options, difficulty, category
 
     async def answer(self, run: any, guess: str = None):
         """
@@ -494,7 +517,7 @@ class Trivia:
         :type str
         """
 
-        if str(guess).lower() == str(run[2]).lower():
+        if str.lower(guess) == str.lower(run[2]):
             return True, run[2]
         return False, run[2]
 
@@ -511,35 +534,43 @@ class Trivia:
         """
 
         score = 0
+        _options = []
 
         with open("trivia.json", "r") as f:
             File = json.load(f)
             Total = len(File["questions"])
 
         if random_pick:
-            num = rd.randint(1, int(Total))
+            num = rd.randint(1, Total)
 
         for num in range(1, Total + 1):
+            print(num)
             questions = File["questions"][str(num)]["question"]
             answers = File["questions"][str(num)]["answer"]
             options = File["questions"][str(num)]["options"]
-            _options = []
+            difficulty = File["questions"][str(num)]["difficulty"]
+            category = File["questions"][str(num)]["category"]
 
             for i in options:
                 _options.append("{}.{}".format(i, options[i]))
 
             print("Question (#{}) : {}".format(num, questions))
             print("Options: {}".format(", ".join(_options)))
+            print("Difficulty: {}".format(difficulty))
+            print("Category: {}".format(category))
             answer = input("Answer: ")
 
-            if answer or str.lower(answer) == answers:
+            if str.lower(answer) == str.lower(answers):
                 score += 1
 
             print(
                 "That's correct!"
-                if answer or str.lower(answer) == answers
+                if str.lower(answer) == str.lower(answers)
                 else "That's incorrect!"
             )
+            time.sleep(2)
+            for x in options:
+                _options.remove("{}.{}".format(x, options[x]))
         else:
             print(
                 "Game over! no more questions! Score: {}%".format(
