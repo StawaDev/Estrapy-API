@@ -24,11 +24,13 @@ ANIGAMES_LIST = [
     "shipper_waifu",
     "shipper_husbando",
 ]
+TRIVIA_LIST = ["add", "remove", "answer", "run", "run_console"]
 ALL_DICT = {
     "SFW": f", ".join(SFW_LIST),
     "NSFW": f", ".join(NSFW_LIST),
     "GAMES_LIST": f", ".join(GAMES_LIST),
     "ANIGAMES_LIST": f", ".join(ANIGAMES_LIST),
+    "TRIVIA_LIST": f", ".join(TRIVIA_LIST),
 }
 
 
