@@ -19,6 +19,12 @@ setup(
     description="A Basic Wrapper Anime Image API with Many Features",
     long_description=README,
     long_description_content_type="text/markdown",
+    entry_points="""
+    [console_scripts]
+    estrapy=Estrapy.cli:main
+    estrapy help=Estrapy.cli:help
+    estrapy save=Estrapy.cli:save
+    """,
     keywords=[
         "python api",
         "anime",
@@ -33,5 +39,6 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
+        "Environment :: Console"
     ],
 )
