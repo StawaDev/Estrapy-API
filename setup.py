@@ -39,6 +39,6 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Environment :: Console"
+        "Environment :: Console",
     ],
 )

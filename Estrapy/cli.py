@@ -61,7 +61,9 @@ async def help(category):
     type=click.Choice(["sfw", "nsfw", "games", "anigames"]),
     multiple=False,
 )
-@click.option("--endpoint", "-e", default="hug", help="Endpoint of the image", multiple=False)
+@click.option(
+    "--endpoint", "-e", default="hug", help="Endpoint of the image", multiple=False
+)
 async def save(category, endpoint):
     """
     A Save Function for Estrapy Using Command Line Interface.
@@ -73,6 +75,7 @@ async def save(category, endpoint):
             print(f"{endpoint}.{x['type']} saved!")
     except:
         print("Error! Please check your endpoint and category.")
+
 
 @click.group()
 def main():
