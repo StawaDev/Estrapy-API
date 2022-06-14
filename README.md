@@ -89,6 +89,15 @@ async def Help():
 asyncio.run(Help())
 ```
 
+### :desktop_computer: Console Input Examples
+
+```s
+1. estrapy --help # Output all available commands
+2. estrapy menu # Output information about Estrapy-API
+3. estrapy help --category <category> # Output all available endpoints in <category>
+4. estrapy save --category <category> --endpoint <endpoint> # Save an Image from EstraAPI (with specific category and endpoint) to your computer
+```
+
 ### :ok_hand: Sfw Function Endpoints
 
 | Sfw Function | Examples               | Description                 |
