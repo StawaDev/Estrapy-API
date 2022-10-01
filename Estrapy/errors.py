@@ -1,4 +1,4 @@
-__all__ = ("APIOffline", "InvalidResponse", "InvalidStatusCode")
+__all__ = ("APIOffline", "InvalidResponse", "InvalidStatusCode", "InvalidNumber")
 
 
 class APIOffline(Exception):
@@ -16,4 +16,10 @@ class InvalidStatusCode(Exception):
 class InvalidResponse(Exception):
     """
     Raised when the Estrapy API returns an invalid response.
+    """
+
+
+class InvalidNumber(Exception):
+    """
+    Raised when the Estrapy's function returns an invalid number.
     """

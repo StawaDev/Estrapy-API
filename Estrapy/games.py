@@ -1,8 +1,9 @@
-from io import BytesIO
-from PIL import Image
 from .http import get_api, BASE_URL
 from .base import Base, ObjectConverter
+from .property import PropertiesManager
 from typing import Union, Optional
+from io import BytesIO
+from PIL import Image
 import json
 import requests
 import random as rd
@@ -14,53 +15,84 @@ Converter = ObjectConverter()
 
 
 class Games:
-    @staticmethod
-    async def truth(generate: Optional[int] = None) -> None:
-        """
-        Description
-        --------------
-        A Function That Will Return a Random Truth Challenge
-
-        How to use truth function (Examples)
-        ----------------------------
-
-        ```
-        async def truth():
-            print(await Estrapy.Games.truth()) # Keep it as function or it will return function type
-        ```
-
-        :param generate
-        :type formatter: Optional[int]
-        """
-
-        url = "games/truth"
-        if generate:
-            return await Base.produce(total=generate, full_url=url, type="text")
-
-        return get_api(url)["text"]
+    def __str__(self):
+        return PropertiesManager.text
 
     @staticmethod
-    async def dare(generate: Optional[int] = None) -> None:
+    async def truth(generate: Optional[int] = None) -> PropertiesManager:
         """
-        Description
+        ## Description
         --------------
-        A Function That Will Return a Random Dare Challenge As Text
+        This function will be returning a `Truth Challenge` as text.
+        If you want to generate more than one Text, use `generate` parameter and it will return a list.
 
-        How to use dare function (Examples)
+        ## Short Example
         ----------------------------
+
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
+
         ```
+        import Estrapy
+
         async def truth():
-            print(await Estrapy.Games.truth()) # Keep it as function or it will return function type
+            one = await Estrapy.Games.truth()
+            five = await Estrapy.Games.truth(generate=5)
+            print(f"Generate One: {one.text} Generate 5 as List: {five}")
         ```
 
-        :param generate
-        :type formatter: Optional[int]
+        ## Arguments:
+            - generate: int -- Generate how many requests to return
         """
 
-        url = "games/dare"
+        route = "games/truth"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+        )
+
         if generate:
-            return await Base.produce(total=generate, full_url=url, type="text")
-        return get_api(url)["text"]
+            return await Base.produce(total=generate, route=route, type="link")
+
+        return properties
+
+    @staticmethod
+    async def dare(generate: Optional[int] = None) -> PropertiesManager:
+        """
+        ## Description
+        --------------
+        This function will be returning a `Dare Challenge` as text.
+        If you want to generate more than one Text, use `generate` parameter and it will return a list.
+
+        ## Short Example
+        ----------------------------
+
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
+
+        ```
+        import Estrapy
+
+        async def dare():
+            one = await Estrapy.Games.dare()
+            five = await Estrapy.Games.dare(generate=5)
+            print(f"Generate One: {one.text} Generate 5 as List: {five}")
+        ```
+
+        ## Arguments:
+            - generate: int -- Generate how many requests to return
+        """
+
+        route = "games/dare"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+        )
+
+        if generate:
+            return await Base.produce(total=generate, route=route, type="link")
+
+        return properties
 
     @staticmethod
     async def shipper(
@@ -114,146 +146,200 @@ class Games:
 
 class AniGames:
     @staticmethod
-    async def truth(generate: Optional[int] = None) -> None:
+    async def truth(generate: Optional[int] = None) -> PropertiesManager:
         """
-        Description
+        ## Description
         --------------
-        A Function That Will Return a Random Truth About Anime Challenge
+        This function will be returning a `Truth Challenge (Anime Topic)` as text.
+        If you want to generate more than one Text, use `generate` parameter and it will return a list.
 
-        How to use truth [about anime] as function (Examples)
+        ## Short Example
         ----------------------------
 
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
+
         ```
+        import Estrapy
+
         async def truth():
-            print(await Estrapy.AniGames.truth()) # Keep it as function or it will return function type
+            one = await Estrapy.AniGames.truth()
+            five = await Estrapy.AniGames.truth(generate=5)
+            print(f"Generate One: {one.text} Generate 5 as List: {five}")
         ```
 
-        :param generate
-        :type formatter: Optional[int]
+        ## Arguments:
+            - generate: int -- Generate how many requests to return
         """
 
-        url = "anigames/truth"
+        route = "anigames/truth"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+        )
+
         if generate:
-            return await Base.produce(total=generate, full_url=url, type="text")
-        return get_api(url)["text"]
+            return await Base.produce(total=generate, route=route, type="link")
+
+        return properties
 
     @staticmethod
-    async def dare(generate: Optional[int] = None) -> None:
+    async def dare(generate: Optional[int] = None) -> PropertiesManager:
         """
-        Description
+        ## Description
         --------------
-        A Function That Will Return a Random Dare Challenge As Text
+        This function will be returning a `Dare Challenge (Anime Topic)` as text.
+        If you want to generate more than one Text, use `generate` parameter and it will return a list.
 
-        How to use dare [about anime] function (Examples)
-        ----------------------------
+        ## Short Example
+        --------------
+
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
+
         ```
+        import Estrapy
+
         async def dare():
-            print(await Estrapy.AniGames.dare()) # Keep it as function or it will return function type
+            one = await Estrapy.AniGames.dare()
+            five = await Estrapy.AniGames.dare(generate=5)
+            print(f"Generate One: {one.text} Generate 5 as List: {five}")
         ```
 
-        :param generate
-        :type formatter: Optional[int]
+        ## Arguments:
+            - generate: int -- Generate how many requests to return
         """
 
-        url = "anigames/dare"
+        route = "anigames/dare"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+        )
+
         if generate:
-            return await Base.produce(total=generate, full_url=url, type="text")
-        return get_api(url)["text"]
+            return await Base.produce(total=generate, route=route, type="link")
+
+        return properties
 
     @staticmethod
-    async def waifu(formatter: bool = False):
+    async def waifu() -> PropertiesManager:
         """
-        Description
+        ## Description
         --------------
-        A Function That Will Return a Random Waifu Picture As PNG
+        This function will be returning a `Waifu Image (Anime Topic)` as url.
 
-        How to use waifu [about anime] function (Examples)
-        ----------------------------
+        ## Short Example
+        --------------
+
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
+
         ```
+        import Estrapy
+
         async def waifu():
-            print(await Estrapy.AniGames.waifu()) # Keep it as function or it will return function type
+            x = await Estrapy.AniGames.waifu()
+            print(x.character_name, x.url)
         ```
-
-        :param formatter
-        :type formatter: bool, default `False`
         """
-        url = get_api("anigames/waifu")
-        if formatter:
-            return await Base.JSONFormatter(url)
-        return url
+
+        route = "anigames/waifu"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+            character_name=output.get("character_name"),
+        )
+
+        return properties
 
     @staticmethod
-    async def husbando(formatter: bool = False):
+    async def husbando() -> PropertiesManager:
         """
-        Description
+        ## Description
         --------------
-        A Function That Will Return a Random Husbando Picture As PNG
+        This function will be returning a `Husbando Image (Anime Topic)` as url.
 
-        How to use husbando [about anime] function (Examples)
-        ----------------------------
+        ## Short Example
+        --------------
+
         ```
+        import Estrapy
+
         async def husbando():
-            print(await Estrapy.AniGames.husbando()) # Keep it as function or it will return function type
+            x = await Estrapy.AniGames.husbando()
+            print(x.character_name, x.url)
         ```
-
-        :param formatter
-        :type formatter: bool, default `False`
         """
 
-        url = get_api("anigames/husbando")
-        if formatter:
-            return await Base.JSONFormatter(url)
-        return url
+        route = "anigames/husbando"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+            character_name=output.get("character_name"),
+        )
+
+        return properties
 
     @staticmethod
-    async def shipper_waifu(player: str, formatter: bool = False):
+    async def shipper_waifu(player: str) -> PropertiesManager:
         """
-        Shipper_Waifu
+        ## Description
         --------------
-        Return Shipper Waifu JSON Data from EstraAPI
+        This function will be returning a shipping percentage of player and waifu as text.
 
-        Examples
+        ## Short Example
         --------------
+
         ```
         async def shipper_waifu():
-            print(await Estrapy.AniGames.shipper_waifu(player="Stawa"))
+            x = await Estrapy.AniGames.shipper_waifu(player="Stawa")
+            print(x.player, x.character_name, x.percentage)
         ```
 
-        :param player
-        :type player: str
-        :param formatter
-        :type formatter: bool, default `False`
+        ## Arguments:
+            - player: str -- Generate how many requests to return
         """
 
-        url = get_api(f"anigames/shipper/waifu/?player={player}")
-        if formatter:
-            return await Base.JSONFormatter(url)
-        return url
+        route = f"anigames/shipper/waifu/?player={player}"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            player=output.get("player"),
+            character_name=output.get("character_name"),
+            percentage=output.get("percentage"),
+        )
+
+        return properties
 
     @staticmethod
-    async def shipper_husbando(player: str, formatter: bool = False):
+    async def shipper_husbando(player: str) -> PropertiesManager:
         """
-        Shipper_Husbando
+        ## Description
         --------------
-        Return Shipper Husbando JSON Data from EstraAPI
+        This function will be returning a shipping percentage of player and husbando as text.
 
-        Examples
+        ## Short Example
         --------------
+
         ```
         async def shipper_husbando():
-            print(await Estrapy.AniGames.shipper_husbando(player="Stawa"))
+            x = await Estrapy.AniGames.shipper_husbando(player="Stawa")
+            print(x.player, x.character_name, x.percentage)
         ```
 
-        :param player
-        :type player: str
-        :param formatter
-        :type formatter: bool, default `False`
+        ## Arguments:
+            - player: str -- Generate how many requests to return
         """
 
-        url = get_api(f"anigames/shipper/husbando/?player={player}")
-        if formatter:
-            return await Base.JSONFormatter(url)
-        return url
+        route = f"anigames/shipper/husbando/?player={player}"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            player=output.get("player"),
+            character_name=output.get("character_name"),
+            percentage=output.get("percentage"),
+        )
+
+        return properties
 
 
 class OsuClients:

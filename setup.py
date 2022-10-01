@@ -4,10 +4,13 @@ f = open("README.md", "r", encoding="utf-8")
 README = f.read()
 
 setup(
-    name="Estrapy-API",
-    version="0.2.4",
+    name="Estrapy",
+    version="0.2.7",
     packages=find_packages(),
-    install_requires=["requests", "asyncclick"],
+    install_requires=["requests", "pygments"],
+    extras_require={
+        "cli": ["asyncclick", "tabulate", "anyio"],
+    },
     license="MIT",
     url="https://github.com/StawaDev/Estrapy-API",
     project_urls={
@@ -33,6 +36,7 @@ setup(
         "wrapper anime gif",
         "osu",
         "osu api",
+        "trivia",
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",

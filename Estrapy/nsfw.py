@@ -1,77 +1,125 @@
 from typing import Optional
 from .http import get_api
 from .base import Base
+from .property import PropertiesManager
 
 __all__ = ("Nsfw",)
 
 
 class Nsfw:
-    @staticmethod
-    async def kill(generate: Optional[int] = None) -> None:
-        """
-        Description
-        --------------
-        A Function That Will Return a NSFW Kill as GIFs/PNG
+    def __str__(self):
+        return PropertiesManager.url
 
-        How to use kill function (Examples)
-        ----------------------------
+    @staticmethod
+    async def kill(generate: Optional[int] = None) -> PropertiesManager:
+        """
+        ## Description
+        --------------
+        This function will be returning an `Anime K1lling GIF` as url.
+        If you want to generate more than one GIF, use `generate` parameter and it will return a list.
+
+        ## Short Example
+        --------------
+
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
 
         ```
+        import Estrapy
+
         async def kill():
-            print(await Estrapy.Nsfw.kill()) # Keep it as function or it will return function type
+            one = await Estrapy.Nsfw.kill()
+            five = await Estrapy.Nsfw.kill(generate=5)
+            print(f"Generate One: one.url Generate 5 as List: {five}")
         ```
 
-        :param generate
-        :type int
+        ## Arguments:
+            - generate: int -- Generate how many requests to return
         """
 
-        url = "nsfw/kill"
+        route = "nsfw/kill"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+        )
+
         if generate:
-            return await Base.produce(total=generate, full_url=url, type="link")
-        return get_api(url)["link"]
+            return await Base.produce(total=generate, route=route, type="link")
+
+        return properties
 
     @staticmethod
-    async def yuri(generate: Optional[int] = None) -> None:
+    async def yuri(generate: Optional[int] = None) -> PropertiesManager:
         """
-        Description
+        ## Description
         --------------
-        A Function That Will Return a NSFW Yuri as GIFs/PNG
+        This function will be returning an `Anime Yuri GIF/Image` as url.
+        If you want to generate more than one GIF/Image, use `generate` parameter and it will return a list.
 
-        How to use yuri function (Examples)
-        ----------------------------
+        ## Short Example
+        --------------
+
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
+
         ```
+        import Estrapy
+
         async def yuri():
-            print(await Estrapy.Nsfw.yuri()) # Keep it as function or it will return function type
+            one = await Estrapy.Nsfw.yuri()
+            five = await Estrapy.Nsfw.yuri(generate=5)
+            print(f"Generate One: one.url Generate 5 as List: {five}")
         ```
 
-        :param generate
-        :type int
+        ## Arguments:
+            - generate: int -- Generate how many requests to return
         """
 
-        url = "nsfw/yuri"
+        route = "nsfw/yuri"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+        )
+
         if generate:
-            return await Base.produce(total=generate, full_url=url, type="link")
-        return get_api(url)["link"]
+            return await Base.produce(total=generate, route=route, type="link")
+
+        return properties
 
     @staticmethod
-    async def yaoi(generate: Optional[int] = None) -> None:
+    async def yaoi(generate: Optional[int] = None) -> PropertiesManager:
         """
-        Description
+        ## Description
         --------------
-        A Function That Will Return a NSFW Yaoi as GIFs/PNG
+        This function will be returning an `Anime Yaoi GIF/Image` as url.
+        If you want to generate more than one GIF/Image, use `generate` parameter and it will return a list.
 
-        How to use yaoi function (Examples)
-        ----------------------------
+        ## Short Example
+        --------------
+
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
+
         ```
+        import Estrapy
+
         async def yaoi():
-            print(await Estrapy.Nsfw.yaoi()) # Keep it as function or it will return function type
+            one = await Estrapy.Nsfw.yaoi()
+            five = await Estrapy.Nsfw.yaoi(generate=5)
+            print(f"Generate One: one.url Generate 5 as List: {five}")
         ```
 
-        :param generate
-        :type int
+        ## Arguments:
+            - generate: int -- Generate how many requests to return
         """
 
-        url = "nsfw/yaoi"
+        route = "nsfw/yaoi"
+        output = get_api(route=route)
+        properties = PropertiesManager(
+            url=output.get("link"),
+            type=output.get("type"),
+        )
+
         if generate:
-            return await Base.produce(total=generate, full_url=url, type="link")
-        return get_api(url)["link"]
+            return await Base.produce(total=generate, route=route, type="link")
+
+        return properties

@@ -1,12 +1,10 @@
 import json.decoder
-
 import requests
-
 from .errors import APIOffline, InvalidStatusCode, InvalidResponse
 
 __all__ = ("BASE_URL", "get_api")
 
-BASE_URL = "https://estra-api.herokuapp.com/api/"
+BASE_URL = "https://estra-api.vercel.app/api/v1/"
 
 
 def get_api(route: str) -> dict:

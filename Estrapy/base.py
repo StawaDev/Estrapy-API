@@ -1,6 +1,7 @@
-from typing import Optional, Tuple
+from .http import get_api
+from .errors import InvalidNumber
+from typing import Optional
 from pygments import highlight, lexers, formatters
-from .http import get_api, BASE_URL
 import json
 import requests
 
@@ -8,89 +9,105 @@ __all__ = ("Base", "ObjectConverter")
 
 
 class Base:
-    async def JSONFormatter(JSONData):
-        DATA = json.dumps(JSONData, indent=6, sort_keys=True)
-        LISTING_DATA = highlight(
-            DATA, lexers.JsonLexer(), formatters.TerminalFormatter()
-        )
-        return LISTING_DATA
+    def json_beautifier(data) -> any:
+        """
+        This function only can be used by the CLI.
+        """
 
-    async def produce(total: int, full_url: str, type: str) -> None:
-        if int(total) > 10:
-            return "Estrapy can't produce more than 10 requests in once."
-        if int(total) == 1:
-            return "Estrapy can't produce only 1 request, needed more than 1 request."
-        LIST_URL = []
+        _json = json.dumps(data, indent=6, sort_keys=True)
+        beautifier = highlight(
+            _json, lexers.JsonLexer(), formatters.TerminalFormatter()
+        )
+        return beautifier
+
+    async def produce(total: int, route: str, type: str = "url") -> list:
+        """
+        Returns a list of responses for the given route.
+        """
+
+        generated_urls = []
+
+        if total > 10 or total < 2:
+            raise InvalidNumber(
+                "Can't generate more than 10 or less than 1 request at a time."
+            )
+
         for _ in range(int(total)):
-            url = get_api(full_url)[f"{type}"]
-            LIST_URL.append(url)
-        return LIST_URL
+            url = get_api(route=route).get(type)
+            generated_urls.append(url)
+
+        return generated_urls
 
     async def save(
-        target: Optional[Tuple[str, str]] = None,
+        category: str = None,
         total: Optional[int] = 1,
         filename: Optional[str] = None,
-    ) -> None:
+    ) -> list:
         """
         ### Description
         --------------
-        A Function That Will Download an Image from Estra-API.
+        This function will save image from specified category.
         Filename is optional, if not provided, it will be saved as target index 1 with number behind it.
 
         ### How to use save function (Examples)
         ----------------------------
         ```
+        import asyncio
         from Estrapy.base import Base
 
         async def save():
-            await Base.save(target=("sfw", "hug"), filename="Hug") # Will save a hug gif
+            await Base.save(target=("sfw/hug"), filename="Hug") # Will save a hug gif
 
         async def save_generated():
-            await Base.save(target=("sfw", "smile"), total=3, filename="SmileGif") # Will save 3 smile gifs with number behind its filename
+            await Base.save(target=("sfw/smile"), total=3, filename="SmileGif") # Will save 3 smile gifs with number behind its filename
+
+        asyncio.run(save())
+        asyncio.run(save_generated())
         ```
 
         ### Arguments:
-            - target: Optional[Tuple[str, str]] -- Target to download, (type, target)
-            - total: Optional[int] -- Total of images to download, default is 1
-            - filename: Optional[str] -- Filename to save, default is target index 1 with number behind it.
+            - target: str -- Target to download, (ex. sfw/hug)
+            - total: Optional[int] -- Total of image to download, default is 1
+            - filename: Optional[str] -- Filename to save, default is target category with number behind it.
         """
 
-        url = requests.get(f"{BASE_URL}{target[0]}/{target[1]}").json()
-        links = url["link"]
-        _filename = f"{filename}.{url['type']}"
+        if total > 10 or total < 1:
+            raise InvalidNumber(
+                "Can't generate more than 10 or less than 1 request at a time."
+            )
 
-        i = 0
-        fileList = []
-        urlList = []
-
-        if int(total) < 1:
-            return "Estrapy can't produce only 1 request, needed more than 1 request."
-
-        if int(total) > 10:
-            return "Estrapy can't produce more than 10 requests in once."
-
-        if int(total) == 1:
-            with open(_filename, "wb") as f:
-                f.write(requests.get(links).content)
-            return [_filename, links]
-
-        for _ in range(int(total)):
-            _url = requests.get(f"{BASE_URL}{target[0]}/{target[1]}").json()
-            _links = _url["link"]
-            _filename = f"{filename}{i}.{url['type']}".replace("0", "")
-
-            if filename is None:
-                _filename = f"{target[-1]}{i}.{url['type']}".replace("0", "")
-
-            fileList.append(_filename)
-            urlList.append(_links)
+        if total == 1:
+            req = get_api(route=category)
+            link = req.get("link")
+            _filename = f"{filename if filename else category.split('/')[1].upper()}.{req.get('type')}"
 
             with open(_filename, "wb") as f:
-                f.write(requests.get(_links).content)
+                f.write(requests.get(link).content)
 
-            i += 1
+            return [_filename, link]
 
-        return [fileList, urlList]
+        for i in range(int(total)):
+            url_list = []
+            file_list = []
+
+            req = get_api(route=category)
+            link = req.get("link")
+            _filename = f"{filename}_{i}.{req.get('type')}".replace("0", "1")
+
+            if not (_filename):
+                _filename = (
+                    f"{category.split('/')[1].upper()}_{i}.{req.get('type')}".replace(
+                        "0", "1"
+                    )
+                )
+
+            url_list.append(link)
+            file_list.get(_filename)
+
+            with open(_filename, "wb") as f:
+                f.write(requests.get(link).content)
+
+            return [url_list, file_list]
 
 
 class ObjectConverter:
