@@ -20,7 +20,7 @@ class Base:
         )
         return beautifier
 
-    async def produce(total: int, route: str, type: str = "url") -> list:
+    async def produce(total: int, route: str, type: str = "link") -> list:
         """
         Returns a list of responses for the given route.
         """

@@ -7,9 +7,6 @@ __all__ = ("Nsfw",)
 
 
 class Nsfw:
-    def __str__(self):
-        return PropertiesManager.url
-
     @staticmethod
     async def kill(generate: Optional[int] = None) -> PropertiesManager:
         """

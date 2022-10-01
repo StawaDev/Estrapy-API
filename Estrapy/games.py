@@ -15,9 +15,6 @@ Converter = ObjectConverter()
 
 
 class Games:
-    def __str__(self):
-        return PropertiesManager.text
-
     @staticmethod
     async def truth(generate: Optional[int] = None) -> PropertiesManager:
         """
@@ -47,12 +44,12 @@ class Games:
         route = "games/truth"
         output = get_api(route=route)
         properties = PropertiesManager(
-            url=output.get("link"),
+            text=output.get("text"),
             type=output.get("type"),
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="link")
+            return await Base.produce(total=generate, route=route, type="text")
 
         return properties
 
@@ -85,12 +82,12 @@ class Games:
         route = "games/dare"
         output = get_api(route=route)
         properties = PropertiesManager(
-            url=output.get("link"),
+            text=output.get("text"),
             type=output.get("type"),
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="link")
+            return await Base.produce(total=generate, route=route, type="text")
 
         return properties
 
@@ -174,12 +171,12 @@ class AniGames:
         route = "anigames/truth"
         output = get_api(route=route)
         properties = PropertiesManager(
-            url=output.get("link"),
+            text=output.get("text"),
             type=output.get("type"),
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="link")
+            return await Base.produce(total=generate, route=route, type="text")
 
         return properties
 
@@ -212,12 +209,12 @@ class AniGames:
         route = "anigames/dare"
         output = get_api(route=route)
         properties = PropertiesManager(
-            url=output.get("link"),
+            text=output.get("text"),
             type=output.get("type"),
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="link")
+            return await Base.produce(total=generate, route=route, type="text")
 
         return properties
 
