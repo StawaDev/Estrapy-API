@@ -11,7 +11,7 @@ class AutoUpdate:
         self.url = "https://estra-api.vercel.app/version/"
 
     def update(self):
-        req = requests.post(url=self.url, json={"language": "dart"}).json()
+        req = requests.post(url=self.url, json={"language": "python"}).json()
 
         if version.parse(__version__) == version.parse(req.get("version")):
             return
@@ -20,7 +20,7 @@ class AutoUpdate:
             os.system("pip install Estrapy-API --upgrade")
 
     def reminder(self):
-        req = requests.post(url=self.url, json={"language": "dart"}).json()
+        req = requests.post(url=self.url, json={"language": "python"}).json()
 
         if version.parse(__version__) == version.parse(req.get("version")):
             return
