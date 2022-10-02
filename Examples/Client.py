@@ -5,10 +5,17 @@ Estra = EstraClient()
 
 
 async def main():
-    print("Hug GIF: ", await Estra.Sfw.hug())
-    print("Yuri PNG: ", await Estra.Nsfw.yuri())
-    print("Dare: ", await Estra.Games.dare())
-    print("Help: ", await Estra.Help.all())
+    hug = await Estra.Sfw.hug()
+    print("Hug GIF: ", hug.url)
+
+    yuri = await Estra.Nsfw.yuri()
+    print("Yuri PNG: ", yuri.url)
+
+    dare = await Estra.Games.dare()
+    print("Dare: ", dare.text)
+
+    help = await Estra.Help.all()
+    print("Help: ", help)
 
 
 asyncio.run(main())

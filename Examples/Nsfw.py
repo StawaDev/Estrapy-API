@@ -10,10 +10,18 @@ async def Help():
 asyncio.run(Help())
 
 
-# Function Examples
-async def function():
+# Generate Function Examples
+async def generate():
     print(f"Yaoi: {await Estrapy.Nsfw.yaoi(generate=2)}")
     print(f"Yuri: {await Estrapy.Nsfw.yuri(generate=2)}")
+
+
+asyncio.run(generate())
+
+# Function Examples
+async def function():
+    kill = await Estrapy.Nsfw.kill()
+    print(f"Function: {kill.url}")
 
 
 asyncio.run(function())
@@ -39,16 +47,20 @@ async def dare(ctx):
 # Discord Examples With Embed
 @bot.command()
 async def yaoi(ctx):
+    yaoi = await Estrapy.Nsfw.yaoi()
+
     embed = discord.Embed(title="Yaoi")
-    embed.set_image(await Estrapy.Nsfw.yaoi())
+    embed.set_image(yaoi.url)
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
 
 
 @bot.command()
 async def yuri(ctx):
+    yuri = await Estrapy.Nsfw.yuri()
+
     embed = discord.Embed(title="Yuri")
-    embed.set_image(await Estrapy.Nsfw.yuri())
+    embed.set_image(yuri.text)
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
 

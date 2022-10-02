@@ -11,12 +11,15 @@ asyncio.run(Help())
 
 
 # Function Examples
-async def function():
-    print(f"Truth: {await Estrapy.Games.truth()}")
-    print(f"Dare: {await Estrapy.Games.dare()}")
+async def truth_dare():
+    truth = await Estrapy.Games.truth()
+    dare = await Estrapy.Games.dare()
+
+    print(f"Truth: {truth.text}")
+    print(f"Dare: {dare.text}")
 
 
-asyncio.run(function())
+asyncio.run(truth_dare())
 
 
 # Shipper Examples
@@ -46,12 +49,14 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.command()
 async def truth(ctx):
-    await ctx.send(await Estrapy.Games.truth())
+    truth = await Estrapy.Games.truth()
+    await ctx.send(truth.text)
 
 
 @bot.command()
 async def dare(ctx):
-    await ctx.send(await Estrapy.Games.dare())
+    dare = await Estrapy.Games.dare()
+    await ctx.send(dare.text)
 
 
 bot.run("TOKEN")

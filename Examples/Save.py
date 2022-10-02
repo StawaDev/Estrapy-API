@@ -3,10 +3,13 @@ from Estrapy.base import Base
 
 
 async def save():
-    a = await Base.save(
-        target=("sfw", "hug"), total=2, filename="Hug"
-    )  # Will save 2 of Hug GIFs
-    print("File List: ", a[0], "\nURL List: ", a[1])
+    url_list, file_list = await Base.save(
+        category="sfw/slap", total=3, filename="AnimeSlap"
+    )
+    print(url_list, file_list)
+
+    filename, url = await Base.save(category="sfw/hug", total=1, filename="AnimeHug")
+    print(filename, url)
 
 
 asyncio.run(save())

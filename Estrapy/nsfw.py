@@ -26,7 +26,7 @@ class Nsfw:
         async def kill():
             one = await Estrapy.Nsfw.kill()
             five = await Estrapy.Nsfw.kill(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -64,7 +64,7 @@ class Nsfw:
         async def yuri():
             one = await Estrapy.Nsfw.yuri()
             five = await Estrapy.Nsfw.yuri(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -102,7 +102,7 @@ class Nsfw:
         async def yaoi():
             one = await Estrapy.Nsfw.yaoi()
             five = await Estrapy.Nsfw.yaoi(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:

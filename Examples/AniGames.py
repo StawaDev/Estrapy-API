@@ -10,35 +10,38 @@ async def Help():
 asyncio.run(Help())
 
 # Function Examples
-async def function():
-    print(f"Truth: {await Estrapy.AniGames.truth()}")
-    print(f"Dare: {await Estrapy.AniGames.dare()}")
+async def truth_dare():
+    truth = await Estrapy.AniGames.truth()
+    dare = await Estrapy.AniGames.dare()
+
+    print(f"Truth: {truth.text}")
+    print(f"Dare: {dare.text}")
 
 
-asyncio.run(function())
+asyncio.run(truth_dare())
 
 
 # Second Examples
-async def function2():
-    data = await Estrapy.AniGames.waifu()
-    print(f"Image Link: {data['link']}, Character Name: {data['character_name']}")
+async def waifu_husbando():
+    waifu = await Estrapy.AniGames.waifu()
+    print(f"Image Link: {waifu.url}, Character Name: {waifu.character_name}")
 
-    data2 = await Estrapy.AniGames.husbando()
-    print(f"Image Link: {data2['link']}, Character Name: {data2['character_name']}")
+    husbando = await Estrapy.AniGames.husbando()
+    print(f"Image Link: {husbando.url}, Character Name: {husbando.character_name}")
 
 
-asyncio.run(function2())
+asyncio.run(waifu_husbando())
 
 
 # Third Examples
-async def function3():
+async def shipper_player():
     data = await Estrapy.AniGames.shipper_waifu(player="Stawa")
     print(
-        f"Player: {data['player']}, Character: {data['character']}, Percentage: {data['percentage']}"
+        f"Player: {data.player}, Character: {data.character_name}, Percentage: {data.percentage}"
     )
 
 
-asyncio.run(function3())
+asyncio.run(shipper_player())
 
 
 # Discord Examples
@@ -51,37 +54,45 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.command()
 async def truth(ctx):
-    await ctx.send(await Estrapy.AniGames.truth())
+    truth = await Estrapy.AniGames.truth()
+    await ctx.send(truth.text)
 
 
 @bot.command()
 async def dare(ctx):
-    await ctx.send(await Estrapy.AniGames.dare())
+    dare = await Estrapy.AniGames.dare()
+    await ctx.send(dare.text)
 
 
 @bot.command()
 async def waifu(ctx):
-    await ctx.send(await Estrapy.AniGames.waifu())
+    waifu = await Estrapy.AniGames.waifu()
+    await ctx.send(waifu.url)
 
 
 @bot.command()
 async def husbando(ctx):
-    await ctx.send(await Estrapy.AniGames.husbando())
+    husbando = await Estrapy.AniGames.husbando()
+    await ctx.send(husbando.url)
 
 
 # Embed Version
 @bot.command()
 async def waifu(ctx):
-    embed = discord.Embed(title="Waifu")
-    embed.set_image(await Estrapy.Sfw.waifu())
+    waifu = await Estrapy.AniGames.waifu()
+
+    embed = discord.Embed(title=waifu.character_name)
+    embed.set_image(waifu.url)
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
 
 
 @bot.command()
 async def husbando(ctx):
-    embed = discord.Embed(title="Husbando")
-    embed.set_image(await Estrapy.Sfw.husbando())
+    husbando = await Estrapy.AniGames.husbando()
+
+    embed = discord.Embed(title=husbando.character_name)
+    embed.set_image(husbando.url)
     embed.set_footer(text="Powered by Estrapy")
     await ctx.send(embed=embed)
 

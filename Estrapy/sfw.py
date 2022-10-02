@@ -26,7 +26,7 @@ class Sfw:
         async def run():
             one = await Estrapy.Sfw.run()
             five = await Estrapy.Sfw.run(generate=5)
-            print(f"Generate One: {one.url} Generate 5 as List: {five}")
+            print(f"Generate One: {{one.url}} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -64,7 +64,7 @@ class Sfw:
         async def hug():
             one = await Estrapy.Sfw.hug()
             five = await Estrapy.Sfw.hug(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -102,7 +102,7 @@ class Sfw:
         async def smile():
             one = await Estrapy.Sfw.smile()
             five = await Estrapy.Sfw.smile(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -140,7 +140,7 @@ class Sfw:
         async def headpat():
             one = await Estrapy.Sfw.headpat()
             five = await Estrapy.Sfw.headpat(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -178,7 +178,7 @@ class Sfw:
         async def poke():
             one = await Estrapy.Sfw.poke()
             five = await Estrapy.Sfw.poke(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -216,7 +216,7 @@ class Sfw:
         async def bite():
             one = await Estrapy.Sfw.bite()
             five = await Estrapy.Sfw.bite(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -254,7 +254,7 @@ class Sfw:
         async def neko():
             one = await Estrapy.Sfw.neko()
             five = await Estrapy.Sfw.neko(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -292,7 +292,7 @@ class Sfw:
         async def highfive():
             one = await Estrapy.Sfw.highfive()
             five = await Estrapy.Sfw.highfive(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
@@ -330,7 +330,7 @@ class Sfw:
         async def slap():
             one = await Estrapy.Sfw.slap()
             five = await Estrapy.Sfw.slap(generate=5)
-            print(f"Generate One: one.url Generate 5 as List: {five}")
+            print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
         ## Arguments:
