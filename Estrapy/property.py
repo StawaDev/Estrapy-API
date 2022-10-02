@@ -1,16 +1,16 @@
-from typing import Optional
+__all__ = ("PropertiesManager",)
 
 
 class PropertiesManager(object):
     def __init__(
         self,
-        url: str,
-        text: Optional[str],
-        type: Optional[str],
-        player: Optional[str],
-        character_name: Optional[str],
-        percentage: Optional[str],
-    ):
+        url: str = None,
+        text: str = None,
+        type: str = None,
+        player: str = None,
+        character_name: str = None,
+        percentage: str = None,
+    ) -> None:
         self.url = url
         self.text = text
         self.type = type
@@ -19,7 +19,7 @@ class PropertiesManager(object):
         self.percentage = percentage
 
     @property
-    def url(self):
+    def url(self) -> str:
         return self._url
 
     @url.setter
@@ -27,7 +27,7 @@ class PropertiesManager(object):
         self._url = value
 
     @property
-    def text(self):
+    def text(self) -> str:
         return self._text
 
     @text.setter
@@ -35,7 +35,7 @@ class PropertiesManager(object):
         self._text = value
 
     @property
-    def type(self):
+    def type(self) -> str:
         return self._type
 
     @type.setter
@@ -43,7 +43,7 @@ class PropertiesManager(object):
         self._type = value
 
     @property
-    def player(self):
+    def player(self) -> str:
         return self._player
 
     @type.setter
@@ -51,7 +51,7 @@ class PropertiesManager(object):
         self._player = value
 
     @property
-    def character_name(self):
+    def character_name(self) -> str:
         return self._character_name
 
     @character_name.setter
@@ -59,7 +59,7 @@ class PropertiesManager(object):
         self._character_name = value
 
     @property
-    def percentage(self):
+    def percentage(self) -> str:
         return self._percentage
 
     @percentage.setter
