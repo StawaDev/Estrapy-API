@@ -35,7 +35,7 @@ pip install estrapy-api
 pip install git+https://github.com/StawaDev/Estrapy-API
 ```
 
-###  <span class="emoji">📖</span> Short Example to use Estrapy-API
+### <span class="emoji">📖</span> Short Example to use Estrapy-API
 
 ```py
 import Estrapy
@@ -51,7 +51,7 @@ async def function():
 asyncio.run(function())
 ```
 
-###  <span class="emoji">🔖</span> Automatically Updating Estrapy-API
+### <span class="emoji">🔖</span> Automatically Updating Estrapy-API
 
 This is only optional, the function will be called if version of Estrapy-API is not same with the newewst one.
 
@@ -66,7 +66,7 @@ print(Auto.reminder()) # Reminder of the newewst update
 print(Estrapy.__version__) # Print current version of Estrapy-API
 ```
 
-###  <span class="emoji">❔</span> Help Functions for Estrapy-API
+### <span class="emoji">❔</span> Help Functions for Estrapy-API
 
 ```py
 import Estrapy
@@ -80,7 +80,7 @@ async def Help():
 asyncio.run(Help())
 ```
 
-###  <span class="emoji">🗔</span> Console Input Examples
+### <span class="emoji">🗔</span> Console Input Examples
 
 ```s
 1. estrapy --help # Output all available commands
@@ -89,44 +89,58 @@ asyncio.run(Help())
 4. estrapy save --category <category> --endpoint <endpoint> --total <total> --filename <filename> # Save an Image from EstraAPI (with specific category and endpoint) to your computer
 ```
 
-###  <span class="emoji">👌</span> Sfw Function Endpoints
+<details>
 
-| Sfw Function | Examples               | Description                 |
-| ------------ | ---------------------- | --------------------------- |
-| Run          | Estrapy.Sfw.run()      | Return Sfw Run as GIFs      |
-| Hug          | Estrapy.Sfw.hug()      | Return Sfw Hug as GIFs      |
-| Smile        | Estrapy.Sfw.smile()    | Return Sfw Smile as GIFs    |
-| Neko         | Estrapy.Sfw.neko()     | Return Sfw Neko as GIFs/PNG |
-| Poke         | Estrapy.Sfw.poke()     | Return Sfw Poke as GIFs     |
-| Bite         | Estrapy.Sfw.bite()     | Return Sfw Bite as GIFs     |
-| Slap         | Estrapy.Sfw.slap()     | Return Sfw Slap as GIFs     |
-| Highfive     | Estrapy.Sfw.highfive() | Return Sfw Highfive as GIFs |
-| Headpat      | Estrapy.Sfw.headpat()  | Return Sfw Headpat as GIFs  |
+   <summary><span class="emoji">📃</span><b> View List Endpoints of Estrapy</b></summary>
 
-###  <span class="emoji">⁉️</span> Nsfw Function Endpoints
+<b>Note: Almost every function implemented to `Estrapy` are returning `PropertiesManager`. You can see the examples from here: https://github.com/StawaDev/Estrapy-API/tree/main/Examples</b>
 
-| NSFW Function | Examples            | Description                  |
-| ------------- | ------------------- | ---------------------------- |
-| Kill          | Estrapy.Nsfw.kill() | Return Nsfw Kill as GIFs/PNG |
-| Yuri          | Estrapy.Nsfw.yuri() | Return Nsfw Yuri as GIFs/PNG |
-| Yaoi          | Estrapy.Nsfw.yaoi() | Return Nsfw Yaoi as GIFs/PNG |
+### <span class="emoji">👌</span> Sfw Function Endpoints
 
-###  <span class="emoji">🎮</span> AniGames Function Endpoints
+Available PropertiesManager - `url`, `type`
 
-| AniGames Function | Examples                    | Description                                  |
-| ----------------- | --------------------------- | -------------------------------------------- |
-| Truth             | Estrapy.AniGames.truth()    | Return AniGames Truth About Anime as Text    |
-| Dare              | Estrapy.AniGames.dare()     | Return AniGames Dare About Anime as Text     |
-| Waifu             | Estrapy.AniGames.waifu()    | Return AniGames Waifu About Anime as PNG     |
-| Husbando          | Estrapy.AniGames.husbando() | Return AniGames Husbando About Anime as Text |
+| Sfw Function | Examples               | Output                   |
+| ------------ | ---------------------- | ------------------------ |
+| Run          | Estrapy.Sfw.run()      | Return PropertiesManager |
+| Hug          | Estrapy.Sfw.hug()      | Return PropertiesManager |
+| Smile        | Estrapy.Sfw.smile()    | Return PropertiesManager |
+| Neko         | Estrapy.Sfw.neko()     | Return PropertiesManager |
+| Poke         | Estrapy.Sfw.poke()     | Return PropertiesManager |
+| Bite         | Estrapy.Sfw.bite()     | Return PropertiesManager |
+| Slap         | Estrapy.Sfw.slap()     | Return PropertiesManager |
+| Highfive     | Estrapy.Sfw.highfive() | Return PropertiesManager |
+| Headpat      | Estrapy.Sfw.headpat()  | Return PropertiesManager |
 
-###  <span class="emoji">🎮</span> Games Function Endpoints
+### <span class="emoji">⁉️</span> Nsfw Function Endpoints
 
-| Games Function | Examples                | Description                   |
-| -------------- | ----------------------- | ----------------------------- |
-| Truth          | Estrapy.Games.truth()   | Return Games Truth as Text    |
-| Dare           | Estrapy.Games.dare()    | Return Games Dare as Text     |
-| Shipper        | Estrapy.Games.shipper() | Return Games Shipper as Image |
+Available PropertiesManager - `url`, `type`
+
+| NSFW Function | Examples            | Output                   |
+| ------------- | ------------------- | ------------------------ |
+| Kill          | Estrapy.Nsfw.kill() | Return PropertiesManager |
+| Yuri          | Estrapy.Nsfw.yuri() | Return PropertiesManager |
+| Yaoi          | Estrapy.Nsfw.yaoi() | Return PropertiesManager |
+
+### <span class="emoji">🎮</span> AniGames Function Endpoints
+
+Available PropertiesManager - `url`, `character_name`, `text`, `type`, `player`, `percentage`
+
+| AniGames Function | Examples                    | Output                   |
+| ----------------- | --------------------------- | ------------------------ |
+| Truth             | Estrapy.AniGames.truth()    | Return PropertiesManager |
+| Dare              | Estrapy.AniGames.dare()     | Return PropertiesManager |
+| Waifu             | Estrapy.AniGames.waifu()    | Return PropertiesManager |
+| Husbando          | Estrapy.AniGames.husbando() | Return PropertiesManager |
+
+### <span class="emoji">🎮</span> Games Function Endpoints
+
+Available PropertiesManager - `text`, `type`
+
+| Games Function | Examples                | Output                   |
+| -------------- | ----------------------- | ------------------------ |
+| Truth          | Estrapy.Games.truth()   | Return PropertiesManager |
+| Dare           | Estrapy.Games.dare()    | Return PropertiesManager |
+| Shipper        | Estrapy.Games.shipper() | Return PropertiesManager |
 
 ### <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/1024px-Osu%21_Logo_2016.svg.png width="30" height="30"> OsuClients Function Endpoints
 
@@ -145,6 +159,8 @@ asyncio.run(Help())
 | Run             | Trivia.run(random_pick=True)                                                   | Run Trivia With Return Statement     |
 | Answer          | Trivia.answer(run, guess="answer")                                             | Answer Trivia From Run Function      |
 | More Examples   | [In Our Github!](https://github.com/StawaDev/Estrapy-API)                      | More examples I guess?               |
+
+</details>
 
 ### <span class="emoji">🔗</span> Links
 
