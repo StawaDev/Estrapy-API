@@ -4,7 +4,7 @@ f = open("README.md", "r", encoding="utf-8")
 README = f.read()
 
 setup(
-    name="Estrapy",
+    name="Estrapy-API",
     version="0.2.7",
     packages=find_packages(),
     install_requires=["requests", "pygments"],

@@ -82,7 +82,7 @@ class Base:
         if total == 1:
             req = get_api(route=category)
             link = req.get("link")
-            _filename = f"{filename.title() if filename else category.split('/')[1].title()}.{req.get('type')}"
+            _filename = f"{filename if filename else category.split('/')[1].title()}.{req.get('type')}"
 
             with open(_filename, "wb") as f:
                 f.write(requests.get(link).content)
@@ -92,7 +92,7 @@ class Base:
         for i in range(0, int(total)):
             req = get_api(route=category)
             link = req.get("link")
-            _filename = f"{filename.title()}_{i+1}.{req.get('type')}"
+            _filename = f"{filename}_{i+1}.{req.get('type')}"
 
             if not (_filename):
                 _filename = f"{category.split('/')[1].title()}_{i+1}.{req.get('type')}"
