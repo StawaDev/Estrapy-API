@@ -3,9 +3,10 @@
 </h1>
 
 <h2 align="center">
-    A Basic Wrapper Anime Image API with Many Features
+    An Easy-to-Use Wrapper Anime Images API with Many Others Features
 </h2>
 <p align="center">
+<a href="https://codeclimate.com/github/StawaDev/Estrapy-API/maintainability"><img src="https://api.codeclimate.com/v1/badges/94df604d6f4f73999c8e/maintainability"/></a>
 <a href="https://stawa.gitbook.io/estraapi-documentation/"><img src ="https://img.shields.io/badge/Estra--API-Documentation-brightgreen?style=for-the-badge"></a>
 <a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/Estrapy-API?style=for-the-badge"></a>
 <a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI" src="https://img.shields.io/pypi/v/Estrapy-API?color=a&label=Estrapy-API&style=for-the-badge"></a>
@@ -20,7 +21,7 @@
 - User Friendly Code
 - OSU API Wrapper
 - Trivia
-- Truth or Dare
+- Truth or Dare Challenges
 
 ### <span class="emoji">📦</span> Installing The Stable Version of Estrapy-API
 
@@ -34,32 +35,20 @@ pip install estrapy-api
 pip install git+https://github.com/StawaDev/Estrapy-API
 ```
 
-###  <span class="emoji">📖</span> Example to use Estrapy-API
+###  <span class="emoji">📖</span> Short Example to use Estrapy-API
 
 ```py
-# First Examples
 import Estrapy
 import asyncio
 
 async def function():
-    print(f"A Running GIF: {await Estrapy.Sfw.run()}")
-    print(f"A Hug GIF: {await Estrapy.Sfw.hug()}")
+    run = await Estrapy.Sfw.run()
+    hug = await Estrapy.Sfw.hug()
+
+    print(f"A Running GIF: {run.url}")
+    print(f"A Hug GIF: {hug.url}")
 
 asyncio.run(function())
-
-
-# Discord Examples
-import Estrapy
-
-@bot.command()
-async def run(ctx): # Without Embed
-    await ctx.send(await Estrapy.Sfw.run())
-
-@bot.command()
-async def run(ctx): # With Embed
-    embed = discord.Embed(title="Running GIF")
-    embed.set_image(url=await Estrapy.Sfw.run())
-    await ctx.send(embed=embed)
 ```
 
 ###  <span class="emoji">🔖</span> Automatically Updating Estrapy-API
@@ -70,7 +59,9 @@ This is only optional, the function will be called if version of Estrapy-API is 
 import Estrapy
 from Estrapy import AutoUpdate
 
-EstraUpdate = AutoUpdate(reminder=True, auto=False).run()
+Auto = AutoUpdate()
+updater = Auto.update() # Automatically update Estrapy to the newewst version
+print(Auto.reminder()) # Reminder of the newewst update
 
 print(Estrapy.__version__) # Print current version of Estrapy-API
 ```
@@ -95,7 +86,7 @@ asyncio.run(Help())
 1. estrapy --help # Output all available commands
 2. estrapy menu # Output information about Estrapy-API
 3. estrapy help --category <category> # Output all available endpoints in <category>
-4. estrapy save --category <category> --endpoint <endpoint> # Save an Image from EstraAPI (with specific category and endpoint) to your computer
+4. estrapy save --category <category> --endpoint <endpoint> --total <total> --filename <filename> # Save an Image from EstraAPI (with specific category and endpoint) to your computer
 ```
 
 ###  <span class="emoji">👌</span> Sfw Function Endpoints
@@ -159,4 +150,4 @@ asyncio.run(Help())
 
 - [Documentation](https://stawa.gitbook.io/estraapi-documentation)
 - [Homepage](https://github.com/StawaDev/Estrapy-API)
-- [Application Programming Interface](https://estra-api.herokuapp.com)
+- [Application Programming Interface](https://estra-api.vercel.app)
