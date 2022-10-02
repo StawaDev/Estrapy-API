@@ -25,6 +25,7 @@ setup(
     entry_points="""
     [console_scripts]
     estrapy=Estrapy.cli:main
+    estrapy menu=Estrapy.cli:menu
     estrapy help=Estrapy.cli:help
     estrapy save=Estrapy.cli:save
     """,

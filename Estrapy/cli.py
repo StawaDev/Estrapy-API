@@ -1,10 +1,9 @@
-from .help import Help
 from .__init__ import __version__
-from .http import get_api
+from .help import Help
+from .base import Base
 from tabulate import tabulate
 import asyncclick as click
 import anyio
-import requests
 
 
 @click.command()
@@ -18,6 +17,7 @@ async def menu():
     \nGithub  : https://github.com/StawaDev/Estrapy-API
     \nAPI     : https://estra-api.herokuapp.com/api/
     """
+
     output = tabulate(
         [[text]],
         tablefmt="fancy_grid",
@@ -40,8 +40,9 @@ async def help(category):
     """
     A Help Function for Estrapy Using Command Line Interface.
     """
+
     if str.lower(category) == "all":
-        print(await Help.all())
+        print(Base.json_beautifier(await Help.all()))
     if str.lower(category) == "sfw":
         print(await Help.sfw())
     if str.lower(category) == "nsfw":
@@ -58,23 +59,27 @@ async def help(category):
     "-c",
     default="sfw",
     help="Category of the image",
-    type=click.Choice(["sfw", "nsfw", "games", "anigames"]),
+    type=click.Choice(["sfw", "nsfw", "anigames"]),
     multiple=False,
 )
 @click.option(
     "--endpoint", "-e", default="hug", help="Endpoint of the image", multiple=False
 )
-async def save(category, endpoint):
+@click.option(
+    "--total", "-t", default=1, help="Total requests to download", multiple=False
+)
+@click.option(
+    "--filename", "-f", default=None, help="Name of File for image", multiple=False
+)
+async def save(category: str, endpoint: str, total: int, filename: str = None):
     """
     A Save Function for Estrapy Using Command Line Interface.
     """
-    try:
-        x = get_api(f"{category}/{endpoint}")
-        with open(f"{endpoint}.{x['type']}", "wb") as f:
-            f.write(requests.get(x["link"]).content)
-            print(f"{endpoint}.{x['type']} saved!")
-    except:
-        print("Error! Please check your endpoint and category.")
+
+    x = await Base.save(
+        category=f"{category}/{endpoint}", total=total, filename=filename
+    )
+    print(x)
 
 
 @click.group()
