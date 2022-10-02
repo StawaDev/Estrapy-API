@@ -71,6 +71,9 @@ class Base:
             - filename: Optional[str] -- Filename to save, default is target category with number behind it.
         """
 
+        url_list = []
+        file_list = []
+
         if total > 10 or total < 1:
             raise InvalidNumber(
                 "Can't generate more than 10 or less than 1 request at a time."
@@ -79,35 +82,28 @@ class Base:
         if total == 1:
             req = get_api(route=category)
             link = req.get("link")
-            _filename = f"{filename if filename else category.split('/')[1].upper()}.{req.get('type')}"
+            _filename = f"{filename.title() if filename else category.split('/')[1].title()}.{req.get('type')}"
 
             with open(_filename, "wb") as f:
                 f.write(requests.get(link).content)
 
             return [_filename, link]
 
-        for i in range(int(total)):
-            url_list = []
-            file_list = []
-
+        for i in range(0, int(total)):
             req = get_api(route=category)
             link = req.get("link")
-            _filename = f"{filename}_{i}.{req.get('type')}".replace("0", "1")
+            _filename = f"{filename.title()}_{i+1}.{req.get('type')}"
 
             if not (_filename):
-                _filename = (
-                    f"{category.split('/')[1].upper()}_{i}.{req.get('type')}".replace(
-                        "0", "1"
-                    )
-                )
+                _filename = f"{category.split('/')[1].title()}_{i+1}.{req.get('type')}"
 
             url_list.append(link)
-            file_list.get(_filename)
+            file_list.append(_filename)
 
             with open(_filename, "wb") as f:
                 f.write(requests.get(link).content)
 
-            return [url_list, file_list]
+        return [url_list, file_list]
 
 
 class ObjectConverter:
