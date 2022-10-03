@@ -9,7 +9,11 @@ import requests
 import random as rd
 import time
 
-__all__ = ("Games", "AniGames", "OsuClients", "Trivia")
+__all__ = (
+    "Games",
+    "AniGames",
+    "Trivia",
+)
 
 Converter = ObjectConverter()
 
@@ -343,94 +347,6 @@ class AniGames:
         )
 
         return properties
-
-
-class OsuClients:
-    def __init__(
-        self,
-        client_id: Union[int, str] = None,
-        client_secret: str = None,
-        output: str = "json",
-    ) -> None:
-
-        self.client_id = client_id
-        self.client_secret = client_secret
-        self.output = output
-        self.output_list = ["json", "object"]
-
-    async def osuprofile(
-        self,
-        username: Union[int, str] = None,
-        formatter: bool = False,
-    ):
-        """
-        Osuprofile
-        --------------
-        Return Osuprofile JSON Data
-
-        Examples
-        --------------
-        ```
-        async def osuprofile():
-            print(await Estrapy.OsuClients.osuprofile(username="Stawa"))
-        ```
-
-        :param username
-        :type username: int or str
-        :param client_id
-        :type client_id: int
-        :param client_secret
-        :type client_secret: str
-        :param formatter: It will formatting JSON Data with EstraFormatter
-        :type formatter: bool, default `False`
-        """
-
-        url = get_api(
-            f"osu/?user={username}&client_id={self.client_id}&client_secret={self.client_secret}"
-        )
-        if self.output == self.output_list[1]:
-            return Converter.convert_obj(json.dumps(url))
-
-        if formatter:
-            return await Base.JSONFormatter(url)
-        return url
-
-    async def osubeatmap(
-        self,
-        beatmap_id: int,
-        formatter: bool = False,
-    ):
-        """
-        Osubeatmap
-        --------------
-        Return Osubeatmap JSON Data
-
-        Examples
-        --------------
-        ```
-        async def osubeatmap():
-            print(await Estrapy.OsuClients.osubeatmap(beatmap_id="2405223"))
-        ```
-
-        :param beatmap_id
-        :type beatmap_id: int or str
-        :param client_id
-        :type client_id: int
-        :param client_secret
-        :type client_secret: str
-        :param formatter: It will formatting JSON Data with EstraFormatter
-        :type formatter: bool, default `False`
-        """
-
-        url = get_api(
-            f"osubeatmap/?id={beatmap_id}&client_id={self.client_id}&client_secret={self.client_secret}"
-        )
-        if self.output == self.output_list[1]:
-            return Converter.convert_obj(json.dumps(url))
-
-        if formatter:
-            return await Base.JSONFormatter(url)
-        return url
 
 
 class Trivia:
