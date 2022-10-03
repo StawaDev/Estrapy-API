@@ -2,6 +2,7 @@ from .sfw import *
 from .nsfw import *
 from .games import *
 from .osu import *
+from .trivia import *
 from .autoupdate import *
 from .errors import *
 from .help import Help
@@ -22,4 +23,5 @@ class EstraClient:
         self.Nsfw = Nsfw()
         self.Games = Games()
         self.Help = Help()
+        self.OsuClient = OsuClient()
         self.Trivia = Trivia()
