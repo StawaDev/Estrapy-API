@@ -1,45 +1,23 @@
 import Estrapy
-from Estrapy import OsuClients
+from Estrapy import OsuClient
 import asyncio
 
-client_id = ""  # Put your own osu client_id
-client_secret = ""  # Put your own osu client_secret
-Osu = OsuClients(client_id=client_id, client_secret=client_secret)
-OsuObject = OsuClients(
-    client_id=client_id, client_secret=client_secret, output="object"
-)
+client_id = "xxx"  # Put your own osu client_id
+client_secret = "xxx"  # Put your own osu client_secret
+Osu = OsuClient(client_id=client_id, client_secret=client_secret)
 
 
 async def beatmap():
-    data = await Osu.osubeatmap(beatmap_id="2405223")
-    data_formatter = await Osu.osubeatmap(
-        beatmap_id="2405223",
-        formatter=True,  # Keep it on mind, this will only making the output with better formatting JSON format
-    )
-    print(data["beatmapset"]["artist"])
-    print(data_formatter)
+    data = await Osu.beatmap(beatmap_id=2405223)
+    print(data.beatmapset.get("artist"))
 
 
 asyncio.run(beatmap())
 
 
 async def profile():
-    data = await Osu.osuprofile(username="Stawa")
-    data_formatter = await Osu.osuprofile(
-        username="Stawa",
-        formatter=True,  # Keep it on mind, this will only making the output with better formatting JSON format
-    )
-    print(data["country"]["name"])
-    print(data_formatter)
+    data = await Osu.profile(username="Stawa")
+    print(data.country.get("name"))
 
 
 asyncio.run(profile())
-
-
-async def osu_object():
-    example = await OsuObject.osuprofile(username="Stawa")
-    print(example.avatar_url)
-    print(example.discord)
-
-
-asyncio.run(osu_object())
