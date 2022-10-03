@@ -9,7 +9,7 @@ async def create_question():
 
     question = await EstraTrivia.add(
         question="Who is the creator of this packages?",
-        answer=list(options)[0],  # Or "A"
+        answer="A",  # Or list(options)[0]
         options=options,
     )
     print(question)
@@ -39,8 +39,8 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.command()
 async def trivia(ctx):
-    question = await EstraTrivia.run(random_pick=True)
-    await ctx.send("Question: {}\n{}".format(question[0], " ".join(question[3])))
+    num, question, answer, options = await EstraTrivia.run(random_pick=True)
+    await ctx.send(f"Question ({num}): {question}\n{options}")
     answer = await bot.wait_for(
         "message", check=lambda message: message.author == ctx.author
     )
