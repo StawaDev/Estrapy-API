@@ -1,6 +1,7 @@
 from .sfw import *
 from .nsfw import *
 from .games import *
+from .osu import *
 from .autoupdate import *
 from .errors import *
 from .help import Help
