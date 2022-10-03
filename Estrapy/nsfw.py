@@ -38,6 +38,7 @@ class Nsfw:
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
+            total=output.get("total_image"),
         )
 
         if generate:
@@ -76,6 +77,7 @@ class Nsfw:
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
+            total=output.get("total_image"),
         )
 
         if generate:
@@ -114,6 +116,7 @@ class Nsfw:
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
+            total=output.get("total_image"),
         )
 
         if generate:

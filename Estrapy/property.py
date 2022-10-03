@@ -2,21 +2,14 @@ __all__ = ("PropertiesManager",)
 
 
 class PropertiesManager(object):
-    def __init__(
-        self,
-        url: str = None,
-        text: str = None,
-        type: str = None,
-        player: str = None,
-        character_name: str = None,
-        percentage: str = None,
-    ) -> None:
-        self.url = url
-        self.text = text
-        self.type = type
-        self.player = player
-        self.character_name = character_name
-        self.percentage = percentage
+    def __init__(self, *args, **kwargs) -> None:
+        self.url = kwargs.get("url")
+        self.text = kwargs.get("text")
+        self.type = kwargs.get("type")
+        self.player = kwargs.get("player")
+        self.character_name = kwargs.get("character_name")
+        self.percentage = kwargs.get("percentage")
+        self.total = kwargs.get("total")
 
     @property
     def url(self) -> str:
@@ -65,3 +58,11 @@ class PropertiesManager(object):
     @percentage.setter
     def percentage(self, value):
         self._percentage = value
+
+    @property
+    def total(self) -> str:
+        return self._total
+
+    @total.setter
+    def total(self, value):
+        self._total = value

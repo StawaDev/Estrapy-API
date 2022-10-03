@@ -46,6 +46,7 @@ class Games:
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
+            total=output.get("total_text"),
         )
 
         if generate:
@@ -84,6 +85,7 @@ class Games:
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
+            total=output.get("total_text"),
         )
 
         if generate:
@@ -173,6 +175,7 @@ class AniGames:
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
+            total=output.get("total_text"),
         )
 
         if generate:
@@ -211,6 +214,7 @@ class AniGames:
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
+            total=output.get("total_text"),
         )
 
         if generate:
@@ -245,6 +249,7 @@ class AniGames:
             url=output.get("link"),
             type=output.get("type"),
             character_name=output.get("character_name"),
+            total=output.get("total_image"),
         )
 
         return properties
@@ -274,6 +279,7 @@ class AniGames:
             url=output.get("link"),
             type=output.get("type"),
             character_name=output.get("character_name"),
+            total=output.get("total_image"),
         )
 
         return properties
