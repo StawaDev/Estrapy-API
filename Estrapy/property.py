@@ -1,4 +1,8 @@
-__all__ = ("PropertiesManager",)
+__all__ = (
+    "PropertiesManager",
+    "OsuProfileProperties",
+    "OsuBeatmapProperties",
+)
 
 
 class PropertiesManager(object):
@@ -66,3 +70,115 @@ class PropertiesManager(object):
     @total.setter
     def total(self, value):
         self._total = value
+
+
+class OsuProfileProperties(object):
+    __slots__ = (
+        "avatar_url",
+        "country_code",
+        "default_group",
+        "id",
+        "is_active",
+        "is_bot",
+        "is_deleted",
+        "is_online",
+        "is_supporter",
+        "last_visit",
+        "pm_friends_only",
+        "profile_colour",
+        "username",
+        "cover_url",
+        "discord",
+        "has_supported",
+        "interests",
+        "join_date",
+        "kudosu",
+        "location",
+        "max_blocks",
+        "max_friends",
+        "occupation",
+        "playmode",
+        "playstyle",
+        "post_count",
+        "profile_order",
+        "title",
+        "title_url",
+        "twitter",
+        "website",
+        "country",
+        "cover",
+        "account_history",
+        "active_tournament_banner",
+        "badges",
+        "beatmap_playcounts_count",
+        "comments_count",
+        "favourite_beatmapset_count",
+        "follower_count",
+        "graveyard_beatmapset_count",
+        "groups",
+        "guest_beatmapset_count",
+        "loved_beatmapset_count",
+        "mapping_follower_count",
+        "monthly_playcounts",
+        "page",
+        "pending_beatmapset_count",
+        "previous_usernames",
+        "ranked_beatmapset_count",
+        "replays_watched_counts",
+        "scores_best_count",
+        "scores_first_count",
+        "scores_pinned_count",
+        "scores_recent_count",
+        "statistics",
+        "support_level",
+        "user_achievements",
+        "rank_history",
+        "rankHistory",
+        "ranked_and_approved_beatmapset_count",
+        "unranked_beatmapset_count",
+    )
+
+    def __init__(self, _json: dict = None):
+        if _json:
+            for key, value in _json.items():
+                setattr(self, key, value)
+
+
+class OsuBeatmapProperties(object):
+    __slots__ = (
+        "beatmapset_id",
+        "difficulty_rating",
+        "id",
+        "mode",
+        "status",
+        "total_length",
+        "user_id",
+        "version",
+        "accuracy",
+        "ar",
+        "bpm",
+        "convert",
+        "count_circles",
+        "count_sliders",
+        "count_spinners",
+        "cs",
+        "deleted_at",
+        "drain",
+        "hit_length",
+        "is_scoreable",
+        "last_updated",
+        "mode_int",
+        "passcount",
+        "playcount",
+        "ranked",
+        "url",
+        "checksum",
+        "beatmapset",
+        "failtimes",
+        "max_combo",
+    )
+
+    def __init__(self, _json: dict = None):
+        if _json:
+            for key, value in _json.items():
+                setattr(self, key, value)
