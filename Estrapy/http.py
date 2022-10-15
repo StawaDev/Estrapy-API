@@ -2,16 +2,16 @@ import json.decoder
 import requests
 from .errors import APIOffline, InvalidStatusCode, InvalidResponse
 
-__all__ = ("BASE_URL", "get_api")
+__all__ = ("base_url", "get_api", "post_api")
 
-BASE_URL = "https://estra-api.vercel.app/api/v1/"
+base_url = "https://estra-api.vercel.app/api/v1/"
 
 
 def get_api(route: str) -> dict:
     r = None
 
     try:
-        r = requests.get(BASE_URL + route)
+        r = requests.get(base_url + route)
 
         if not 200 <= r.status_code < 300:
             raise InvalidStatusCode(f"{route} returned {r.status_code}")
@@ -27,7 +27,7 @@ def post_api(route: str, json: any) -> dict:
     r = None
 
     try:
-        r = requests.post(url=BASE_URL + route, json=json)
+        r = requests.post(url=base_url + route, json=json)
 
         if not 200 <= r.status_code < 300:
             raise InvalidStatusCode(f"{route} returned {r.status_code}")

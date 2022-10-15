@@ -1,10 +1,9 @@
-from .http import get_api, BASE_URL
+from .http import get_api, post_api
 from .base import Base, ObjectConverter
 from .property import PropertiesManager
-from typing import Union, Optional
+from typing import Optional
 from io import BytesIO
 from PIL import Image
-import requests
 
 __all__ = (
     "Games",
@@ -94,53 +93,50 @@ class Games:
         return properties
 
     @staticmethod
-    async def shipper(
-        player: Optional[str],
-        player2: Optional[str],
-        player_image: Union[str, bytes] = None,
-        player2_image: Union[str, bytes] = None,
-        background_image: Union[str, bytes] = None,
-        background_size: Optional[tuple] = None,
-    ):
+    async def shipper(players: dict, background: dict = None):
         """
-        Description
+        ## Description
         --------------
-        A Function That Will Return an Edited Image with customized Background and Player Image.
-        Currently, for the customized image like player_image still using a url. And also, for the background image default size is `1920x1080`.
-        There's 2 available size for custom background picture, `1920x1080` and `1280x720`.
-        In case you don't want to add an custom background or a player image, you can add `None` to the parameter value.
+        This function will retrieve image from the API server and return it as `PIL.Image` object.
+        Keep in mind that this function will not having an update for a while,
+        so you can create new issues on our github: https://github.com/StawaDev/Estrapy-API/issues with using label `enhancement`.
 
-        How to use shipper (image) function (Examples)
-        ----------------------------
+        ## Note
+        --------------
+        Arguments for `background` is requires `background_size`, which is only available only two sizes `1920x1080` and `1280x720`.
+
+        ## Short Example
+        --------------
+
+        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
 
         ```
+        import Estrapy
+
+        _player = {
+            "player_1": "User_1",
+            "player_2": "User_2",
+        }
+
+        _background = {
+            "background_url": "https://xxx",
+            "background_size": "1920x720",
+        }
+
         async def shipper():
-            test = await Estrapy.Games.shipper(player="Player1", player2="Player2", player_image="None", player2_image="None", background="None", background_size="None")
-            test.show()
+            x = await Estrapy.Games.shipper(players=_player, background=_background)
+            x.save("Shipper.png")
         ```
 
-        :param player
-        :type player: Optional[str]
-        :param player2
-        :type player2: Optional[str]
-        :param player_image
-        :type player_image: Union[str, bytes]
-        :param player_image2
-        :type player_image2: Union[str, bytes]
-        :param background_image
-        :type background_image: Union[str, bytes]
-        :param background_size
-        :type background_size: Optional[str]
+        ## Arguments:
+            - players: dict -- Set the player information
+            - background: dict -- Set the background
         """
-        url = f"{BASE_URL}/games/shipper/image/?player={player}&player2={player2}&player_image={player_image}&player2_image={player2_image}&background={background_image}"
-        if background_size is None:
-            req = requests.get(url)
-        if background_size is not None:
-            size = f"{background_size[0]}x{background_size[1]}"
-            req = requests.get(f"{url}&background_size={size}")
 
-        a = Image.open(BytesIO(req.content))
-        return a
+        _json = {"players": players, "background": background}
+        req = post_api(route="games/shipper", json=_json)
+
+        return Image.open(BytesIO(req.content))
 
 
 class AniGames:

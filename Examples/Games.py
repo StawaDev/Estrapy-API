@@ -24,16 +24,18 @@ asyncio.run(truth_dare())
 
 # Shipper Examples
 async def shipper():
-    test = await Estrapy.Games.shipper(
-        player="Player1",
-        player2="Player2",
-        player_image="None",
-        player2_image="None",
-        background="None",
-        background_size="None",
-    )
-    test.show()  # Showing the Image
-    test.save("Shipper.png")  # Saving the Image
+    _player = {
+        "player_1": "User_1",
+        "player_2": "User_2",
+    }
+
+    _background = {
+        "background_url": "https://xxx",
+        "background_size": "1920x720",
+    }
+
+    x = await Estrapy.Games.shipper(players=_player, background=_background)
+    x.save("Shipper.png")
 
 
 asyncio.run(shipper())

@@ -18,10 +18,12 @@ class EstraClient:
     Client class for Estrapy, which provides access to the Estrapy's functions.
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         self.Sfw = Sfw()
         self.Nsfw = Nsfw()
         self.Games = Games()
         self.Help = Help()
-        self.OsuClient = OsuClient()
+        self.OsuClient = OsuClient(
+            client_id=kwargs.get("client_id"), client_secret=kwargs.get("client_secret")
+        )
         self.Trivia = Trivia()
