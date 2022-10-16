@@ -1,10 +1,10 @@
-<h1 align="center">
-    Estrapy-API
-</h1>
-
 <h2 align="center">
-    An Easy-to-Use Wrapper Anime Images API with Many Others Features
+    Estrapy-API
 </h2>
+
+<h3 align="center">
+    An Easy-to-Use Wrapper Anime Images API with Many Others Features
+</h3>
 <p align="center">
 <a href="https://codeclimate.com/github/StawaDev/Estrapy-API/maintainability"><img src="https://api.codeclimate.com/v1/badges/94df604d6f4f73999c8e/maintainability"/></a>
 <a href="https://stawa.gitbook.io/estraapi-documentation/"><img src ="https://img.shields.io/badge/Estra--API-Documentation-brightgreen?style=flat-square"></a>
@@ -144,10 +144,13 @@ Available PropertiesManager - `text`, `type`
 
 ### <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/1024px-Osu%21_Logo_2016.svg.png width="30" height="30"> OsuClients Function Endpoints
 
-| OsuClients Function | Examples                                               | Description                 |
-| ------------------- | ------------------------------------------------------ | --------------------------- |
-| OsuProfile          | Estrapy.OsuClients.osuprofile(username="username")     | Return OsuProfile JSON Data |
-| OsuBeatmap          | Estrapy.OsuClients.osubeatmap(beatmap_id="beatmap_id") | Return OsuBeatmap JSON Data |
+Available OsuProfileProperties - [On Our Github](https://github.com/StawaDev/Estrapy-API/blob/main/Estrapy/property.py#L75)
+Available OsuBeatmapProperties - [On Our Github](https://github.com/StawaDev/Estrapy-API/blob/main/Estrapy/property.py#L147)
+
+| OsuClients Function | Examples                                            | Description                 |
+| ------------------- | --------------------------------------------------- | --------------------------- |
+| OsuProfile          | Estrapy.OsuClients.profile(username="Stawa")        | Return OsuProfileProperties |
+| OsuBeatmap          | Estrapy.OsuClients.beatmap(beatmap_id="beatmap_id") | Return OsuBeatmapProperties |
 
 ### <span class="emoji">❔</span> Trivia Function Endpoints
 
