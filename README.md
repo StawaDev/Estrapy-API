@@ -1,6 +1,6 @@
-<h2 align="center">
+<h1 align="center">
     Estrapy-API
-</h2>
+</h1>
 
 <h3 align="center">
     An Easy-to-Use Wrapper Anime Images API with Many Others Features
