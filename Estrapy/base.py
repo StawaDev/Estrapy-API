@@ -104,18 +104,3 @@ class Base:
                 f.write(requests.get(link).content)
 
         return [url_list, file_list]
-
-
-class ObjectConverter:
-    def __init__(self, **kwargs):
-        self.json = kwargs
-        for i in self.json.keys():
-            setattr(self, i, self.json[i])
-
-    @classmethod
-    def convert_obj(cls, obj):
-        x = json.loads(obj)
-        return cls(**x)
-
-    def __repr__(self):
-        return f"{self.json}"

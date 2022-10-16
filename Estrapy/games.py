@@ -1,5 +1,5 @@
 from .http import get_api, post_api
-from .base import Base, ObjectConverter
+from .base import Base
 from .property import PropertiesManager
 from typing import Optional
 from io import BytesIO
@@ -9,8 +9,6 @@ __all__ = (
     "Games",
     "AniGames",
 )
-
-Converter = ObjectConverter()
 
 
 class Games:
