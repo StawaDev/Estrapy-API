@@ -17,6 +17,7 @@ class OsuClient:
 
     async def profile(
         self,
+        client: Optional[any] = None,
         user_id: Optional[int] = None,
         username: Optional[str] = None,
     ) -> OsuProfileProperties:
@@ -51,6 +52,13 @@ class OsuClient:
             "client_secret": self.client_secret,
         }
 
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route="osu/user", json=_json)
+
         url = post_api(route="osu/user", json=_json)
         output = OsuProfileProperties(url)
 
@@ -58,7 +66,8 @@ class OsuClient:
 
     async def beatmap(
         self,
-        beatmap_id: int,
+        client: Optional[any] = None,
+        beatmap_id: int = None,
     ) -> OsuBeatmapProperties:
         """
         ## Description
@@ -89,6 +98,13 @@ class OsuClient:
             "client_id": self.client_id,
             "client_secret": self.client_secret,
         }
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route="osu/beatmap", json=_json)
 
         url = post_api("osu/beatmap", json=_json)
         output = OsuBeatmapProperties(url)

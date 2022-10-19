@@ -1,4 +1,4 @@
-from .http import get_api
+from .http import get_api, post_api
 from .base import Base
 from .property import PropertiesManager
 from typing import Optional
@@ -8,7 +8,9 @@ __all__ = ("Sfw",)
 
 class Sfw:
     @staticmethod
-    async def run(generate: Optional[int] = None) -> PropertiesManager:
+    async def run(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -30,15 +32,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/run"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -47,7 +59,9 @@ class Sfw:
         return properties
 
     @staticmethod
-    async def hug(generate: Optional[int] = None) -> PropertiesManager:
+    async def hug(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -69,15 +83,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/hug"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -86,7 +110,9 @@ class Sfw:
         return properties
 
     @staticmethod
-    async def smile(generate: Optional[int] = None) -> PropertiesManager:
+    async def smile(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -108,15 +134,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/smile"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -125,7 +161,9 @@ class Sfw:
         return properties
 
     @staticmethod
-    async def headpat(generate: Optional[int] = None) -> PropertiesManager:
+    async def headpat(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -147,15 +185,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/headpat"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -164,7 +212,9 @@ class Sfw:
         return properties
 
     @staticmethod
-    async def poke(generate: Optional[int] = None) -> PropertiesManager:
+    async def poke(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -186,15 +236,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/poke"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -203,7 +263,9 @@ class Sfw:
         return properties
 
     @staticmethod
-    async def bite(generate: Optional[int] = None) -> PropertiesManager:
+    async def bite(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -225,15 +287,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/bite"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -242,7 +314,9 @@ class Sfw:
         return properties
 
     @staticmethod
-    async def neko(generate: Optional[int] = None) -> PropertiesManager:
+    async def neko(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -264,15 +338,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/neko"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -281,7 +365,9 @@ class Sfw:
         return properties
 
     @staticmethod
-    async def highfive(generate: Optional[int] = None) -> PropertiesManager:
+    async def highfive(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -303,15 +389,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/highfive"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -320,7 +416,9 @@ class Sfw:
         return properties
 
     @staticmethod
-    async def slap(generate: Optional[int] = None) -> PropertiesManager:
+    async def slap(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -342,15 +440,25 @@ class Sfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/slap"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:

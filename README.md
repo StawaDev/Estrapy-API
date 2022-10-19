@@ -14,14 +14,15 @@
 
 ### <span class="emoji">✨</span> Features
 
-- Async Supports
 - Anime GIFs
 - Anime Waifu/Husbando Picture
+- Async Supports
 - Client Supports
-- User Friendly Code
+- Maintain Track of Requests
 - OSU API Wrapper
 - Trivia
 - Truth or Dare Challenges
+- User Friendly Code
 
 ### <span class="emoji">📦</span> Installing The Stable Version of Estrapy-API
 

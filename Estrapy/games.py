@@ -13,7 +13,9 @@ __all__ = (
 
 class Games:
     @staticmethod
-    async def truth(generate: Optional[int] = None) -> PropertiesManager:
+    async def truth(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -35,15 +37,25 @@ class Games:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "games/truth"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
             total=output.get("total_text"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -52,7 +64,9 @@ class Games:
         return properties
 
     @staticmethod
-    async def dare(generate: Optional[int] = None) -> PropertiesManager:
+    async def dare(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -74,15 +88,25 @@ class Games:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "games/dare"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
             total=output.get("total_text"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -139,7 +163,9 @@ class Games:
 
 class AniGames:
     @staticmethod
-    async def truth(generate: Optional[int] = None) -> PropertiesManager:
+    async def truth(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -161,15 +187,25 @@ class AniGames:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "anigames/truth"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
             total=output.get("total_text"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -178,7 +214,9 @@ class AniGames:
         return properties
 
     @staticmethod
-    async def dare(generate: Optional[int] = None) -> PropertiesManager:
+    async def dare(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -200,15 +238,25 @@ class AniGames:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "anigames/dare"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
             total=output.get("total_text"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -217,7 +265,7 @@ class AniGames:
         return properties
 
     @staticmethod
-    async def waifu() -> PropertiesManager:
+    async def waifu(client: Optional[any] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -235,21 +283,33 @@ class AniGames:
             x = await Estrapy.AniGames.waifu()
             print(x.character_name, x.url)
         ```
+
+        ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
         """
 
         route = "anigames/waifu"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             character_name=output.get("character_name"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         return properties
 
     @staticmethod
-    async def husbando() -> PropertiesManager:
+    async def husbando(client: Optional[any] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -265,21 +325,35 @@ class AniGames:
             x = await Estrapy.AniGames.husbando()
             print(x.character_name, x.url)
         ```
+
+        ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
         """
 
         route = "anigames/husbando"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             character_name=output.get("character_name"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         return properties
 
     @staticmethod
-    async def shipper_waifu(player: str) -> PropertiesManager:
+    async def shipper_waifu(
+        client: Optional[any] = None, player: str = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -300,16 +374,27 @@ class AniGames:
 
         route = f"anigames/shipper/waifu/?player={player}"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             player=output.get("player"),
             character_name=output.get("character_name"),
             percentage=output.get("percentage"),
+            with_account=output.get("with_account"),
         )
 
         return properties
 
     @staticmethod
-    async def shipper_husbando(player: str) -> PropertiesManager:
+    async def shipper_husbando(
+        client: Optional[any] = None, player: str = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -330,10 +415,19 @@ class AniGames:
 
         route = f"anigames/shipper/husbando/?player={player}"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             player=output.get("player"),
             character_name=output.get("character_name"),
             percentage=output.get("percentage"),
+            with_account=output.get("with_account"),
         )
 
         return properties

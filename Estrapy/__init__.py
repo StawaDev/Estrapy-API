@@ -19,6 +19,8 @@ class EstraClient:
     """
 
     def __init__(self, *args, **kwargs):
+        self.user_id = kwargs.get("user_id")
+        self.token_user = kwargs.get("token_user")
         self.Sfw = Sfw()
         self.Nsfw = Nsfw()
         self.Games = Games()

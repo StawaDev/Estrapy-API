@@ -1,5 +1,5 @@
 from typing import Optional
-from .http import get_api
+from .http import get_api, post_api
 from .base import Base
 from .property import PropertiesManager
 
@@ -8,7 +8,9 @@ __all__ = ("Nsfw",)
 
 class Nsfw:
     @staticmethod
-    async def kill(generate: Optional[int] = None) -> PropertiesManager:
+    async def kill(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -30,15 +32,25 @@ class Nsfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "nsfw/kill"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -47,7 +59,9 @@ class Nsfw:
         return properties
 
     @staticmethod
-    async def yuri(generate: Optional[int] = None) -> PropertiesManager:
+    async def yuri(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -69,15 +83,25 @@ class Nsfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "nsfw/yuri"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:
@@ -86,7 +110,9 @@ class Nsfw:
         return properties
 
     @staticmethod
-    async def yaoi(generate: Optional[int] = None) -> PropertiesManager:
+    async def yaoi(
+        client: Optional[any] = None, generate: Optional[int] = None
+    ) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -108,15 +134,25 @@ class Nsfw:
         ```
 
         ## Arguments:
+            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "nsfw/yaoi"
         output = get_api(route=route)
+
+        if client:
+            _json = {
+                "token_user": client.token_user,
+                "user_id": client.user_id,
+            }
+            output = post_api(route=route, json=_json)
+
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
+            with_account=output.get("with_account"),
         )
 
         if generate:

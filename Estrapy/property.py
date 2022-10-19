@@ -14,6 +14,7 @@ class PropertiesManager(object):
         self.character_name = kwargs.get("character_name")
         self.percentage = kwargs.get("percentage")
         self.total = kwargs.get("total")
+        self.with_account = kwargs.get("with_account")
 
     @property
     def url(self) -> str:
@@ -70,6 +71,14 @@ class PropertiesManager(object):
     @total.setter
     def total(self, value):
         self._total = value
+
+    @property
+    def with_account(self) -> bool:
+        return self._with_account
+
+    @with_account.setter
+    def with_account(self, value):
+        self._with_account = value
 
 
 class OsuProfileProperties(object):
