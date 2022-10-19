@@ -1,42 +1,9 @@
-__all__ = ("SFW_LIST", "NSFW_LIST", "GAMES_LIST", "ANIGAMES_LIST", "ALL_DICT", "Help")
-
-
-SFW_LIST = [
-    "hug",
-    "run",
-    "smile",
-    "headpat",
-    "neko",
-    "bite",
-    "highfive",
-    "poke",
-    "slap",
-]
-NSFW_LIST = ["yaoi", "yuri", "kill"]
-GAMES_LIST = ["truth", "dare", "shipper"]
-ANIGAMES_LIST = [
-    "truth",
-    "dare",
-    "waifu",
-    "husbando",
-    "shipper_waifu",
-    "shipper_husbando",
-]
-TRIVIA_LIST = ["add", "remove", "answer", "run", "run_console"]
-OSU_LIST = ["osuprofile", "osubeatmap"]
-ALL_DICT = {
-    "SFW": f", ".join(SFW_LIST),
-    "NSFW": f", ".join(NSFW_LIST),
-    "GAMES_LIST": f", ".join(GAMES_LIST),
-    "ANIGAMES_LIST": f", ".join(ANIGAMES_LIST),
-    "TRIVIA_LIST": f", ".join(TRIVIA_LIST),
-    "OSU_LIST": f", ".join(OSU_LIST),
-}
+__all__ = ("Help",)
 
 
 class Help:
     @staticmethod
-    async def sfw():
+    def sfw():
         """
         ## Description
         --------------
@@ -48,15 +15,27 @@ class Help:
         ```
         import Estrapy
 
-        async def sfw():
-            print(await Estrapy.Help.sfw()) # Keep it as function or it will return function type
+        def sfw():
+            print(Estrapy.Help.sfw()) # Keep it as function or it will return function type
         ```
-
         """
+
+        SFW_LIST = [
+            "hug",
+            "run",
+            "smile",
+            "headpat",
+            "neko",
+            "bite",
+            "highfive",
+            "poke",
+            "slap",
+        ]
+
         return SFW_LIST
 
     @staticmethod
-    async def nsfw():
+    def nsfw():
         """
         ## Description
         --------------
@@ -68,15 +47,17 @@ class Help:
         ```
         import Estrapy
 
-        async def nsfw():
-            print(await Estrapy.Help.nsfw()) # Keep it as function or it will return function type
+        def nsfw():
+            print(Estrapy.Help.nsfw()) # Keep it as function or it will return function type
         ```
-
         """
+
+        NSFW_LIST = ["yaoi", "yuri", "kill"]
+
         return NSFW_LIST
 
     @staticmethod
-    async def games():
+    def games():
         """
         ## Description
         --------------
@@ -88,15 +69,17 @@ class Help:
         ```
         import Estrapy
 
-        async def games():
-            print(await Estrapy.Help.games()) # Keep it as function or it will return function type
+        def games():
+            print(Estrapy.Help.games()) # Keep it as function or it will return function type
         ```
-
         """
+
+        GAMES_LIST = ["truth", "dare", "shipper"]
+
         return GAMES_LIST
 
     @staticmethod
-    async def anigames():
+    def anigames():
         """
         ## Description
         --------------
@@ -108,15 +91,24 @@ class Help:
         ```
         import Estrapy
 
-        async def anigames():
-            print(await Estrapy.Help.anigames()) # Keep it as function or it will return function type
+        def anigames():
+            print(Estrapy.Help.anigames()) # Keep it as function or it will return function type
         ```
-
         """
+
+        ANIGAMES_LIST = [
+            "truth",
+            "dare",
+            "waifu",
+            "husbando",
+            "shipper_waifu",
+            "shipper_husbando",
+        ]
+
         return ANIGAMES_LIST
 
     @staticmethod
-    async def osu():
+    def osu():
         """
         ## Description
         --------------
@@ -128,15 +120,38 @@ class Help:
         ```
         import Estrapy
 
-        async def osu():
-            print(await Estrapy.Help.osu()) # Keep it as function or it will return function type
+        def osu():
+            print(Estrapy.Help.osu()) # Keep it as function or it will return function type
         ```
-
         """
+
+        OSU_LIST = ["osuprofile", "osubeatmap"]
+
         return OSU_LIST
 
     @staticmethod
-    async def all():
+    def trivia():
+        """
+        Description
+        --------------
+        This function will return a list of Trivia categories endpoints.
+
+        ## Short Example
+        ----------------------------
+
+        ```
+        import Estrapy
+
+        def trivia():
+            print(Estrapy.Help.trivia()) # Keep it as function or it will return function type
+        ```
+        """
+
+        TRIVIA_LIST = ["add", "remove", "answer", "run", "run_console"]
+
+        return TRIVIA_LIST
+
+    def all(self):
         """
         Description
         --------------
@@ -148,9 +163,20 @@ class Help:
         ```
         import Estrapy
 
-        async def all():
-            print(await Estrapy.Help.all()) # Keep it as function or it will return function type
+        def all():
+            help = Estrapy.Help()
+            print(help.all()) # Keep it as function or it will return function type
         ```
 
         """
+
+        ALL_DICT = {
+            "SFW": f", ".join(self.sfw()),
+            "NSFW": f", ".join(self.nsfw()),
+            "GAMES_LIST": f", ".join(self.games()),
+            "ANIGAMES_LIST": f", ".join(self.anigames()),
+            "TRIVIA_LIST": f", ".join(self.trivia()),
+            "OSU_LIST": f", ".join(self.osu()),
+        }
+
         return ALL_DICT
