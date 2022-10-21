@@ -25,6 +25,7 @@ class EstraClient:
         "Sfw",
         "Nsfw",
         "Games",
+        "AniGames",
         "Help",
         "OsuClient",
         "Trivia",

@@ -171,6 +171,10 @@ class Games:
 class AniGames:
     __slots__ = ("token_user", "user_id")
 
+    def __init__(self, token_user: Optional[str] = None, user_id: Optional[int] = None):
+        self.token_user = token_user
+        self.user_id = user_id
+
     async def truth(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
