@@ -7,9 +7,9 @@
 </h3>
 <p align="center">
 <a href="https://codeclimate.com/github/StawaDev/Estrapy-API/maintainability"><img src="https://api.codeclimate.com/v1/badges/94df604d6f4f73999c8e/maintainability"/></a>
-<a href="https://stawa.gitbook.io/estraapi-documentation/"><img src ="https://img.shields.io/badge/Estra--API-Documentation-brightgreen?style=flat-square"></a>
-<a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/Estrapy-API?style=flat-square"></a>
-<a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI" src="https://img.shields.io/pypi/v/Estrapy-API?color=a&label=Estrapy-API&style=flat-square"></a>
+<a href="https://stawa.gitbook.io/estraapi-documentation/"><img src ="https://img.shields.io/badge/Estra--API-Documentation-brightgreen?style=flat"></a>
+<a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/Estrapy-API?style=flat"></a>
+<a href="https://pypi.org/project/Estrapy-API/"><img alt="PyPI" src="https://img.shields.io/pypi/v/Estrapy-API?color=a&label=Estrapy-API&style=flat"></a>
 </p>
 
 ### <span class="emoji">✨</span> Features
@@ -74,9 +74,9 @@ import Estrapy
 import asyncio
 
 async def Help():
-    print(await Estrapy.Help.sfw()) # Print all sfw endpoints
-    print(await Estrapy.Help.nsfw()) # Print all nsfw endpoints
-    print(await Estrapy.Help.all()) # Print all sfw, nsfw endpoints in once
+    print(Estrapy.Help.sfw()) # Print all sfw endpoints
+    print(Estrapy.Help.nsfw()) # Print all nsfw endpoints
+    print(Estrapy.Help().all()) # Print all sfw, nsfw endpoints in once
 
 asyncio.run(Help())
 ```
