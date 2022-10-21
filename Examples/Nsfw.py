@@ -1,10 +1,12 @@
 import Estrapy
 import asyncio
+from Estrapy import EstraClient
 
+Nsfw = EstraClient().Nsfw
 
 # Print All Nsfw Endpoints
 async def Help():
-    print(await Estrapy.Help.nsfw())
+    print(Estrapy.Help.nsfw())
 
 
 asyncio.run(Help())
@@ -12,16 +14,16 @@ asyncio.run(Help())
 
 # Generate Function Examples
 async def generate():
-    print(f"Yaoi: {await Estrapy.Nsfw.yaoi(generate=2)}")
-    print(f"Yuri: {await Estrapy.Nsfw.yuri(generate=2)}")
+    print(f"Yaoi: {await Nsfw.yaoi(generate=2)}")
+    print(f"Yuri: {await Nsfw.yuri(generate=2)}")
 
 
 asyncio.run(generate())
 
 # Function Examples
 async def function():
-    kill = await Estrapy.Nsfw.kill()
-    print(f"Function: {kill.url}")
+    kill = await Nsfw.kill()
+    print(f"Kill: {kill.url}")
 
 
 asyncio.run(function())
@@ -36,18 +38,18 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.command()
 async def yaoi(ctx):
-    await ctx.send(await Estrapy.Nsfw.yaoi())
+    await ctx.send(await Nsfw.yaoi())
 
 
 @bot.command()
 async def dare(ctx):
-    await ctx.send(await Estrapy.Nsfw.yuri())
+    await ctx.send(await Nsfw.yuri())
 
 
 # Discord Examples With Embed
 @bot.command()
-async def yaoi(ctx):
-    yaoi = await Estrapy.Nsfw.yaoi()
+async def yaoi_embed(ctx):
+    yaoi = await Nsfw.yaoi()
 
     embed = discord.Embed(title="Yaoi")
     embed.set_image(yaoi.url)
@@ -56,8 +58,8 @@ async def yaoi(ctx):
 
 
 @bot.command()
-async def yuri(ctx):
-    yuri = await Estrapy.Nsfw.yuri()
+async def yuri_embed(ctx):
+    yuri = await Nsfw.yuri()
 
     embed = discord.Embed(title="Yuri")
     embed.set_image(yuri.text)
