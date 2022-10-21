@@ -12,10 +12,13 @@ __all__ = (
 
 
 class Games:
-    @staticmethod
-    async def truth(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    __slots__ = ("token_user", "user_id")
+
+    def __init__(self, token_user: Optional[str] = None, user_id: Optional[int] = None):
+        self.token_user = token_user
+        self.user_id = user_id
+
+    async def truth(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -37,17 +40,16 @@ class Games:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "games/truth"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -63,10 +65,7 @@ class Games:
 
         return properties
 
-    @staticmethod
-    async def dare(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def dare(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -95,10 +94,10 @@ class Games:
         route = "games/dare"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -114,8 +113,7 @@ class Games:
 
         return properties
 
-    @staticmethod
-    async def shipper(players: dict, background: dict = None):
+    async def shipper(self, players: dict, background: dict = None):
         """
         ## Description
         --------------
@@ -155,17 +153,25 @@ class Games:
             - background: dict -- Set the background
         """
 
+        route = "games/shipper"
+
+        if self.token_user and self.user_id:
+            _json = {
+                "token_user": self.token_user,
+                "user_id": self.user_id,
+            }
+            post_api(route=route, json=_json)
+
         _json = {"players": players, "background": background}
-        req = post_api(route="games/shipper", json=_json)
+        req = post_api(route=route, json=_json)
 
         return Image.open(BytesIO(req.content))
 
 
 class AniGames:
-    @staticmethod
-    async def truth(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    __slots__ = ("token_user", "user_id")
+
+    async def truth(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -194,10 +200,10 @@ class AniGames:
         route = "anigames/truth"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -213,10 +219,7 @@ class AniGames:
 
         return properties
 
-    @staticmethod
-    async def dare(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def dare(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -245,10 +248,10 @@ class AniGames:
         route = "anigames/dare"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -264,8 +267,7 @@ class AniGames:
 
         return properties
 
-    @staticmethod
-    async def waifu(client: Optional[any] = None) -> PropertiesManager:
+    async def waifu(self) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -291,10 +293,10 @@ class AniGames:
         route = "anigames/waifu"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -308,8 +310,7 @@ class AniGames:
 
         return properties
 
-    @staticmethod
-    async def husbando(client: Optional[any] = None) -> PropertiesManager:
+    async def husbando(self) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -333,10 +334,10 @@ class AniGames:
         route = "anigames/husbando"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -350,10 +351,7 @@ class AniGames:
 
         return properties
 
-    @staticmethod
-    async def shipper_waifu(
-        client: Optional[any] = None, player: str = None
-    ) -> PropertiesManager:
+    async def shipper_waifu(self, player: str = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -375,10 +373,10 @@ class AniGames:
         route = f"anigames/shipper/waifu/?player={player}"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -391,10 +389,7 @@ class AniGames:
 
         return properties
 
-    @staticmethod
-    async def shipper_husbando(
-        client: Optional[any] = None, player: str = None
-    ) -> PropertiesManager:
+    async def shipper_husbando(self, player: str = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -416,10 +411,10 @@ class AniGames:
         route = f"anigames/shipper/husbando/?player={player}"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 

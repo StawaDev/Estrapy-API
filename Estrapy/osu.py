@@ -7,17 +7,22 @@ __all__ = ("OsuClient",)
 
 
 class OsuClient:
+    __slots__ = ("token_user", "user_id", "client_id", "client_secret")
+
     def __init__(
         self,
+        token_user: Optional[str] = None,
+        user_id: Optional[int] = None,
         client_id: Union[int, str] = None,
         client_secret: str = None,
     ) -> None:
+        self.token_user = token_user
+        self.user_id = user_id
         self.client_id = client_id
         self.client_secret = client_secret
 
     async def profile(
         self,
-        client: Optional[any] = None,
         user_id: Optional[int] = None,
         username: Optional[str] = None,
     ) -> OsuProfileProperties:
@@ -52,10 +57,10 @@ class OsuClient:
             "client_secret": self.client_secret,
         }
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route="osu/user", json=_json)
 
@@ -66,7 +71,6 @@ class OsuClient:
 
     async def beatmap(
         self,
-        client: Optional[any] = None,
         beatmap_id: int = None,
     ) -> OsuBeatmapProperties:
         """
@@ -99,10 +103,10 @@ class OsuClient:
             "client_secret": self.client_secret,
         }
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route="osu/beatmap", json=_json)
 

@@ -7,10 +7,13 @@ __all__ = ("Sfw",)
 
 
 class Sfw:
-    @staticmethod
-    async def run(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    __slots__ = ("token_user", "user_id")
+
+    def __init__(self, token_user: Optional[str] = None, user_id: Optional[int] = None):
+        self.token_user = token_user
+        self.user_id = user_id
+
+    async def run(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -32,17 +35,16 @@ class Sfw:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/run"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -58,10 +60,7 @@ class Sfw:
 
         return properties
 
-    @staticmethod
-    async def hug(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def hug(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -83,17 +82,16 @@ class Sfw:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/hug"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -109,10 +107,7 @@ class Sfw:
 
         return properties
 
-    @staticmethod
-    async def smile(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def smile(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -134,17 +129,16 @@ class Sfw:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/smile"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -160,10 +154,7 @@ class Sfw:
 
         return properties
 
-    @staticmethod
-    async def headpat(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def headpat(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -184,18 +175,17 @@ class Sfw:
             print(f"Generate One: {one.url} Generate 5 as List: {five}")
         ```
 
-        ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
+         ## Arguments:
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/headpat"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -211,10 +201,7 @@ class Sfw:
 
         return properties
 
-    @staticmethod
-    async def poke(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def poke(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -236,17 +223,16 @@ class Sfw:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/poke"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -262,10 +248,7 @@ class Sfw:
 
         return properties
 
-    @staticmethod
-    async def bite(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def bite(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -287,17 +270,16 @@ class Sfw:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/bite"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -313,10 +295,7 @@ class Sfw:
 
         return properties
 
-    @staticmethod
-    async def neko(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def neko(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -338,17 +317,16 @@ class Sfw:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/neko"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -364,10 +342,7 @@ class Sfw:
 
         return properties
 
-    @staticmethod
-    async def highfive(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def highfive(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -389,17 +364,16 @@ class Sfw:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/highfive"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
@@ -415,10 +389,7 @@ class Sfw:
 
         return properties
 
-    @staticmethod
-    async def slap(
-        client: Optional[any] = None, generate: Optional[int] = None
-    ) -> PropertiesManager:
+    async def slap(self, generate: Optional[int] = None) -> PropertiesManager:
         """
         ## Description
         --------------
@@ -440,17 +411,16 @@ class Sfw:
         ```
 
         ## Arguments:
-            - client: any -- EstraClient with token_user and user_id to keep track of how many requests you already have.
             - generate: int -- Generate how many requests to return
         """
 
         route = "sfw/slap"
         output = get_api(route=route)
 
-        if client:
+        if self.token_user and self.user_id:
             _json = {
-                "token_user": client.token_user,
-                "user_id": client.user_id,
+                "token_user": self.token_user,
+                "user_id": self.user_id,
             }
             output = post_api(route=route, json=_json)
 
