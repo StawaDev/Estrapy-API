@@ -42,6 +42,7 @@ class EstraClient:
         self.Sfw = Sfw(user_id=self.user_id, token_user=self.token_user)
         self.Nsfw = Nsfw(user_id=self.user_id, token_user=self.token_user)
         self.Games = Games(user_id=self.user_id, token_user=self.token_user)
+        self.AniGames = AniGames(user_id=self.user_id, token_user=self.token_user)
         self.Help = Help()
         self.OsuClient = OsuClient(
             client_id=kwargs.get("client_id"), client_secret=kwargs.get("client_secret")
