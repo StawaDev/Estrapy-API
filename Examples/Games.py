@@ -26,17 +26,24 @@ asyncio.run(truth_dare())
 
 # Shipper Examples
 async def shipper():
-    _player = {
-        "player_1": "User_1",
-        "player_2": "User_2",
+    _json = {
+        "players": {
+            "player_1": {
+                "name": "player_1",
+                "image_url": "xxxx",
+            },
+            "player_2": {
+                "name": "player_2",
+                "image_url": "xxxx",
+            },
+            "background": {
+                "background_url": "xxxx",
+                "background_width": 1280,
+            },
+        }
     }
 
-    _background = {
-        "background_url": "https://xxx",
-        "background_size": "1920x720",
-    }
-
-    x = await Games.shipper(players=_player, background=_background)
+    x = await Games.shipper(json=_json)
     x.save("Shipper.png")
 
 

@@ -1,4 +1,4 @@
-from .http import get_api, post_api
+from .http import get_api, post_api, post_response
 from .base import Base
 from .property import PropertiesManager
 from typing import Optional
@@ -113,17 +113,13 @@ class Games:
 
         return properties
 
-    async def shipper(self, players: dict, background: dict = None):
+    async def shipper(self, json: dict = None):
         """
         ## Description
         --------------
         This function will retrieve image from the API server and return it as `PIL.Image` object.
         Keep in mind that this function will not having an update for a while,
         so you can create new issues on our github: https://github.com/StawaDev/Estrapy-API/issues with using label `enhancement`.
-
-        ## Note
-        --------------
-        Arguments for `background` is requires `background_size`, which is only available only two sizes `1920x1080` and `1280x720`.
 
         ## Short Example
         --------------
@@ -133,18 +129,25 @@ class Games:
         ```
         import Estrapy
 
-        _player = {
-            "player_1": "User_1",
-            "player_2": "User_2",
-        }
-
-        _background = {
-            "background_url": "https://xxx",
-            "background_size": "1920x720",
+        _json = {
+            "players": {
+                "player_1": {
+                    "name": "player_1",
+                    "image_url": "xxxx",
+                },
+                "player_2": {
+                    "name": "player_2",
+                    "image_url": "xxxx",
+                },
+                "background": {
+                    "background_url": "xxxx",
+                    "background_width": 1280,
+                },
+            }
         }
 
         async def shipper():
-            x = await Estrapy.Games.shipper(players=_player, background=_background)
+            x = await Estrapy.Games.shipper(json=_json)
             x.save("Shipper.png")
         ```
 
@@ -154,6 +157,7 @@ class Games:
         """
 
         route = "games/shipper"
+        req = post_response(route=route, json=json)
 
         if self.token_user and self.user_id:
             _json = {
@@ -161,9 +165,6 @@ class Games:
                 "user_id": self.user_id,
             }
             post_api(route=route, json=_json)
-
-        _json = {"players": players, "background": background}
-        req = post_api(route=route, json=_json)
 
         return Image.open(BytesIO(req.content))
 
