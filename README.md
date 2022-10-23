@@ -100,69 +100,70 @@ asyncio.run(Help())
 
 Available PropertiesManager - `url`, `type`
 
-| Sfw Function | Examples               | Output                   |
-| ------------ | ---------------------- | ------------------------ |
-| Run          | Estrapy.Sfw.run()      | Return PropertiesManager |
-| Hug          | Estrapy.Sfw.hug()      | Return PropertiesManager |
-| Smile        | Estrapy.Sfw.smile()    | Return PropertiesManager |
-| Neko         | Estrapy.Sfw.neko()     | Return PropertiesManager |
-| Poke         | Estrapy.Sfw.poke()     | Return PropertiesManager |
-| Bite         | Estrapy.Sfw.bite()     | Return PropertiesManager |
-| Slap         | Estrapy.Sfw.slap()     | Return PropertiesManager |
-| Highfive     | Estrapy.Sfw.highfive() | Return PropertiesManager |
-| Headpat      | Estrapy.Sfw.headpat()  | Return PropertiesManager |
+| Sfw Function | Examples                 | Output                   |
+| ------------ | ------------------------ | ------------------------ |
+| Run          | `Estrapy.Sfw.run()`      | Return PropertiesManager |
+| Hug          | `Estrapy.Sfw.hug()`      | Return PropertiesManager |
+| Smile        | `Estrapy.Sfw.smile()`    | Return PropertiesManager |
+| Neko         | `Estrapy.Sfw.neko()`     | Return PropertiesManager |
+| Poke         | `Estrapy.Sfw.poke()`     | Return PropertiesManager |
+| Bite         | `Estrapy.Sfw.bite()`     | Return PropertiesManager |
+| Slap         | `Estrapy.Sfw.slap()`     | Return PropertiesManager |
+| Highfive     | `Estrapy.Sfw.highfive()` | Return PropertiesManager |
+| Headpat      | `Estrapy.Sfw.headpat()`  | Return PropertiesManager |
 
 ### <span class="emoji">⁉️</span> Nsfw Function Endpoints
 
 Available PropertiesManager - `url`, `type`
 
-| NSFW Function | Examples            | Output                   |
-| ------------- | ------------------- | ------------------------ |
-| Kill          | Estrapy.Nsfw.kill() | Return PropertiesManager |
-| Yuri          | Estrapy.Nsfw.yuri() | Return PropertiesManager |
-| Yaoi          | Estrapy.Nsfw.yaoi() | Return PropertiesManager |
+| NSFW Function | Examples              | Output                   |
+| ------------- | --------------------- | ------------------------ |
+| Kill          | `Estrapy.Nsfw.kill()` | Return PropertiesManager |
+| Yuri          | `Estrapy.Nsfw.yuri()` | Return PropertiesManager |
+| Yaoi          | `Estrapy.Nsfw.yaoi()` | Return PropertiesManager |
 
 ### <span class="emoji">🎮</span> AniGames Function Endpoints
 
 Available PropertiesManager - `url`, `character_name`, `text`, `type`, `player`, `percentage`
 
-| AniGames Function | Examples                    | Output                   |
-| ----------------- | --------------------------- | ------------------------ |
-| Truth             | Estrapy.AniGames.truth()    | Return PropertiesManager |
-| Dare              | Estrapy.AniGames.dare()     | Return PropertiesManager |
-| Waifu             | Estrapy.AniGames.waifu()    | Return PropertiesManager |
-| Husbando          | Estrapy.AniGames.husbando() | Return PropertiesManager |
+| AniGames Function | Examples                      | Output                   |
+| ----------------- | ----------------------------- | ------------------------ |
+| Truth             | `Estrapy.AniGames.truth()`    | Return PropertiesManager |
+| Dare              | `Estrapy.AniGames.dare()`     | Return PropertiesManager |
+| Waifu             | `Estrapy.AniGames.waifu()`    | Return PropertiesManager |
+| Husbando          | `Estrapy.AniGames.husbando()` | Return PropertiesManager |
 
 ### <span class="emoji">🎮</span> Games Function Endpoints
 
 Available PropertiesManager - `text`, `type`
 
-| Games Function | Examples                | Output                   |
-| -------------- | ----------------------- | ------------------------ |
-| Truth          | Estrapy.Games.truth()   | Return PropertiesManager |
-| Dare           | Estrapy.Games.dare()    | Return PropertiesManager |
-| Shipper        | Estrapy.Games.shipper() | Return PropertiesManager |
+| Games Function | Examples                  | Output                   |
+| -------------- | ------------------------- | ------------------------ |
+| Truth          | `Estrapy.Games.truth()`   | Return PropertiesManager |
+| Dare           | `Estrapy.Games.dare()`    | Return PropertiesManager |
+| Shipper        | `Estrapy.Games.shipper()` | Return PropertiesManager |
 
 ### <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/1024px-Osu%21_Logo_2016.svg.png width="30" height="30"> OsuClients Function Endpoints
 
 Available OsuProfileProperties - [On Our Github](https://github.com/StawaDev/Estrapy-API/blob/main/Estrapy/property.py#L75)
+
 Available OsuBeatmapProperties - [On Our Github](https://github.com/StawaDev/Estrapy-API/blob/main/Estrapy/property.py#L147)
 
-| OsuClients Function | Examples                                            | Description                 |
-| ------------------- | --------------------------------------------------- | --------------------------- |
-| OsuProfile          | Estrapy.OsuClients.profile(username="Stawa")        | Return OsuProfileProperties |
-| OsuBeatmap          | Estrapy.OsuClients.beatmap(beatmap_id="beatmap_id") | Return OsuBeatmapProperties |
+| OsuClients Function | Examples                                              | Description                 |
+| ------------------- | ----------------------------------------------------- | --------------------------- |
+| Profile             | `Estrapy.OsuClients.profile(username="Stawa")`        | Return OsuProfileProperties |
+| Beatmap             | `Estrapy.OsuClients.beatmap(beatmap_id="beatmap_id")` | Return OsuBeatmapProperties |
 
 ### <span class="emoji">❔</span> Trivia Function Endpoints
 
-| Trivia Function | Examples                                                                       | Description                          |
-| --------------- | ------------------------------------------------------------------------------ | ------------------------------------ |
-| Add             | Trivia.add(question="question", answer="answer", options={"option": "option"}) | Add Questions Into A JSON File       |
-| Remove          | Trivia.remove(1)                                                               | Removing Question In Specific Number |
-| Run_Console     | Trivia.run_console                                                             | Run Trivia Through Console           |
-| Run             | Trivia.run(random_pick=True)                                                   | Run Trivia With Return Statement     |
-| Answer          | Trivia.answer(run, guess="answer")                                             | Answer Trivia From Run Function      |
-| More Examples   | [In Our Github!](https://github.com/StawaDev/Estrapy-API)                      | More examples I guess?               |
+| Trivia Function | Examples                                                                         | Description                          |
+| --------------- | -------------------------------------------------------------------------------- | ------------------------------------ |
+| Add             | `Trivia.add(question="question", answer="answer", options={"option": "option"})` | Add Questions Into A JSON File       |
+| Remove          | `Trivia.remove(1)`                                                               | Removing Question In Specific Number |
+| Run_Console     | `Trivia.run_console()`                                                           | Run Trivia Through Console           |
+| Run             | `Trivia.run(random_pick=True) `                                                  | Run Trivia With Return Statement     |
+| Answer          | `Trivia.answer(run, guess="answer")`                                             | Answer Trivia From Run Function      |
+| More Examples   | [In Our Github!](https://github.com/StawaDev/Estrapy-API)                        | More examples I guess?               |
 
 </details>
 
