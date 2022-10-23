@@ -66,7 +66,7 @@ class Base:
         ```
 
         ### Arguments:
-            - target: str -- Target to download, (ex. sfw/hug)
+            - category: str -- Target to download, (ex. sfw/hug)
             - total: Optional[int] -- Total of image to download, default is 1
             - filename: Optional[str] -- Filename to save, default is target category with number behind it.
         """
