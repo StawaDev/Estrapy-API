@@ -70,13 +70,15 @@ print(Estrapy.__version__) # Print current version of Estrapy-API
 ### <span class="emoji">❔</span> Help Functions for Estrapy-API
 
 ```py
-import Estrapy
+from Estrapy import EstraClient
 import asyncio
 
+client = EstraClient()
+
 async def Help():
-    print(Estrapy.Help.sfw()) # Print all sfw endpoints
-    print(Estrapy.Help.nsfw()) # Print all nsfw endpoints
-    print(Estrapy.Help().all()) # Print all sfw, nsfw endpoints in once
+    print(client.Help.sfw()) # Print all sfw endpoints
+    print(client.Help.nsfw()) # Print all nsfw endpoints
+    print(client.Help.all()) # Print all sfw, nsfw endpoints in once
 
 asyncio.run(Help())
 ```
