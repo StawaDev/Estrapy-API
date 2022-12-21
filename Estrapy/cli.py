@@ -1,21 +1,25 @@
-from .__init__ import __version__
-from .help import Help
+from .__init__ import __version__, EstraClient
 from .base import Base
+from .http import Requester
 from tabulate import tabulate
+from pprint import pprint
 import asyncclick as click
 import anyio
 
+base = Base()
+requester = Requester()
+
 
 @click.command()
-async def menu():
+def menu():
     """
-    Information about Estrapy-API
+    Return basic information about Estrapy-API.
     """
     text = """
     Author  : @StawaDev
     \nLicense : MIT
     \nGithub  : https://github.com/StawaDev/Estrapy-API
-    \nAPI     : https://estra-api.herokuapp.com/api/
+    \nAPI     : https://estra-api.vercel.app
     """
 
     output = tabulate(
@@ -33,37 +37,41 @@ async def menu():
     "-c",
     default="all",
     help="Show specific categories with endpoints | --category <category>",
-    type=click.Choice(["all", "sfw", "nsfw", "games", "anigames"]),
+    type=click.Choice(["all", "sfw", "nsfw", "games", "anigames", "osu"]),
     multiple=False,
 )
-async def help(category):
+def help(category):
     """
-    A Help Function for Estrapy Using Command Line Interface.
+    Return a list of endpoints from a given category or a list of all endpoints.
     """
 
+    _help = EstraClient().Help
+
     if str.lower(category) == "all":
-        print(Base.json_beautifier(await Help.all()))
+        pprint(_help.all(), indent=4)
     if str.lower(category) == "sfw":
-        print(await Help.sfw())
+        print(_help.sfw())
     if str.lower(category) == "nsfw":
-        print(await Help.nsfw())
+        print(_help.nsfw())
     if str.lower(category) == "games":
-        print(await Help.games())
+        print(_help.games())
     if str.lower(category) == "anigames":
-        print(await Help.anigames())
+        print(_help.anigames())
+    if str.lower(category) == "osu":
+        print(_help.osu())
 
 
 @click.command()
 @click.option(
     "--category",
     "-c",
-    default="sfw",
     help="Category of the image",
     type=click.Choice(["sfw", "nsfw", "anigames"]),
     multiple=False,
+    required=True,
 )
 @click.option(
-    "--endpoint", "-e", default="hug", help="Endpoint of the image", multiple=False
+    "--endpoint", "-e", help="Endpoint of the image", multiple=False, required=True
 )
 @click.option(
     "--total", "-t", default=1, help="Total requests to download", multiple=False
@@ -73,13 +81,45 @@ async def help(category):
 )
 async def save(category: str, endpoint: str, total: int, filename: str = None):
     """
-    A Save Function for Estrapy Using Command Line Interface.
+    It will save an image or images with a specified category, endpoints, and total images.
     """
 
-    x = await Base.save(
+    x = await base.save(
         category=f"{category}/{endpoint}", total=total, filename=filename
     )
     print(x)
+
+
+@click.command()
+@click.option(
+    "--category",
+    "-c",
+    help="Category from the API",
+    type=click.Choice(["sfw", "nsfw", "games", "anigames"]),
+    multiple=False,
+    required=True,
+)
+@click.option(
+    "--endpoint", "-e", help="Endpoint from the category", multiple=False, required=True
+)
+@click.option(
+    "--total", "-t", default=1, help="Total requests to fetch", multiple=False
+)
+async def requests(category: str, endpoint: str, total: int):
+    """
+    A test request to the API with a given category and endpoint.
+    """
+
+    route = f"{category}/{endpoint}"
+    output = requester.get_api(route)
+
+    if total > 1:
+        try:
+            output = await base.produce(route=route, total=total)
+        except:
+            output = await base.produce(route=route, total=total, type="text")
+
+    print(output)
 
 
 @click.group()
@@ -90,3 +130,4 @@ def main():
 main.add_command(menu)
 main.add_command(help)
 main.add_command(save)
+main.add_command(requests)

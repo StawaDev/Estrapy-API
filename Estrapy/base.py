@@ -1,4 +1,4 @@
-from .http import get_api
+from .http import Requester
 from .errors import InvalidNumber
 from typing import Optional
 from pygments import highlight, lexers, formatters
@@ -9,7 +9,10 @@ __all__ = ("Base", "ObjectConverter")
 
 
 class Base:
-    def json_beautifier(data) -> any:
+    def __init__(self):
+        self.requester = Requester()
+
+    def json_beautifier(self, data) -> any:
         """
         This function only can be used by the CLI.
         """
@@ -20,25 +23,26 @@ class Base:
         )
         return beautifier
 
-    async def produce(total: int, route: str, type: str = "link") -> list:
+    async def produce(self, total: int, route: str, type: str = "link") -> list:
         """
         Returns a list of responses for the given route.
         """
 
         generated_urls = []
 
-        if total > 10 or total < 2:
+        if total > 15 or total < 2:
             raise InvalidNumber(
-                "Can't generate more than 10 or less than 1 request at a time."
+                "Can't generate more than 15 or less than 1 request at a time."
             )
 
         for _ in range(int(total)):
-            url = get_api(route=route).get(type)
+            url = self.requester.get_api(route=route).get(type)
             generated_urls.append(url)
 
         return generated_urls
 
     async def save(
+        self,
         category: str = None,
         total: Optional[int] = 1,
         filename: Optional[str] = None,
@@ -74,13 +78,13 @@ class Base:
         url_list = []
         file_list = []
 
-        if total > 10 or total < 1:
+        if total > 15 or total < 1:
             raise InvalidNumber(
-                "Can't generate more than 10 or less than 1 request at a time."
+                "Can't generate more than 15 or less than 1 request at a time."
             )
 
         if total == 1:
-            req = get_api(route=category)
+            req = self.requester.get_api(route=category)
             link = req.get("link")
             _filename = f"{filename if filename else category.split('/')[1].title()}.{req.get('type')}"
 
@@ -90,7 +94,7 @@ class Base:
             return [_filename, link]
 
         for i in range(0, int(total)):
-            req = get_api(route=category)
+            req = self.requester.get_api(route=category)
             link = req.get("link")
             _filename = f"{filename}_{i+1}.{req.get('type')}"
 

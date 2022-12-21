@@ -1,4 +1,4 @@
-from .http import get_api, post_api, post_response
+from .http import Requester
 from .base import Base
 from .property import PropertiesManager
 from typing import Optional
@@ -12,11 +12,15 @@ __all__ = (
 
 
 class Games:
-    __slots__ = ("token_user", "user_id")
+    __slots__ = ("client_id", "client_secret", "requester", "base")
 
-    def __init__(self, token_user: Optional[str] = None, user_id: Optional[int] = None):
-        self.token_user = token_user
-        self.user_id = user_id
+    def __init__(
+        self, client_id: Optional[str] = None, client_secret: Optional[str] = None
+    ):
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.requester = Requester()
+        self.base = Base()
 
     async def truth(self, generate: Optional[int] = None) -> PropertiesManager:
         """
@@ -44,24 +48,26 @@ class Games:
         """
 
         route = "games/truth"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
             total=output.get("total_text"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="text")
+            output = await self.base.produce(total=generate, route=route, type="text")
+            properties = PropertiesManager(urls=output)
 
         return properties
 
@@ -92,24 +98,26 @@ class Games:
         """
 
         route = "games/dare"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
             total=output.get("total_text"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="text")
+            output = await self.base.produce(total=generate, route=route, type="text")
+            properties = PropertiesManager(urls=output)
 
         return properties
 
@@ -157,24 +165,28 @@ class Games:
         """
 
         route = "games/shipper"
-        req = post_response(route=route, json=json)
+        req = self.requester.post_response(route=route, json=json)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            post_api(route=route, json=_json)
+            self.requester.post_api(route=route, json=_json)
 
         return Image.open(BytesIO(req.content))
 
 
 class AniGames:
-    __slots__ = ("token_user", "user_id")
+    __slots__ = ("client_id", "client_secret", "requester", "base")
 
-    def __init__(self, token_user: Optional[str] = None, user_id: Optional[int] = None):
-        self.token_user = token_user
-        self.user_id = user_id
+    def __init__(
+        self, client_id: Optional[str] = None, client_secret: Optional[int] = None
+    ):
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.requester = Requester()
+        self.base = Base()
 
     async def truth(self, generate: Optional[int] = None) -> PropertiesManager:
         """
@@ -203,24 +215,26 @@ class AniGames:
         """
 
         route = "anigames/truth"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
             total=output.get("total_text"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="text")
+            output = await self.base.produce(total=generate, route=route, type="text")
+            properties = PropertiesManager(urls=output)
 
         return properties
 
@@ -251,24 +265,26 @@ class AniGames:
         """
 
         route = "anigames/dare"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             text=output.get("text"),
             type=output.get("type"),
             total=output.get("total_text"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="text")
+            output = await self.base.produce(total=generate, route=route, type="text")
+            properties = PropertiesManager(urls=output)
 
         return properties
 
@@ -296,14 +312,14 @@ class AniGames:
         """
 
         route = "anigames/waifu"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             url=output.get("link"),
@@ -311,6 +327,7 @@ class AniGames:
             character_name=output.get("character_name"),
             total=output.get("total_image"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         return properties
@@ -337,14 +354,14 @@ class AniGames:
         """
 
         route = "anigames/husbando"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             url=output.get("link"),
@@ -352,6 +369,7 @@ class AniGames:
             character_name=output.get("character_name"),
             total=output.get("total_image"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         return properties
@@ -376,20 +394,21 @@ class AniGames:
         """
 
         route = f"anigames/shipper/waifu/?player={player}"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             player=output.get("player"),
             character_name=output.get("character_name"),
             percentage=output.get("percentage"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         return properties
@@ -414,20 +433,21 @@ class AniGames:
         """
 
         route = f"anigames/shipper/husbando/?player={player}"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             player=output.get("player"),
             character_name=output.get("character_name"),
             percentage=output.get("percentage"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         return properties

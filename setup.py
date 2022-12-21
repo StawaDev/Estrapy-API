@@ -5,12 +5,16 @@ README = f.read()
 
 setup(
     name="Estrapy-API",
-    version="0.2.7",
+    version="0.2.8",
     packages=find_packages(),
-    install_requires=["requests", "pygments"],
-    extras_require={
-        "cli": ["asyncclick", "tabulate", "anyio"],
-    },
+    install_requires=[
+        "requests",
+        "pygments",
+        "packaging",
+        "asyncclick",
+        "tabulate",
+        "anyio",
+    ],
     license="MIT",
     url="https://github.com/StawaDev/Estrapy-API",
     project_urls={

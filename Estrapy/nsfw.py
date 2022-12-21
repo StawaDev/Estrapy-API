@@ -1,5 +1,5 @@
 from typing import Optional
-from .http import get_api, post_api
+from .http import Requester
 from .base import Base
 from .property import PropertiesManager
 
@@ -7,11 +7,15 @@ __all__ = ("Nsfw",)
 
 
 class Nsfw:
-    __slots__ = ("token_user", "user_id")
+    __slots__ = ("client_id", "client_secret", "requester", "base")
 
-    def __init__(self, token_user: Optional[str] = None, user_id: Optional[int] = None):
-        self.token_user = token_user
-        self.user_id = user_id
+    def __init__(
+        self, client_id: Optional[str] = None, client_secret: Optional[int] = None
+    ):
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.requester = Requester()
+        self.base = Base()
 
     async def kill(self, generate: Optional[int] = None) -> PropertiesManager:
         """
@@ -39,24 +43,26 @@ class Nsfw:
         """
 
         route = "nsfw/kill"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="link")
+            output = await self.base.produce(total=generate, route=route, type="link")
+            properties = PropertiesManager(urls=output)
 
         return properties
 
@@ -86,24 +92,26 @@ class Nsfw:
         """
 
         route = "nsfw/yuri"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="link")
+            output = await self.base.produce(total=generate, route=route, type="link")
+            properties = PropertiesManager(urls=output)
 
         return properties
 
@@ -133,23 +141,25 @@ class Nsfw:
         """
 
         route = "nsfw/yaoi"
-        output = get_api(route=route)
+        output = self.requester.get_api(route=route)
 
-        if self.token_user and self.user_id:
+        if self.client_id and self.client_secret:
             _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
             }
-            output = post_api(route=route, json=_json)
+            output = self.requester.post_api(route=route, json=_json)
 
         properties = PropertiesManager(
             url=output.get("link"),
             type=output.get("type"),
             total=output.get("total_image"),
             with_account=output.get("with_account"),
+            original_response=output,
         )
 
         if generate:
-            return await Base.produce(total=generate, route=route, type="link")
+            output = await self.base.produce(total=generate, route=route, type="link")
+            properties = PropertiesManager(urls=output)
 
         return properties

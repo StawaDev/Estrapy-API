@@ -1,3 +1,4 @@
+from .account import *
 from .sfw import *
 from .nsfw import *
 from .games import *
@@ -9,7 +10,7 @@ from .help import Help
 from typing import Optional
 
 __title__ = "Estrapy-API"
-__version__ = "0.2.7"
+__version__ = "0.2.8"
 __author__ = "Stawa"
 __license__ = "MIT"
 
@@ -20,8 +21,12 @@ class EstraClient:
     """
 
     __slots__ = (
-        "user_id",
-        "token_user",
+        "client_id",
+        "client_secret",
+        "osu_client_id",
+        "osu_client_secret",
+        "path",
+        "AccountManager",
         "Sfw",
         "Nsfw",
         "Games",
@@ -33,19 +38,24 @@ class EstraClient:
 
     def __init__(
         self,
-        user_id: Optional[int] = None,
-        token_user: Optional[str] = None,
-        *args,
+        client_id: Optional[str] = None,
+        client_secret: Optional[str] = None,
         **kwargs
     ):
-        self.user_id = user_id
-        self.token_user = token_user
-        self.Sfw = Sfw(user_id=self.user_id, token_user=self.token_user)
-        self.Nsfw = Nsfw(user_id=self.user_id, token_user=self.token_user)
-        self.Games = Games(user_id=self.user_id, token_user=self.token_user)
-        self.AniGames = AniGames(user_id=self.user_id, token_user=self.token_user)
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.AccountManager = AccountManager(
+            client_id=client_id, client_secret=client_secret
+        )
+        self.Sfw = Sfw(client_id=self.client_id, client_secret=self.client_secret)
+        self.Nsfw = Nsfw(client_id=self.client_id, client_secret=self.client_secret)
+        self.Games = Games(client_id=self.client_id, client_secret=self.client_secret)
+        self.AniGames = AniGames(
+            client_id=self.client_id, client_secret=self.client_secret
+        )
         self.Help = Help()
         self.OsuClient = OsuClient(
-            client_id=kwargs.get("client_id"), client_secret=kwargs.get("client_secret")
+            osu_client_id=kwargs.get("osu_client_id"),
+            osu_client_secret=kwargs.get("osu_client_secret"),
         )
-        self.Trivia = Trivia()
+        self.Trivia = Trivia(path=kwargs.get("path"))

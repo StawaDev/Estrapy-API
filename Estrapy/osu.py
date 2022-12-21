@@ -1,25 +1,32 @@
-from .http import post_api
+from .http import Requester
 from .property import OsuProfileProperties, OsuBeatmapProperties
-from typing import Union, Optional
+from typing import Optional
 
 
 __all__ = ("OsuClient",)
 
 
 class OsuClient:
-    __slots__ = ("token_user", "user_id", "client_id", "client_secret")
+    __slots__ = (
+        "osu_client_id",
+        "osu_client_secret",
+        "client_id",
+        "client_secret",
+        "requester",
+    )
 
     def __init__(
         self,
-        token_user: Optional[str] = None,
-        user_id: Optional[int] = None,
-        client_id: Union[int, str] = None,
-        client_secret: str = None,
+        osu_client_id: str = None,
+        osu_client_secret: int = None,
+        client_id: str = None,
+        client_secret: int = None,
     ) -> None:
-        self.token_user = token_user
-        self.user_id = user_id
+        self.osu_client_id = osu_client_id
+        self.osu_client_secret = osu_client_secret
         self.client_id = client_id
         self.client_secret = client_secret
+        self.requester = Requester()
 
     async def profile(
         self,
@@ -52,19 +59,21 @@ class OsuClient:
         """
 
         _json = {
-            "user": user_id if not user_id else username,
-            "client_id": self.client_id,
-            "client_secret": self.client_secret,
+            "user": username if not user_id else user_id,
+            "osu_client_id": self.osu_client_id,
+            "osu_client_secret": self.osu_client_secret,
         }
 
-        if self.token_user and self.user_id:
-            _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
-            }
-            output = post_api(route="osu/user", json=_json)
+        if self.client_id and self.client_secret:
+            _json.update(
+                {
+                    "client_id": self.client_id,
+                    "client_secret": self.client_secret,
+                }
+            )
+            output = self.requester.post_api(route="osu/user", json=_json)
 
-        url = post_api(route="osu/user", json=_json)
+        url = self.requester.post_api(route="osu/user", json=_json)
         output = OsuProfileProperties(url)
 
         return output
@@ -99,18 +108,20 @@ class OsuClient:
 
         _json = {
             "id": beatmap_id,
-            "client_id": self.client_id,
-            "client_secret": self.client_secret,
+            "osu_client_id": self.osu_client_id,
+            "osu_client_secret": self.osu_client_secret,
         }
 
-        if self.token_user and self.user_id:
-            _json = {
-                "token_user": self.token_user,
-                "user_id": self.user_id,
-            }
-            output = post_api(route="osu/beatmap", json=_json)
+        if self.client_id and self.client_secret:
+            _json.update(
+                {
+                    "client_id": self.client_id,
+                    "client_secret": self.client_secret,
+                }
+            )
+            output = self.requester.post_api(route="osu/user", json=_json)
 
-        url = post_api("osu/beatmap", json=_json)
+        url = self.requester.post_api("osu/beatmap", json=_json)
         output = OsuBeatmapProperties(url)
 
         return output

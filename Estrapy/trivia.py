@@ -1,23 +1,22 @@
-from typing import Optional
+from typing import Union
 import random as rd
 import time
 import json
+import os
 
 __all__ = ("Trivia",)
 
 
 class Trivia:
-    def __init__(self):
+    def __init__(self, path: str = "EstraTrivia/trivia.json"):
+        self.path = path
         self.trivia = {"questions": {}}
 
-    async def add(
-        self,
-        question: str,
-        answer: str,
-        options: dict,
-        category: Optional[str] = None,
-        difficulty: Optional[str] = None,
-    ) -> str:
+    def check_path(self):
+        if not os.path.exists(self.path):
+            open(self.path, "w")
+
+    async def add(self, question: str, answer: str, options: dict, **kwargs) -> str:
         """
         ## Description
         --------------
@@ -46,7 +45,8 @@ class Trivia:
         num = 1
         i = 0
 
-        with open("trivia.json", "r", encoding="utf-8") as f:
+        self.check_path()
+        with open(self.path, "r", encoding="utf-8") as f:
             try:
                 trivia = json.load(f)
                 num = max(map(int, trivia["questions"].keys())) + 1
@@ -77,18 +77,18 @@ class Trivia:
                             "question": question,
                             "answer": answer,
                             "options": options,
-                            "difficulty": difficulty,
-                            "category": category,
+                            "difficulty": kwargs.get("difficulty"),
+                            "category": kwargs.get("category"),
                         }
                     }
                 )
             )
 
-            with open("trivia.json", "w", encoding="utf-8") as f:
+            with open(self.path, "w", encoding="utf-8") as f:
                 json.dump(trivia, f, indent=4, ensure_ascii=False)
                 return "Question (#{}) added".format(num)
 
-    async def remove(self, num: int) -> None:
+    async def remove(self, num: Union[int, str]) -> None:
         """
         ## Description
         --------------
@@ -108,21 +108,22 @@ class Trivia:
         ```
 
         ## Arguments:
-            - num: int -- The number of question to remove
+            - num: Union[int, str] -- The number of question to remove
         """
 
-        with open("trivia.json", "r", encoding="utf-8") as f:
+        self.check_path()
+        with open(self.path, "r", encoding="utf-8") as f:
             try:
                 trivia = json.load(f)
             except:
                 return "Trivia: No Question Found"
 
         trivia["questions"].pop(str(num))
-        with open("trivia.json", "w", encoding="utf-8") as f:
+        with open(self.path, "w", encoding="utf-8") as f:
             json.dump(trivia, f, indent=4, ensure_ascii=False)
             return "Trivia: Question (#{}) Removed".format(num)
 
-    async def run(self, num: Optional[int] = None, random_pick: bool = True) -> None:
+    async def run(self, num: Union[int, str] = None, random_pick: bool = True) -> None:
         """
         ## Description
         --------------
@@ -133,16 +134,17 @@ class Trivia:
         More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
 
         ## Arguments:
-            - num: Optional[int] -- Number of the question to pick
+            - num: Union[int, str] -- Number of the question to pick
             - random_pick: bool = True -- Randomize to pick available questions
         """
 
+        self.check_path()
         if num and random_pick is not None:
             return "Please put None on unnecessary parameter or leave it empty"
 
         num = 0
 
-        with open("trivia.json", "r") as f:
+        with open(self.path, "r") as f:
             _file = json.load(f)["questions"]
             total = len(_file)
 
@@ -162,7 +164,7 @@ class Trivia:
 
             return num, questions, answer, _options, difficulty, category
 
-    async def answer(self, run: any, guess: str = None):
+    async def answer(self, run, guess: str = None):
         """
         ## Description
         --------------
@@ -180,7 +182,7 @@ class Trivia:
             return True, run[2]
         return False, run[2]
 
-    async def run_console(random_pick: bool = False) -> None:
+    async def run_console(self, random_pick: bool = False) -> None:
         """
         ## Description
         --------------
@@ -207,7 +209,8 @@ class Trivia:
         score = 0
         _options = []
 
-        with open("trivia.json", "r") as f:
+        self.check_path()
+        with open(self.path, "r") as f:
             File = json.load(f)
             Total = len(File["questions"])
 
