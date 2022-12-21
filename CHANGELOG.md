@@ -9,7 +9,7 @@ _If you're concerned by these changes, you may always look at examples._
 
 #### Changed Features
 
-- Changed return list into `PropertiesManager.urls` when user use `generate` parameter.
+- Changed return list into `PropertiesManager.url` when user use `generate` parameter.
 - Updated `Base` class
 - Updated CLI
 - Updated requirements packages

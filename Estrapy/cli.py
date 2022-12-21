@@ -46,19 +46,8 @@ def help(category):
     """
 
     _help = EstraClient().Help
-
-    if str.lower(category) == "all":
-        pprint(_help.all(), indent=4)
-    if str.lower(category) == "sfw":
-        print(_help.sfw())
-    if str.lower(category) == "nsfw":
-        print(_help.nsfw())
-    if str.lower(category) == "games":
-        print(_help.games())
-    if str.lower(category) == "anigames":
-        print(_help.anigames())
-    if str.lower(category) == "osu":
-        print(_help.osu())
+    call = getattr(_help, category)
+    pprint(call(), indent=4)
 
 
 @click.command()

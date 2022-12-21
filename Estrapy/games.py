@@ -67,7 +67,7 @@ class Games:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="text")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -117,7 +117,7 @@ class Games:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="text")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -234,7 +234,7 @@ class AniGames:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="text")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -284,7 +284,7 @@ class AniGames:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="text")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 

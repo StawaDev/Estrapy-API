@@ -1,3 +1,5 @@
+from typing import Union
+
 __all__ = (
     "PropertiesManager",
     "OsuProfileProperties",
@@ -7,8 +9,7 @@ __all__ = (
 
 class PropertiesManager(object):
     def __init__(self, **kwargs) -> None:
-        self.url = kwargs.get("url")  # One request
-        self.urls = kwargs.get("urls")  # Multiple requests
+        self.url = kwargs.get("url")
         self.text = kwargs.get("text")
         self.type = kwargs.get("type")
         self.player = kwargs.get("player")
@@ -19,20 +20,12 @@ class PropertiesManager(object):
         self.original_response = kwargs.get("original_response")
 
     @property
-    def url(self) -> str:
+    def url(self) -> Union[str, list[str]]:
         return self._url
 
     @url.setter
     def url(self, value) -> None:
         self._url = value
-
-    @property
-    def urls(self) -> list[str]:
-        return self._urls
-
-    @urls.setter
-    def urls(self, value) -> None:
-        self._urls = value
 
     @property
     def text(self) -> str:

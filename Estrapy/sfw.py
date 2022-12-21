@@ -62,7 +62,7 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -111,7 +111,7 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -160,7 +160,7 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -209,7 +209,7 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -258,7 +258,7 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -307,7 +307,7 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -356,7 +356,7 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -405,7 +405,7 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
 
@@ -454,6 +454,6 @@ class Sfw:
 
         if generate:
             output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(urls=output)
+            properties = PropertiesManager(url=output)
 
         return properties
