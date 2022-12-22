@@ -14,8 +14,11 @@ asyncio.run(Help())
 
 # Generate Function Examples
 async def generate():
-    print(f"Smile: {await Sfw.smile(generate=2)}")
-    print(f"Poke: {await Sfw.poke(generate=2)}")
+    smile = await Sfw.smile(generate=2)
+    poke = await Sfw.poke(generate=2)
+
+    print(f"Smile: {smile.url}")
+    print(f"Poke: {poke.url}")
 
 
 asyncio.run(generate())

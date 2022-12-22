@@ -14,8 +14,11 @@ asyncio.run(Help())
 
 # Generate Function Examples
 async def generate():
-    print(f"Yaoi: {await Nsfw.yaoi(generate=2)}")
-    print(f"Yuri: {await Nsfw.yuri(generate=2)}")
+    yaoi = await Nsfw.yaoi(generate=2)
+    yuri = await Nsfw.yuri(generate=2)
+
+    print(f"Yaoi: {yaoi.url}")
+    print(f"Yuri: {yuri.url}")
 
 
 asyncio.run(generate())
@@ -38,12 +41,14 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 @bot.command()
 async def yaoi(ctx):
-    await ctx.send(await Nsfw.yaoi())
+    yaoi = await Nsfw.yaoi()
+    await ctx.send(yaoi.url)
 
 
 @bot.command()
-async def dare(ctx):
-    await ctx.send(await Nsfw.yuri())
+async def yuri(ctx):
+    yuri = await Nsfw.yuri()
+    await ctx.send(yuri.url)
 
 
 # Discord Examples With Embed

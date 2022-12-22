@@ -1,7 +1,9 @@
 import asyncio
 from Estrapy import Trivia
 
-EstraTrivia = Trivia()
+EstraTrivia = Trivia(
+    path="Data/questions.json"
+)  # The user can now change the names of folders and files.
 
 
 async def create_question():

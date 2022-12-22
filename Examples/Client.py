@@ -2,10 +2,10 @@ from Estrapy import EstraClient
 import asyncio
 
 # You can get them from https://estra-db.vercel.app
-token_user = "MyUserToken"
-user_id = "MyUserID"
+client_id = "client_id"
+client_secret = "client_secret"
 
-Estra = EstraClient(token_user=token_user, user_id=user_id)
+Estra = EstraClient(client_id=client_id, client_secret=client_secret)
 
 
 async def main():
