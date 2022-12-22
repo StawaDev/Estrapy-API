@@ -3,13 +3,13 @@
 A notice containing the modifications from this project will be included in each published version.
 Please submit an **[issue](https://github.com/StawaDev/Estrapy-API/issues)** if you believe something is missing.
 
-### 「0.2.8」 » Dec. 21, 2022
+### 「0.2.8」 » Dec. 22, 2022
 
-_If you're concerned by these changes, you may always look at examples._
+_If you're concerned by these changes, you may always look at **[examples](https://github.com/StawaDev/Estrapy-API/tree/main/Examples)**._
 
 #### Changed Features
 
-- Changed return list into `PropertiesManager.url` when user use `generate` parameter.
+- Changed return list into `PropertiesManager.url` or `PropertiesManager.text` when user use `generate` parameter.
 - Updated `Base` class
 - Updated CLI
 - Updated requirements packages
@@ -19,12 +19,11 @@ _If you're concerned by these changes, you may always look at examples._
 
 #### Added Features
 
-- Added `original_response` to `PropertiesManager`
-- Added `Requester` class
-- Added `AccountProperties` class
-- Added `AccountStatistics` class
+- Added `with_account` property when user use `generate` parameter
+- Added `original_response` property to `PropertiesManager`
+- Added `Requester`, `AccountProperties`, `AccountStatistics` classes
 - Added a `Test Requests` on CLI
-- Added PATH file for Trivia
+- Added a custom path file for Trivia
 
 ### 「0.2.7」 » Oct. 23, 2022
 
