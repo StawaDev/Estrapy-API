@@ -7,6 +7,7 @@ import asyncclick as click
 import anyio
 
 base = Base()
+client = EstraClient()
 requester = Requester()
 
 
@@ -45,7 +46,7 @@ def help(category):
     Return a list of endpoints from a given category or a list of all endpoints.
     """
 
-    _help = EstraClient().Help
+    _help = client.Help
     call = getattr(_help, category)
     pprint(call(), indent=4)
 
@@ -104,7 +105,7 @@ async def requests(category: str, endpoint: str, total: int):
 
     if total > 1:
         try:
-            output = await base.produce(route=route, total=total)
+            output = await base.produce(route=route, total=total, type="link")
         except:
             output = await base.produce(route=route, total=total, type="text")
 

@@ -66,8 +66,10 @@ class Games:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="text")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="text"
+            )
+            properties = PropertiesManager(text=output, with_account=with_account)
 
         return properties
 
@@ -116,8 +118,10 @@ class Games:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="text")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="text"
+            )
+            properties = PropertiesManager(text=output, with_account=with_account)
 
         return properties
 
@@ -233,8 +237,10 @@ class AniGames:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="text")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="text"
+            )
+            properties = PropertiesManager(text=output, with_account=with_account)
 
         return properties
 
@@ -283,8 +289,10 @@ class AniGames:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="text")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="text"
+            )
+            properties = PropertiesManager(text=output, with_account=with_account)
 
         return properties
 

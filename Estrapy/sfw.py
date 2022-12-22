@@ -61,8 +61,10 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties
 
@@ -110,8 +112,10 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties
 
@@ -159,8 +163,10 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties
 
@@ -208,8 +214,10 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties
 
@@ -257,8 +265,10 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties
 
@@ -306,8 +316,10 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties
 
@@ -355,8 +367,10 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties
 
@@ -404,8 +418,10 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties
 
@@ -453,7 +469,9 @@ class Sfw:
         )
 
         if generate:
-            output = await self.base.produce(total=generate, route=route, type="link")
-            properties = PropertiesManager(url=output)
+            output, with_account = await self.base.produce(
+                total=generate, route=route, type="link"
+            )
+            properties = PropertiesManager(url=output, with_account=with_account)
 
         return properties

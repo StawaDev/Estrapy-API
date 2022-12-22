@@ -1,6 +1,6 @@
 from .http import Requester
-from .errors import InvalidNumber
-from typing import Optional
+from .errors import InvalidNumber, InvalidResponse
+from typing import Optional, Tuple, Union
 from pygments import highlight, lexers, formatters
 import json
 import requests
@@ -23,23 +23,39 @@ class Base:
         )
         return beautifier
 
-    async def produce(self, total: int, route: str, type: str = "link") -> list:
+    async def produce(
+        self, total: int, route: str, type: str = "link", **kwargs
+    ) -> Union[list[str], Tuple[list[str], bool]]:
         """
         Returns a list of responses for the given route.
         """
 
         generated_urls = []
-
+        with_account = False
         if total > 15 or total < 2:
             raise InvalidNumber(
                 "Can't generate more than 15 or less than 1 request at a time."
             )
 
+        _json = kwargs.get("json")
         for _ in range(int(total)):
-            url = self.requester.get_api(route=route).get(type)
-            generated_urls.append(url)
+            if _json:
+                url = self.requester.post_api(route=route, json=_json)
+                with_account = True
+                error = url.get("error")
 
-        return generated_urls
+                if error:
+                    raise InvalidResponse(
+                        f"There might be an error with your client_id or client_secret. Error reason: {error}"
+                    )
+
+                generated_urls.append(url)
+
+            if not _json:
+                url = self.requester.get_api(route=route).get(type)
+                generated_urls.append(url)
+
+        return generated_urls if not _json else generated_urls, with_account
 
     async def save(
         self,

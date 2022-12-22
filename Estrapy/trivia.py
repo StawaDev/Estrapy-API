@@ -1,4 +1,5 @@
 from typing import Union
+from pathlib import Path
 import random as rd
 import time
 import json
@@ -14,7 +15,8 @@ class Trivia:
 
     def check_path(self):
         if not os.path.exists(self.path):
-            open(self.path, "w")
+            os.makedirs(self.path.split("/")[-1 + 1])
+        open(self.path, "a")
 
     async def add(self, question: str, answer: str, options: dict, **kwargs) -> str:
         """

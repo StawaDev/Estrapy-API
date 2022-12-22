@@ -1,9 +1,12 @@
 from typing import Union
+from .errors import InvalidResponse
 
 __all__ = (
     "PropertiesManager",
     "OsuProfileProperties",
     "OsuBeatmapProperties",
+    "AccountProperties",
+    "AccountStatistics",
 )
 
 
@@ -19,6 +22,12 @@ class PropertiesManager(object):
         self.with_account = kwargs.get("with_account")
         self.original_response = kwargs.get("original_response")
 
+        error = self.original_response.get("error") if self.original_response else False
+        if error:
+            raise InvalidResponse(
+                f"There might be an error with your client_id or client_secret. Error reason: {error}"
+            )
+
     @property
     def url(self) -> Union[str, list[str]]:
         return self._url
@@ -28,7 +37,7 @@ class PropertiesManager(object):
         self._url = value
 
     @property
-    def text(self) -> str:
+    def text(self) -> Union[str, list[str]]:
         return self._text
 
     @text.setter
@@ -256,11 +265,14 @@ class OsuProfileProperties(object):
         "rankHistory",
         "ranked_and_approved_beatmapset_count",
         "unranked_beatmapset_count",
+        "original_response",
     )
 
-    def __init__(self, _json: dict = None) -> None:
-        if _json:
-            for key, value in _json.items():
+    def __init__(self, **kwargs) -> None:
+        self.original_response = kwargs.get("original_response")
+
+        if self.original_response:
+            for key, value in self.original_response.items():
                 setattr(self, key, value)
 
 
@@ -296,9 +308,12 @@ class OsuBeatmapProperties(object):
         "beatmapset",
         "failtimes",
         "max_combo",
+        "original_response",
     )
 
-    def __init__(self, _json: dict = None) -> None:
-        if _json:
-            for key, value in _json.items():
+    def __init__(self, **kwargs) -> None:
+        self.original_response = kwargs.get("original_response")
+
+        if self.original_response:
+            for key, value in self.original_response.items():
                 setattr(self, key, value)

@@ -44,6 +44,10 @@ class EstraClient:
     ):
         self.client_id = client_id
         self.client_secret = client_secret
+        self.osu_client_id = kwargs.get("osu_client_id")
+        self.osu_client_secret = kwargs.get("osu_client_secret")
+        self.path = kwargs.get("path")
+
         self.AccountManager = AccountManager(
             client_id=client_id, client_secret=client_secret
         )
@@ -55,7 +59,9 @@ class EstraClient:
         )
         self.Help = Help()
         self.OsuClient = OsuClient(
-            osu_client_id=kwargs.get("osu_client_id"),
-            osu_client_secret=kwargs.get("osu_client_secret"),
+            client_id=self.client_id,
+            client_secret=self.client_secret,
+            osu_client_id=self.osu_client_id,
+            osu_client_secret=self.osu_client_secret,
         )
-        self.Trivia = Trivia(path=kwargs.get("path"))
+        self.Trivia = Trivia(path=self.path)

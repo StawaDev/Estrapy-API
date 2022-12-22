@@ -74,7 +74,7 @@ class OsuClient:
             output = self.requester.post_api(route="osu/user", json=_json)
 
         url = self.requester.post_api(route="osu/user", json=_json)
-        output = OsuProfileProperties(url)
+        output = OsuProfileProperties(original_response=url)
 
         return output
 
@@ -122,6 +122,6 @@ class OsuClient:
             output = self.requester.post_api(route="osu/user", json=_json)
 
         url = self.requester.post_api("osu/beatmap", json=_json)
-        output = OsuBeatmapProperties(url)
+        output = OsuBeatmapProperties(original_response=url)
 
         return output
