@@ -1,33 +1,30 @@
 from .http import Requester
 from .errors import InvalidNumber, InvalidResponse
 from typing import Optional, Tuple, Union
-from pygments import highlight, lexers, formatters
-import json
 import requests
 
 __all__ = ("Base", "ObjectConverter")
 
 
 class Base:
+    """The base class is an important one for Estrapy-API because it can be used to save and generate many requests."""
+
     def __init__(self):
         self.requester = Requester()
-
-    def json_beautifier(self, data) -> any:
-        """
-        This function only can be used by the CLI.
-        """
-
-        _json = json.dumps(data, indent=6, sort_keys=True)
-        beautifier = highlight(
-            _json, lexers.JsonLexer(), formatters.TerminalFormatter()
-        )
-        return beautifier
 
     async def produce(
         self, total: int, route: str, type: str = "link", **kwargs
     ) -> Union[list[str], Tuple[list[str], bool]]:
-        """
-        Returns a list of responses for the given route.
+        """This function will return as Union[list[str], Tuple[list[str], bool]]
+
+        Parameters
+        -----------
+        total: int
+            Total requests to the API
+        route: str
+            Route to the API
+        type:
+            Obtain results from JSON keys
         """
 
         generated_urls = []
@@ -63,32 +60,17 @@ class Base:
         total: Optional[int] = 1,
         filename: Optional[str] = None,
     ) -> list:
-        """
-        ### Description
-        --------------
-        This function will save image from specified category.
+        """This function will save image from specified category.
         Filename is optional, if not provided, it will be saved as target index 1 with number behind it.
 
-        ### How to use save function (Examples)
-        ----------------------------
-        ```
-        import asyncio
-        from Estrapy.base import Base
-
-        async def save():
-            await Base.save(target=("sfw/hug"), filename="Hug") # Will save a hug gif
-
-        async def save_generated():
-            await Base.save(target=("sfw/smile"), total=3, filename="SmileGif") # Will save 3 smile gifs with number behind its filename
-
-        asyncio.run(save())
-        asyncio.run(save_generated())
-        ```
-
-        ### Arguments:
-            - category: str -- Target to download, (ex. sfw/hug)
-            - total: Optional[int] -- Total of image to download, default is 1
-            - filename: Optional[str] -- Filename to save, default is target category with number behind it.
+        Parameters
+        -----------
+        category: str
+            Target to download, (ex. sfw/hug)
+        total: Optional[int]
+            Total of image to download, default is 1
+        filename: Optional[str]
+            Filename to save, default is target category with number behind it.
         """
 
         url_list = []

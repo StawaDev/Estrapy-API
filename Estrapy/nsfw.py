@@ -18,28 +18,18 @@ class Nsfw:
         self.base = Base()
 
     async def kill(self, generate: Optional[int] = None) -> PropertiesManager:
-        """
-        ## Description
-        --------------
-        This function will be returning an `Anime K1lling GIF` as url.
+        """This function will be returning an `Anime K1lling GIF` as url.
         If you want to generate more than one GIF, use `generate` parameter and it will return a list.
 
-        ## Short Example
-        --------------
+        Parameters
+        -----------
+        generate: Optional[int]
+            Generate how many requests to return
 
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
-
-        ```
-        import Estrapy
-
-        async def kill():
-            one = await Estrapy.Nsfw.kill()
-            five = await Estrapy.Nsfw.kill(generate=5)
-            print(f"Generate One: {one.url} Generate 5 as List: {five}")
-        ```
-
-        ## Arguments:
-            - generate: int -- Generate how many requests to return
+        Returns
+        --------
+        :class:`~Estrapy.property.PropertiesManager`
+            Return a class object containing the complete API response; when users use `generate`, only the `url/text` and `with_account` properties will be available to use.
         """
 
         route = "nsfw/kill"
@@ -69,28 +59,18 @@ class Nsfw:
         return properties
 
     async def yuri(self, generate: Optional[int] = None) -> PropertiesManager:
-        """
-        ## Description
-        --------------
-        This function will be returning an `Anime Yuri GIF/Image` as url.
+        """This function will be returning an `Anime Yuri GIF/Image` as url.
         If you want to generate more than one GIF/Image, use `generate` parameter and it will return a list.
 
-        ## Short Example
-        --------------
+        Parameters
+        -----------
+        generate: Optional[int]
+            Generate how many requests to return
 
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
-
-        ```
-        import Estrapy
-
-        async def yuri():
-            one = await Estrapy.Nsfw.yuri()
-            five = await Estrapy.Nsfw.yuri(generate=5)
-            print(f"Generate One: {one.url} Generate 5 as List: {five}")
-        ```
-
-        ## Arguments:
-            - generate: int -- Generate how many requests to return
+        Returns
+        --------
+        :class:`~Estrapy.property.PropertiesManager`
+            Return a class object containing the complete API response; when users use `generate`, only the `url/text` and `with_account` properties will be available to use.
         """
 
         route = "nsfw/yuri"
@@ -120,28 +100,18 @@ class Nsfw:
         return properties
 
     async def yaoi(self, generate: Optional[int] = None) -> PropertiesManager:
-        """
-        ## Description
-        --------------
-        This function will be returning an `Anime Yaoi GIF/Image` as url.
+        """This function will be returning an `Anime Yaoi GIF/Image` as url.
         If you want to generate more than one GIF/Image, use `generate` parameter and it will return a list.
 
-        ## Short Example
-        --------------
+        Parameters
+        -----------
+        generate: Optional[int]
+            Generate how many requests to return
 
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
-
-        ```
-        import Estrapy
-
-        async def yaoi():
-            one = await Estrapy.Nsfw.yaoi()
-            five = await Estrapy.Nsfw.yaoi(generate=5)
-            print(f"Generate One: {one.url} Generate 5 as List: {five}")
-        ```
-
-        ## Arguments:
-            - generate: int -- Generate how many requests to return
+        Returns
+        --------
+        :class:`~Estrapy.property.PropertiesManager`
+            Return a class object containing the complete API response; when users use `generate`, only the `url/text` and `with_account` properties will be available to use.
         """
 
         route = "nsfw/yaoi"

@@ -14,7 +14,9 @@ requester = Requester()
 @click.command()
 def menu():
     """
-    Return basic information about Estrapy-API.
+    Returns
+    --------
+    Some basic information about Estrapy-API.
     """
     text = """
     Author  : @StawaDev
@@ -43,7 +45,9 @@ def menu():
 )
 def help(category):
     """
-    Return a list of endpoints from a given category or a list of all endpoints.
+    Returns
+    --------
+    A list of endpoints from a given category or a list of all endpoints.
     """
 
     _help = client.Help
@@ -70,9 +74,7 @@ def help(category):
     "--filename", "-f", default=None, help="Name of File for image", multiple=False
 )
 async def save(category: str, endpoint: str, total: int, filename: str = None):
-    """
-    It will save an image or images with a specified category, endpoints, and total images.
-    """
+    """It will save an image or images with a specified category, endpoints, and total images."""
 
     x = await base.save(
         category=f"{category}/{endpoint}", total=total, filename=filename
@@ -96,9 +98,7 @@ async def save(category: str, endpoint: str, total: int, filename: str = None):
     "--total", "-t", default=1, help="Total requests to fetch", multiple=False
 )
 async def requests(category: str, endpoint: str, total: int):
-    """
-    A test request to the API with a given category and endpoint.
-    """
+    """A test request to the API with a given category and endpoint."""
 
     route = f"{category}/{endpoint}"
     output = requester.get_api(route)

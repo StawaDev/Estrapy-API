@@ -11,6 +11,30 @@ __all__ = (
 
 
 class PropertiesManager(object):
+    """PropertiesManager is a class with all complete responses from the API that converts into a class property.
+
+    Attributes
+    -----------
+    url: Union[str, list[str]]
+        Returns str or list[str]
+    text: Union[str, list[str]]
+        Returns str or list[str]
+    type: str
+        Returns type
+    player: str
+        Returns player's name
+    character_name: str
+        Returns character's name
+    percentage: str
+        Returns percentage
+    total: str
+        Returns total
+    with_account: bool
+        Returns bool
+    original_response: dict
+        Returns original json respone
+    """
+
     def __init__(self, **kwargs) -> None:
         self.url = kwargs.get("url")
         self.text = kwargs.get("text")
@@ -102,6 +126,20 @@ class PropertiesManager(object):
 
 
 class AccountProperties(object):
+    """AccountProperties is a class that fetches the user's account data from `estra-db <https://estra-db.vercel.app/>`_.
+
+    Attributes
+    -----------
+    username: str
+        Returns username
+    user_id: int
+        Returns user_id (uid)
+    client_id: str
+        Returns user's client_id
+    client_secret: str
+        Returns user's client_secret
+    """
+
     def __init__(self, **kwargs) -> None:
         self.username = kwargs.get("username")
         self.user_id = kwargs.get("user_id")
@@ -117,7 +155,7 @@ class AccountProperties(object):
         self._username = value
 
     @property
-    def user_id(self) -> str:
+    def user_id(self) -> int:
         return self._user_id
 
     @user_id.setter
@@ -142,6 +180,24 @@ class AccountProperties(object):
 
 
 class AccountStatistics(object):
+    """AccountStatistics is a class that fetches the user's statistics request history from `estra-db <https://estra-db.vercel.app/statistics/>`_.
+
+    Attributes
+    -----------
+    sfw: dict
+        Returns a dict filled with all SFW endpoints.
+    nsfw: dict
+        Returns a dict filled with all NSFW endpoints.
+    games: dict
+        Returns a dict filled with all Games endpoints.
+    anigames: dict
+        Returns a dict filled with all AniGames endpoints.
+    osu: dict
+        Returns a dict filled with all OSU endpoints.
+    total_requests_user: int
+        Returns the user's total number of requests as an integer.
+    """
+
     def __init__(self, **kwargs):
         self.sfw = kwargs.get("sfw")
         self.nsfw = kwargs.get("nsfw")

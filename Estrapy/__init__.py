@@ -16,8 +16,37 @@ __license__ = "MIT"
 
 
 class EstraClient:
-    """
-    Client class for Estrapy, which provides access to the Estrapy's functions.
+    """Client class for Estrapy, which provides access to the Estrapy's functions.
+
+    Parameters
+    -----------
+    client_id: Optional[str]
+        You can get `client_id` from `estra-db <https://estra-db.vercel.app/>`_.
+    client_secret: Optional[str]
+        You can get `client_secret` from `estra-db <https://estra-db.vercel.app/>`_.
+    osu_client_id: Optional[str]
+        This parameter will be optional if the user doesn't use OsuClients
+    osu_client_secret: Optional[str]
+        This parameter will be optional if the user doesn't use OsuClients
+    path: str
+        This parameter will be optional if the user doesn't use Trivia
+
+    Attributes
+    -----------
+    AccountManager: class
+        EstraClient should invoke the AccountManager class.
+    Sfw: class
+        EstraClient should invoke the Sfw class.
+    Nsfw: class
+        EstraClient should invoke the Nsfw class.
+    Games: class
+        EstraClient should invoke the Games class.
+    AniGames: class
+        EstraClient should invoke the AniGames class.
+    OsuClient: class
+        EstraClient should invoke the OsuClient class.
+    Trivia: class
+        EstraClient should invoke the Trivia class.
     """
 
     __slots__ = (

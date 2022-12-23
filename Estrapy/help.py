@@ -2,22 +2,16 @@ __all__ = ("Help",)
 
 
 class Help:
+    """A simple help class with functions that can return all available category endpoints"""
+
     @staticmethod
-    def sfw():
-        """
-        ## Description
-        --------------
-        This function will return a list of Sfw categories endpoints.
+    def sfw() -> list[str]:
+        """This function will return a list of `Sfw` category endpoints.
 
-        ## Short Example
-        ----------------------------
-
-        ```
-        import Estrapy
-
-        def sfw():
-            print(Estrapy.Help.sfw()) # Keep it as function or it will return function type
-        ```
+        Returns
+        --------
+        list[str]
+            Return a list filled with SFW endpoints.
         """
 
         SFW_LIST = [
@@ -35,21 +29,13 @@ class Help:
         return SFW_LIST
 
     @staticmethod
-    def nsfw():
-        """
-        ## Description
-        --------------
-        This function will return a list of Nsfw categories endpoints.
+    def nsfw() -> list[str]:
+        """This function will return a list of `Nsfw` category endpoints.
 
-        ## Short Example
-        ----------------------------
-
-        ```
-        import Estrapy
-
-        def nsfw():
-            print(Estrapy.Help.nsfw()) # Keep it as function or it will return function type
-        ```
+        Returns
+        --------
+        list[str]
+            Return a list filled with NSFW endpoints.
         """
 
         NSFW_LIST = ["yaoi", "yuri", "kill"]
@@ -57,21 +43,13 @@ class Help:
         return NSFW_LIST
 
     @staticmethod
-    def games():
-        """
-        ## Description
-        --------------
-        This function will return a list of Games categories endpoints.
+    def games() -> list[str]:
+        """This function will return a list of `Games` category endpoints.
 
-        ## Short Example
-        ----------------------------
-
-        ```
-        import Estrapy
-
-        def games():
-            print(Estrapy.Help.games()) # Keep it as function or it will return function type
-        ```
+        Returns
+        --------
+        list[str]
+            Return a list filled with Games endpoints.
         """
 
         GAMES_LIST = ["truth", "dare", "shipper"]
@@ -79,21 +57,13 @@ class Help:
         return GAMES_LIST
 
     @staticmethod
-    def anigames():
-        """
-        ## Description
-        --------------
-        This function will return a list of AniGames categories endpoints.
+    def anigames() -> list[str]:
+        """This function will return a list of `AniGames` category endpoints.
 
-        ## Short Example
-        ----------------------------
-
-        ```
-        import Estrapy
-
-        def anigames():
-            print(Estrapy.Help.anigames()) # Keep it as function or it will return function type
-        ```
+        Returns
+        --------
+        list[str]
+            Return a list filled with AniGames endpoints.
         """
 
         ANIGAMES_LIST = [
@@ -108,21 +78,13 @@ class Help:
         return ANIGAMES_LIST
 
     @staticmethod
-    def osu():
-        """
-        ## Description
-        --------------
-        This function will return a list of Osu categories endpoints.
+    def osu() -> list[str]:
+        """This function will return a list of `Osu` category endpoints.
 
-        ## Short Example
-        ----------------------------
-
-        ```
-        import Estrapy
-
-        def osu():
-            print(Estrapy.Help.osu()) # Keep it as function or it will return function type
-        ```
+        Returns
+        --------
+        list[str]
+            Return a list filled with Osu endpoints.
         """
 
         OSU_LIST = ["osuprofile", "osubeatmap"]
@@ -130,44 +92,26 @@ class Help:
         return OSU_LIST
 
     @staticmethod
-    def trivia():
-        """
-        Description
-        --------------
-        This function will return a list of Trivia categories endpoints.
+    def trivia() -> list[str]:
+        """This function will return a list of `Trivia` functions.
 
-        ## Short Example
-        ----------------------------
-
-        ```
-        import Estrapy
-
-        def trivia():
-            print(Estrapy.Help.trivia()) # Keep it as function or it will return function type
-        ```
+        Returns
+        --------
+        list[str]
+            Return a list filled with Trivia functions.
         """
 
         TRIVIA_LIST = ["add", "remove", "answer", "run", "run_console"]
 
         return TRIVIA_LIST
 
-    def all(self):
-        """
-        Description
-        --------------
-        This function will return a list of All categories endpoints (Sfw, Nsfw, Games, AniGames).
+    def all(self) -> dict:
+        """This function will return a dict with all category endpoints.
 
-        ## Short Example
-        ----------------------------
-
-        ```
-        import Estrapy
-
-        def all():
-            help = Estrapy.Help()
-            print(help.all()) # Keep it as function or it will return function type
-        ```
-
+        Returns
+        --------
+        dict
+            Return a dict filled with all category endpoints.
         """
 
         ALL_DICT = {

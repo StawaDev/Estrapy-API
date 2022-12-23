@@ -4,6 +4,14 @@ from .errors import APIOffline, InvalidStatusCode, InvalidResponse
 
 
 class Requester:
+    """This class has functions that can get or send requests to the API.
+
+    Parameters
+    -----------
+    custom_url: str
+        A custom URL to fetch another API
+    """
+
     __all__ = ("base_url", "get_api", "post_api", "post_response")
 
     def __init__(self, **kwargs):
@@ -14,6 +22,14 @@ class Requester:
             self.base_url = self.custom_url
 
     def get_api(self, route: str = None) -> dict:
+        """Get a response from a specific route to the API.
+
+        Parameters
+        -----------
+        route: str
+            Route to the API
+        """
+
         r = None
 
         try:
@@ -29,6 +45,16 @@ class Requester:
             raise APIOffline("The Estrapy API is offline.")
 
     def post_api(self, route: str = None, json=None) -> dict:
+        """Send a request and get a response from a specific route to the API.
+
+        Parameters
+        -----------
+        route: str
+            Route to the API
+        json: dict
+            The API receives JSON data.
+        """
+
         r = None
 
         try:
@@ -47,6 +73,16 @@ class Requester:
             raise APIOffline("The Estrapy API is offline.")
 
     def post_response(self, route: str = None, json=None) -> requests.Response:
+        """Send a request and get a response from a specific route to the API.
+
+        Parameters
+        -----------
+        route: str
+            Route to the API
+        json: dict
+            The API receives JSON data.
+        """
+
         r = None
 
         try:

@@ -13,35 +13,37 @@ class Trivia:
         self.path = path
         self.trivia = {"questions": {}}
 
-    def check_path(self):
+    def check_path(self) -> None:
+        """Determining whether or not a path exists, It will create it if it does not already exist.
+
+        .. versionadded:: 0.2.8
+        """
+
         if not os.path.exists(self.path):
             os.makedirs(self.path.split("/")[-1 + 1])
         open(self.path, "a")
 
     async def add(self, question: str, answer: str, options: dict, **kwargs) -> str:
-        """
-        ## Description
-        --------------
-        This function will add a new question with followed by the given parameters to a JSON file.
+        """This function will add a new question with followed by the given parameters to a JSON file.
         The options argument requires a directory, ex. `{'A': 'Answer_1', 'B': 'Answer_2'}`.
 
-        ## Short Example
-        --------------
+        Parameters
+        -----------
+        question: str
+            The question to add
+        answer: str
+            The answer of the question
+        options: dict
+            The options of the question
+        category: Optional[str]
+            The category of the question
+        difficulty: Optional[str]
+            The difficulty of the question
 
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
-
-        ```
-        from Estrapy import Trivia
-
-        EstraTrivia = Trivia()
-        ```
-
-        ## Arguments:
-            - question: str -- The question to add
-            - answer: str -- The answer of the question
-            - options: dict -- The options of the question
-            - category: Optional[str] -- The category of the question
-            - difficulty: Optional[str] -- The difficulty of the question
+        Returns
+        --------
+        str
+            This will let you know if the question was added or existed.
         """
 
         num = 1
@@ -90,27 +92,18 @@ class Trivia:
                 json.dump(trivia, f, indent=4, ensure_ascii=False)
                 return "Question (#{}) added".format(num)
 
-    async def remove(self, num: Union[int, str]) -> None:
-        """
-        ## Description
-        --------------
-        There's nothing special about this function but it does can remove specific question you want to remove from the JSON file.
+    async def remove(self, num: Union[int, str]) -> str:
+        """There's nothing special about this function but it does can remove specific question you want to remove from the JSON file.
 
-        ## Short Example
-        --------------
+        Parameters
+        -----------
+        num: Union[int, str]
+            The number of question to remove
 
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
-
-        ```
-        from Estrapy import Trivia
-
-        EstraTrivia = Trivia()
-        async def remove_question():
-            print(await EstraTrivia.remove(1))  # Remove question number 1
-        ```
-
-        ## Arguments:
-            - num: Union[int, str] -- The number of question to remove
+        Returns
+        --------
+        str
+            This will let you know if the question is removed or not.
         """
 
         self.check_path()
@@ -125,19 +118,20 @@ class Trivia:
             json.dump(trivia, f, indent=4, ensure_ascii=False)
             return "Trivia: Question (#{}) Removed".format(num)
 
-    async def run(self, num: Union[int, str] = None, random_pick: bool = True) -> None:
-        """
-        ## Description
-        --------------
-        Play Estra Trivia using functions, recommended using this function for Discord Bot.
+    async def run(self, num: Union[int, str] = None, random_pick: bool = True) -> tuple:
+        """Play Estra Trivia using functions, recommended using this function for Discord Bot.
 
-        ## Short Example
-        --------------
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
+        Parameters
+        -----------
+        num: Union[int, str]
+            Number of the question to pick
+        random_pick: bool = True
+            Randomize to pick available questions
 
-        ## Arguments:
-            - num: Union[int, str] -- Number of the question to pick
-            - random_pick: bool = True -- Randomize to pick available questions
+        Returns
+        --------
+        tuple
+            This will return `num`, `question`, `answer`, `options`, `difficulty`, `category`
         """
 
         self.check_path()
@@ -166,18 +160,16 @@ class Trivia:
 
             return num, questions, answer, _options, difficulty, category
 
-    async def answer(self, run, guess: str = None):
-        """
-        ## Description
-        --------------
-        Answer the question using function, this is function will be checking if the answer is correct or not.
-        Recommended using `Estrapy.Trivia.run()` method.
+    async def answer(self, run, guess: str = None) -> tuple:
+        """Answer the question using function, this is function will be checking if the answer is correct or not.
+        Recommended using `:class:~Estrapy.Trivia.run` method.
 
-        Examples available in https://github.com/StawaDev/Estrapy-API/blob/main/Examples/Trivia.py
-
-        ## Arguments:
-            - run: any -- Requires argument from `Estrapy.Trivia.run`
-            - guess: str -- Player's guess
+        Parameters
+        -----------
+        run: any
+            Requires argument from `Estrapy.Trivia.run`
+        guess: str
+            Player's guess
         """
 
         if str.lower(guess) == str.lower(run[2]):
@@ -185,27 +177,12 @@ class Trivia:
         return False, run[2]
 
     async def run_console(self, random_pick: bool = False) -> None:
-        """
-        ## Description
-        --------------
-        Play Estra Trivia only using console, easy to access and interact!
+        """Play Estra Trivia only using console, easy to access and interact!
 
-        ## Short Example
-        --------------
-
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
-
-        ```
-        from Estrapy import Trivia
-
-        EstraTrivia = Trivia()
-
-        async def console():
-            await EstraTrivia.run_console()
-        ```
-
-        ## Arguments:
-            - random_pick: bool = True -- Randomize to pick available questions
+        Parameters
+        -----------
+        random_pick: bool = True
+            Randomize to pick available questions
         """
 
         score = 0

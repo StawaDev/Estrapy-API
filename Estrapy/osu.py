@@ -33,29 +33,20 @@ class OsuClient:
         user_id: Optional[int] = None,
         username: Optional[str] = None,
     ) -> OsuProfileProperties:
-        """
-        ## Description
-        --------------
-        This function is part of the Osu API and should be used only for fetching user's profile information.
+        """This function is part of the Osu API and should be used only for fetching user's profile information.
         Also this function will be returning OsuProfileProperties object.
 
-        ## Short Example
-        --------------
+        Parameters
+        -----------
+        user_id: Optional[int]
+            Using `UserID` to retrieve user information, default is `None`.
+        username: Optional[str]
+            Using `Username` to retrieve user information, default is `None`.
 
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
-
-        ```
-        async def profile():
-            osu = Estrapy.OsuClient(
-                client_id=xxxx, client_secret="xxxx"
-            )
-            x = await osu.profile(username="Stawa")
-            print(x.avatar_url)
-        ```
-
-        ## Arguments:
-            - user_id: Optional[int] -- Using `UserID` to retrieve user information, default is `None`.
-            - username: Optional[str] -- Using `Username` to retrieve user information, default is `None`.
+        Returns
+        --------
+        :class:`~Estrapy.property.OsuBeatmapProperties`
+            Return a class object containing the complete API response
         """
 
         _json = {
@@ -82,28 +73,18 @@ class OsuClient:
         self,
         beatmap_id: int = None,
     ) -> OsuBeatmapProperties:
-        """
-        ## Description
-        --------------
-        This function is part of the Osu API and should be used only for fetching beatmaps information.
+        """This function is part of the Osu API and should be used only for fetching beatmaps information.
         Also this function will be returning OsuBeatmapProperties object.
 
-        ## Short Example
-        --------------
+        Parameters
+        -----------
+        beatmap_id: int
+            Using `BeatmapID` to retrieve user information, default is `None`.
 
-        More examples are available on our github: https://github.com/StawaDev/Estrapy-API/tree/main/Examples
-
-        ```
-        async def beatmap():
-            osu = Estrapy.OsuClient(
-                client_id=xxxx, client_secret="xxxx"
-            )
-            x = await osu.beatmap(beatmap_id=123)
-            print(x.beatmapset.artist)
-        ```
-
-        ## Arguments:
-            - beatmap_id: int -- Using `BeatmapID` to retrieve user information, default is `None`.
+        Returns
+        --------
+        :class:`~Estrapy.property.OsuBeatmapProperties`
+            Return a class object containing the complete API response
         """
 
         _json = {
