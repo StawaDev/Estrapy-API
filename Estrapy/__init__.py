@@ -21,9 +21,9 @@ class EstraClient:
     Parameters
     -----------
     client_id: Optional[str]
-        You can get `client_id` from `estra-db <https://estra-db.vercel.app/>`_.
+        You can get `client_id` from `estra-db <https://estra-db.vercel.app/>`__.
     client_secret: Optional[str]
-        You can get `client_secret` from `estra-db <https://estra-db.vercel.app/>`_.
+        You can get `client_secret` from `estra-db <https://estra-db.vercel.app/>`__.
     osu_client_id: Optional[str]
         This parameter will be optional if the user doesn't use OsuClients
     osu_client_secret: Optional[str]

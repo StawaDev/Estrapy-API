@@ -126,7 +126,7 @@ class PropertiesManager(object):
 
 
 class AccountProperties(object):
-    """AccountProperties is a class that fetches the user's account data from `estra-db <https://estra-db.vercel.app/>`_.
+    """AccountProperties is a class that fetches the user's account data from `estra-db <https://estra-db.vercel.app/>`__.
 
     Attributes
     -----------
@@ -180,7 +180,7 @@ class AccountProperties(object):
 
 
 class AccountStatistics(object):
-    """AccountStatistics is a class that fetches the user's statistics request history from `estra-db <https://estra-db.vercel.app/statistics/>`_.
+    """AccountStatistics is a class that fetches the user's statistics request history from `estra-db <https://estra-db.vercel.app/statistics/>`__.
 
     Attributes
     -----------
