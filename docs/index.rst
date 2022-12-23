@@ -2,6 +2,11 @@ Welcome to Estrapy documentation!
 ==================================
 
 .. toctree::
-   :maxdepth: 2
+   :caption: Introduction
 
-   modules
+   intro
+
+.. toctree::
+   :caption: Documentation
+
+   Estrapy
