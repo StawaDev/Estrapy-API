@@ -5,7 +5,7 @@ Properties Classes
     These are property classes that are only available in the stable version; if it doesn't work, there could be a problem with the API, the client, or you were using an earlier version.
 
 Property
------------------------
+---------
 
 .. automodule:: Estrapy.property
    :members:
@@ -90,4 +90,3 @@ Trivia
    :members:
    :undoc-members:
    :show-inheritance:
-
