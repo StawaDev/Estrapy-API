@@ -47,7 +47,7 @@ functions, for example:
        print(run.url)
 
 .. note::
-    One more thing I have to say is that every function will return its own property class, for example, “PropertiesManager,” and the rest of it you can check `here </properties/>`__!
+    One more thing I have to say is that every function will return its own property class, for example, “PropertiesManager,” and the rest of it you can check `here </en/latest/Estrapy.html/>`__!
 
 .. code:: yaml
 

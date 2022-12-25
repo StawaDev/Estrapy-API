@@ -14,4 +14,4 @@ build:
     pre_build:
       - pip install myst-parser
       - pip install sphinx-rtd-theme
-      - python -m sphinx -T -E -b html -d _build/doctrees -D language=en . _build/html
+      - python -m sphinx -b linkcheck -D linkcheck_timeout=1 docs/ _build/linkcheck
