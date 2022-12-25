@@ -1,28 +1,17 @@
 # Read the Docs configuration file
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 
-# Required
 version: 2
-
-# Build documentation in the docs/ directory with Sphinx
 sphinx:
   configuration: docs/conf.py
   builder: html
 
-# Build documentation with MkDocs
-#mkdocs:
-#  configuration: mkdocs.yml
-
-# Optionally build your docs in additional formats such as PDF
-#formats:
-#  - pdf
-
-# Optionally set the version of Python and requirements required to build your docs
 build:
   os: ubuntu-20.04
   tools:
     python: "3.10"
-  commands:
-    - pip install myst-parser
-    - pip install sphinx-rtd-theme
-    - python -m sphinx -T -E -b html -d _build/doctrees -D language=en . _build/html
+  jobs:
+    pre_build:
+      - pip install myst-parser
+      - pip install sphinx-rtd-theme
+      - python -m sphinx -b linkcheck -D linkcheck_timeout=1 docs/ _build/linkcheck
